@@ -68,10 +68,10 @@ class RegistrationController extends \BaseController {
 		//Authorize the user -- this will need to be changed to use Sentry
 //		Auth::login($user);
 
-		Sentry::authenticate([
-			'email'    => 'eric@thinkgeneric.com',
-			'password' => 'eat'
-		]);
+//		Sentry::authenticate([
+//			'email'    => 'eric@thinkgeneric.com',
+//			'password' => 'eat'
+//		]);
 		// Redirect back to the home screen with a flash message
 		// Note: because alot of this stuff is very browser specific, the controller is the
 		// perfect place for it.

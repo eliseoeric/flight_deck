@@ -28,18 +28,12 @@ class RegisterUserCommandHandler implements CommandHandler{
 	 * @return mixed
 	 */
 	public function handle( $command ) {
-//		dd($command->password); step 2
-		$user = User::register_fake(
+		$user = User::registration(
 			$command->username, $command->email, $command->password
 		);
-//		dd($user->password); step 3 -- the password is now hashed
 
-		$test['before_save'] = $user->password;
-//		$this->repository->save($user);
-		$test['after_save'] = $user->password;
-		dd($test);
+		$this->repository->save($user);
 		$this->dispatchEventsFor($user);
 
 		return $user;
-
 	}}

@@ -42,13 +42,9 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 	 * @param $password
 	 * @return static
 	 */
-	public static function register_fake( $username, $email, $password )
+	public static function registration( $username, $email, $password )
 	{
-		// what is a static object?? what does compact do??
-//		dd($password); step 4 -- not yet hashed
 		$user = new static(compact('username', 'email', 'password'));
-
-//		dd($user); //step 5 -- password is now hashed
 
 		$user->raise(new UserRegistered($user));
 

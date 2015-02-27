@@ -17,12 +17,6 @@ class UserRepository {
 	 */
 	public function save(User $user)
 	{
-
-		return $user = $this->sentry->createUser([
-			'email' => $user['email'],
-			'password' => $user['password'],
-			'username' => $user['username'],
-			'activated' => 1,
-		]);
+		return $user->save();
 	}
 }
