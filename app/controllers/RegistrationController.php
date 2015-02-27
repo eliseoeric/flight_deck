@@ -19,7 +19,8 @@ class RegistrationController extends \BaseController {
 	{
 	    $this->registrationForm = $registrationForm;
 
-//		$this->beforeFilter('guest');
+		//Redirect to '/' if you are logged in
+		$this->beforeFilter('guest');
 
 	}
 
@@ -53,7 +54,7 @@ class RegistrationController extends \BaseController {
 	public function store()
 	{
 		// Validate the form input
-		$this->registrationForm->validate(Input::all());
+//		$this->registrationForm->validate(Input::all());
 
 		// extract needed fields from the input object
 		extract(Input::only('username', 'email', 'password'));
@@ -63,15 +64,19 @@ class RegistrationController extends \BaseController {
 			new RegisterUserCommand($username, $email, $password)
 		);
 
+
 		//Authorize the user -- this will need to be changed to use Sentry
 //		Auth::login($user);
-		$suser = Sentry::findUserById(1);
-		Sentry::login($suser);
+
+		Sentry::authenticate([
+			'email'    => 'eric@thinkgeneric.com',
+			'password' => 'eat'
+		]);
 		// Redirect back to the home screen with a flash message
 		// Note: because alot of this stuff is very browser specific, the controller is the
 		// perfect place for it.
 
-		Flash::overlay('<h1>Welcome to Flight Deck</h1><p>You are now in control.</p>');
+		Flash::overlay('<h1>Welcome to ' . $user->username . '</h1><p>Flight Deck is now in your control.</p>');
 		return  Redirect::home();
 	}
 

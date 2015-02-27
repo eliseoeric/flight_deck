@@ -9,6 +9,7 @@ class RegisterUserCommand {
 	public function __construct($username, $email, $password)
 	{
 	    $this->email = $email;
+		//dd($password); step 1
 		$this->password = $password;
 		$this->username = $username;
 	}

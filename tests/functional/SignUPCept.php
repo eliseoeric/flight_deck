@@ -7,17 +7,24 @@ $I->amOnPage('/');
 $I->click('Get Started');
 $I->seeCurrentUrlEquals('/register');
 
-$I->fillField('Username:', 'eliseoeric');
-$I->fillField('Email:', 'eric@thinkgeneric.com');
-$I->fillField('Password:', 'eat@joes1');
-$I->fillField('Password Confirmation:', 'eat@joes1');
-$I->click('Submit');
+$I->submitForm('#register_form', array(
+	'username' => 'eliseoerics',
+	'email' => 'erics@thinkgeneric.com',
+	'password' => 'eat@joes1',
+	'passwordc_onfirmation' => 'eat@joes1'
+));
+//
+//$I->fillField('Username:', 'eliseoerics');
+//$I->fillField('Email:', 'erics@thinkgeneric.com');
+//$I->fillField('Password:', 'eat@joes1');
+//$I->fillField('Password Confirmation:', 'eat@joes1');
+//$I->click('Submit');
 
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Flight Deck');
 $I->seeRecord('users', [
-	'username' => 'eliseoeric',
-	'email' => 'eric@thinkgeneric.com'
+	'username' => 'eliseoerics',
+	'email' => 'erics@thinkgeneric.com'
 ]);
 
-$I->assertTrue(Auth::check());
+$I->assertTrue(Sentry::check());

@@ -1,27 +1,27 @@
 <div class="large-8 large-offset-2 columns">
-    {{ Form::open(['route' => 'admin_login']) }}
+    {{ Form::open(['route' => 'login_path']) }}
     <fieldset>
         <legend>User Login</legend>
         <div class="row">
             <div class="large-12  columns">
-                <div class="row collapse prefix-round">
+                <div class="row collapse">
                     <div class="small-3 columns">
                         {{ Form::label('email', 'Email Address', ['class' => 'button prefix']) }}
                     </div>
                     <div class="small-9 columns">
-                        {{ Form::text('email', null, ['class' => 'form-control']) }}
+                        {{ Form::text('email', null, ['class' => 'form-control', 'required' => 'required']) }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="large-12 columns">
-                <div class="row collapse prefix-round">
+                <div class="row collapse">
                     <div class="small-3 columns">
                         {{ Form::label('password', 'Password', ['class' => 'button prefix']) }}
                     </div>
                     <div class="small-9 columns">
-                        {{ Form::password('password', ['class' => 'form-control']) }}
+                        {{ Form::password('password', ['class' => 'form-control', 'required' => 'required']) }}
                     </div>
                 </div>
             </div>

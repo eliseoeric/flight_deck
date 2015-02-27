@@ -4,7 +4,7 @@
     <h1>You're reign as Sky Marshal starts here</h1>
 
     @include('layouts._partials.errors')
-    {{ Form::open(['route' => 'register_path']) }}
+    {{ Form::open(['route' => 'register_path', 'id' => 'register_form']) }}
     <fieldset>
         <legend>Registration</legend>
         <div class="row">

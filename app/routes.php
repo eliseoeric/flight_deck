@@ -38,7 +38,7 @@ Route::post('register', [
 ]);
 
 //Couple of things going on here:
-// prefix is a prefix to the route url..therefore Route::get('login'..) is obsfucated behind admin/login
+// prefix is a prefix to the route url..therefore Route::get('login'..) is obfuscated behind admin/login
 Route::group(array('prefix' => 'admin'), function(){
 	Route::get('login', [
 		'as' => 'admin_login',
@@ -57,4 +57,21 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::resource('tasks', 'AdminTasksController');
 });
 
-//Route::resource('users', 'UsersController');
+/*
+ * Sessions
+ */
+
+Route::get('login', [
+	'as' => 'login_path',
+	'uses' => 'SessionsController@create'
+]);
+
+Route::post('login', [
+	'as' => 'login_path',
+	'uses' => 'SessionsController@store'
+]);
+
+/**
+ * Dashboard
+ */
+Route::get('dashboard', 'DashboardController@index');

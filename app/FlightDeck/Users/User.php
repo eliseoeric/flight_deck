@@ -8,8 +8,9 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Hash;
 use Laracasts\Commander\Events\EventGenerator;
+use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
 
-class User extends \Eloquent implements UserInterface, RemindableInterface {
+class User extends SentryUserModel implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait, EventGenerator;
 	/*
@@ -34,15 +35,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array( 'password', 'remember_token' );
 
 	/**
-	 * Passwords must always be hashed
-	 * @param $password
-	 */
-	public function setPasswordAttribute($password)
-	{
-		$this->attributes['password'] = Hash::make($password);
-	}
-
-	/**
 	 *
 	 * Register a new user
 	 * @param $username
@@ -50,10 +42,13 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	 * @param $password
 	 * @return static
 	 */
-	public static function register( $username, $email, $password )
+	public static function register_fake( $username, $email, $password )
 	{
 		// what is a static object?? what does compact do??
+//		dd($password); step 4 -- not yet hashed
 		$user = new static(compact('username', 'email', 'password'));
+
+//		dd($user); //step 5 -- password is now hashed
 
 		$user->raise(new UserRegistered($user));
 
