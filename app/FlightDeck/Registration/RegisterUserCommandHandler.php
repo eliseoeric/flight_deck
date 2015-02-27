@@ -36,4 +36,5 @@ class RegisterUserCommandHandler implements CommandHandler{
 		$this->dispatchEventsFor($user);
 
 		return $user;
-	}}
+	}
+}

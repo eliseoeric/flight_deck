@@ -5,8 +5,8 @@ $I->wantTo('login to my Flight Deck account');
 
 $I->amOnPage('/login');
 $I->fillField('email', 'eric@thinkgeneric.com');
-$I->fillField('password', 'eat@joes1');
+$I->fillField('password', 'eat');
 $I->click('Login');
 
-$I->seeInCurrentUrl('/statuses');
+$I->seeInCurrentUrl('/dashboard');
 $I->see('Welcome back');

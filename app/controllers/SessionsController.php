@@ -1,6 +1,7 @@
 <?php
 use FlightDeck\Forms\SignInForm;
 
+
 class SessionsController extends \BaseController {
 
 	/**
@@ -10,7 +11,7 @@ class SessionsController extends \BaseController {
 
 	public function __construct(SignInForm $signInForm)
 	{
-	    $this->beforeFilter('guest');
+	    $this->beforeFilter('guest', ['except' => 'destroy']);
 
 		$this->signInForm = $signInForm;
 	}
@@ -48,16 +49,23 @@ class SessionsController extends \BaseController {
 		// if invalid, then go back
 		$formData = Input::only( 'email', 'password' );
 
-
 		$this->signInForm->validate( $formData );
 		// if is valid, tehn try to sign in
-		Sentry::authenticate($formData, false);
-//		if()
-//		{
-//			Flash::success('<p>Welcome back </p>');
-//			return Redirect::intended('dashboard');
-//		}
-		// redirect to dashboard
+		try
+		{
+			$user = Sentry::authenticate($formData, false);
+			if($user)
+			{
+				Flash::success('Welcome back ' .$user->username );
+				return Redirect::intended('dashboard');
+			}
+		}
+		catch(\Exception $e)
+		{
+			Flash::warning($e->getMessage());
+			return Redirect::route('login_path');
+		}
+
 	}
 
 
@@ -98,14 +106,17 @@ class SessionsController extends \BaseController {
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Log the user out of Flgithdeck
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+		Sentry::logout();
+
+		Flash::message('You are now logged out.');
+		return Redirect::home();
 	}
 
 
