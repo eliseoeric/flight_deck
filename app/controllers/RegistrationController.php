@@ -65,8 +65,8 @@ class RegistrationController extends \BaseController {
 
 		//Authorize the user -- this will need to be changed to use Sentry
 //		Auth::login($user);
-		$suser = Sentry::findUserById(1);
-		Sentry::login($suser);
+//		$suser = Sentry::findUserById(1);
+//		Sentry::login($suser);
 		// Redirect back to the home screen with a flash message
 		// Note: because alot of this stuff is very browser specific, the controller is the
 		// perfect place for it.

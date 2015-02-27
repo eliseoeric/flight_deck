@@ -53,8 +53,9 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
 	public static function register( $username, $email, $password )
 	{
 		// what is a static object?? what does compact do??
+//		dd($password); // returns un hashed
 		$user = new static(compact('username', 'email', 'password'));
-
+//		dd($user->password); // returns hashed
 		$user->raise(new UserRegistered($user));
 
 		return $user;

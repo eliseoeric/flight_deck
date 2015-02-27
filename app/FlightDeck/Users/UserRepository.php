@@ -18,12 +18,12 @@ class UserRepository {
 	public function save(User $user)
 	{
 //		dd($user['username']);
-//		return $user->save();
-		return $user = $this->sentry->createUser([
-			'email' => $user['email'],
-			'password' => $user['password'],
-			'username' => $user['username'],
-			'activated' => true,
-		]);
+		return $user->save();
+//		return $user = $this->sentry->createUser([
+//			'email' => $user['email'],
+//			'password' => $user['password'],
+//			'username' => $user['username'],
+//			'activated' => true,
+//		]);
 	}
 }
