@@ -28,14 +28,13 @@ class RegisterUserCommandHandler implements CommandHandler{
 	 * @return mixed
 	 */
 	public function handle( $command ) {
-		$user = User::register(
+		$user = User::registration(
 			$command->username, $command->email, $command->password
 		);
 		//user is returned from User.php
 		$this->repository->save($user);
-		dd($user->password);
 		$this->dispatchEventsFor($user);
 
 		return $user;
-
-	}}
+	}
+}
