@@ -57,7 +57,7 @@ class SessionsController extends \BaseController {
 			if($user)
 			{
 				Flash::success('Welcome back ' .$user->username );
-				return Redirect::intended('dashboard');
+				return Redirect::intended('admin');
 			}
 		}
 		catch(\Exception $e)

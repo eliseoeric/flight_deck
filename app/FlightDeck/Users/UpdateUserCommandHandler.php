@@ -1,13 +1,11 @@
-<?php namespace FlightDeck\Registration;
-
+<?php namespace FlightDeck\Users;
 
 use FlightDeck\Users\UserRepository;
 use FlightDeck\Users\User;
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 
-class RegisterUserCommandHandler implements CommandHandler{
-
+class UpdateUserCommandHandler implements CommandHandler{
 	use DispatchableTrait;
 
 	protected $repository;
@@ -17,7 +15,7 @@ class RegisterUserCommandHandler implements CommandHandler{
 	 */
 	public function __construct(UserRepository $repository)
 	{
-	    $this->repository = $repository;
+		$this->repository = $repository;
 	}
 
 	/**
@@ -28,10 +26,9 @@ class RegisterUserCommandHandler implements CommandHandler{
 	 * @return mixed
 	 */
 	public function handle( $command ) {
-		$user = User::registration(
-			$command->username, $command->email, $command->password, $command->first_name, $command->last_name
+		$user = User::updateUserDetails(
+			$command->user_wid, $command->user_details
 		);
-		//user is returned from User.php
 		$this->repository->save($user);
 		$this->dispatchEventsFor($user);
 

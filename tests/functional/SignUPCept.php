@@ -8,10 +8,10 @@ $I->click('Get Started');
 $I->seeCurrentUrlEquals('/register');
 
 $I->submitForm('#register_form', array(
-	'username' => 'eliseoeric',
-	'email' => 'eric@thinkgeneric.com',
-	'password' => 'eat@joes1',
-	'passwordc_onfirmation' => 'eat@joes1'
+	'username' => 'jackjohnson',
+	'email' => 'jack@hawaii.com',
+	'password' => 'secret',
+	'passwordc_onfirmation' => 'secret'
 ));
 //
 //$I->fillField('Username:', 'eliseoerics');
@@ -23,8 +23,8 @@ $I->submitForm('#register_form', array(
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Flight Deck');
 $I->seeRecord('users', [
-	'username' => 'eliseoeric',
-	'email' => 'eric@thinkgeneric.com'
+	'username' => 'jackjohnson',
+	'email' => 'jack@hawaii.com'
 ]);
 
 //$I->assertTrue(Sentry::check());

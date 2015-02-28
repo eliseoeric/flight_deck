@@ -8,5 +8,5 @@ $I->fillField('email', 'eric@thinkgeneric.com');
 $I->fillField('password', 'eat');
 $I->click('Login');
 
-$I->seeInCurrentUrl('/dashboard');
+$I->seeInCurrentUrl('/admin');
 $I->see('Welcome back');

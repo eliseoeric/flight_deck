@@ -54,7 +54,7 @@ class RegistrationController extends \BaseController {
 	public function store()
 	{
 		// Validate the form input
-//		$this->registrationForm->validate(Input::all());
+		$this->registrationForm->validate(Input::all());
 
 		// extract needed fields from the input object
 		extract(Input::only('username', 'email', 'password'));

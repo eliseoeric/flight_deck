@@ -160,7 +160,7 @@ select {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 62.5rem;
+  max-width: 75rem;
 }
 /* line 172, ../scss/foundation/components/_global.scss */
 .row:before, .row:after {
@@ -5709,7 +5709,7 @@ ul.pagination li {
   /* line 166, ../scss/foundation/components/_reveal.scss */
   .reveal-modal, dialog {
     width: 80%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5737,7 +5737,7 @@ ul.pagination li {
   /* line 181, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.tiny, dialog.tiny {
     width: 30%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5747,7 +5747,7 @@ ul.pagination li {
   /* line 182, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.small, dialog.small {
     width: 40%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5757,7 +5757,7 @@ ul.pagination li {
   /* line 183, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.medium, dialog.medium {
     width: 60%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5767,7 +5767,7 @@ ul.pagination li {
   /* line 184, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.large, dialog.large {
     width: 70%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5777,7 +5777,7 @@ ul.pagination li {
   /* line 185, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.xlarge, dialog.xlarge {
     width: 95%;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -5796,7 +5796,7 @@ ul.pagination li {
   /* line 186, ../scss/foundation/components/_reveal.scss */
   .reveal-modal.full, dialog.full {
     width: 100vw;
-    max-width: 62.5rem;
+    max-width: 75rem;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -7742,7 +7742,7 @@ meta.foundation-mq-topbar {
 
   /* line 464, ../scss/foundation/components/_top-bar.scss */
   .contain-to-grid .top-bar {
-    max-width: 62.5rem;
+    max-width: 75rem;
     margin: 0 auto;
     margin-bottom: 0;
   }
@@ -9020,4 +9020,51 @@ th.hide-for-touch {
 /* line 1, ../scss/partials/_base.scss */
 .breathing-room {
   padding-top: 20px;
+}
+
+/* line 5, ../scss/partials/_base.scss */
+.side-bar {
+  background: #FAFAFA;
+  padding: 32px 20px;
+}
+
+/* line 10, ../scss/partials/_base.scss */
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 15, ../scss/partials/_base.scss */
+.side-nav li a:not(.button) {
+  padding-left: 0;
+}
+
+/* line 20, ../scss/partials/_base.scss */
+.side-nav ul.dropdown {
+  display: none;
+  list-style: none;
+}
+/* line 26, ../scss/partials/_base.scss */
+.side-nav .has-dropdown:hover ul.dropdown, .side-nav .has-dropdown.active ul.dropdown {
+  display: block;
+}
+
+/* line 31, ../scss/partials/_base.scss */
+.deck-row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 75rem;
+  margin-left: 0;
+}
+/* line 172, ../scss/foundation/components/_global.scss */
+.deck-row:before, .deck-row:after {
+  content: " ";
+  display: table;
+}
+/* line 173, ../scss/foundation/components/_global.scss */
+.deck-row:after {
+  clear: both;
 }

@@ -1,7 +1,33 @@
 <?php
+use FlightDeck\Users\UpdateUserCommand;
+use FlightDeck\Registration\RegisterUserCommand;
+use FlightDeck\Forms\UserUpdateForm;
+use FlightDeck\Forms\RegistrationForm;
+use FlightDeck\Core\CommandBus;
+use FlightDeck\Users\User;
 
 class UsersController extends \BaseController {
+	Use CommandBus;
+	/**
+	 * @var UserUpdateForm
+	 */
+	private $userUpdateForm;
+	private $registrationForm;
 
+
+	/**
+	 * @param UserUpdateForm $userUpdateForm
+	 * @param RegistrationForm $registrationForm
+	 */
+	public function __construct(UserUpdateForm $userUpdateForm, RegistrationForm $registrationForm)
+	{
+		$this->userUpdateForm = $userUpdateForm;
+
+		//Redirect to '/' if you are logged in
+		$this->beforeFilter('admin');
+
+		$this->registrationForm = $registrationForm;
+	}
 	/**
 	 * Display a listing of the resource.
 	 * GET /users
@@ -10,7 +36,10 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		//get all users from database
+		$users = User::all();
+		//send that to view
+		return View::make('users.index', compact('users'));
 	}
 
 	/**
@@ -21,7 +50,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('users.create');
 	}
 
 	/**
@@ -32,7 +61,17 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// Validate the form input
+		$this->userUpdateForm->validate(Input::all());
+
+		extract(Input::only('username', 'email', 'password', 'first_name', 'last_name'));
+
+		$user  = $this->execute(
+			new RegisterUserCommand($username, $email, $password, $first_name, $last_name)
+		);
+
+		Flash::success($user->username . ' was successfully created');
+		return  Redirect::back();
 	}
 
 	/**
@@ -56,7 +95,9 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = Sentry::findUserById($id);
+
+		return View::make('users.edit', compact('user'));
 	}
 
 	/**
@@ -68,7 +109,25 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		//Validate the user input -- this could be updated to have more advanced
+		//validation and feedback
+		$this->userUpdateForm->validate(Input::all());
+		//get the user by the id
+		$user_wid = Sentry::findUserById($id);
+		//get the form input
+		$user_details = Input::only('username', 'email', 'first_name', 'last_name');
+		//don't overwrite the password with an empty string
+		if(Input::has('password'))
+		{
+			$user_details['password'] = Input::get('password');
+		}
+		//run update user command
+		$user  = $this->execute(
+			new UpdateUserCommand($user_wid, $user_details)
+		);
+
+		Flash::success($user->username . ' was updated successfully');
+		return Redirect::route('admin.users.edit', ['id' => $id]);
 	}
 
 	/**

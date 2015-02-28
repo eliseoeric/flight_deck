@@ -17,6 +17,15 @@
 //	dd('send a notification email');
 //});
 
+Route::get('/install',function(){
+	$user = Sentry::getUser();
+
+	$group = Sentry::findGroupById(1);
+	$user->addGroup($group);
+
+});
+
+
 Route::get('/', [
 	'as' => 'home',
 	'uses' => 'PagesController@home'
@@ -37,25 +46,6 @@ Route::post('register', [
 	'uses' => 'RegistrationController@store'
 ]);
 
-//Couple of things going on here:
-// prefix is a prefix to the route url..therefore Route::get('login'..) is obfuscated behind admin/login
-Route::group(array('prefix' => 'admin'), function(){
-	Route::get('login', [
-		'as' => 'admin_login',
-		'uses' => 'AdminAuthController@getLogin'
-	]);
-	Route::post('login', array('as' => 'admin.login.post', 'uses' => 'AdminAuthController@postLogin'));
-	Route::get('logout', array('as' => 'admin.logout', 'uses' => 'AdminAuthController@getLogout'));
-});
-
-// Here, the 'before' is a filter, being ran before the route can be completed.
-// We are checking it agains the auth and admin fitlers, located/defined in filters.php
-Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
-	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'AdminDashboardController@index'));
-	Route::resource('pages', 'AdminPagesController'); // For the record, this controller should be singular (i think?)
-	Route::resource('users', 'AdminUsersController');
-	Route::resource('tasks', 'AdminTasksController');
-});
 
 /*
  * Sessions
@@ -77,4 +67,11 @@ Route::get('logout', [
 /**
  * Dashboard
  */
-Route::get('dashboard', 'DashboardController@index');
+
+// Here, the 'before' is a filter, being ran before the route can be completed.
+// We are checking it agains the auth and admin fitlers, located/defined in filters.php
+Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
+	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));
+	Route::get('dashboard', 'DashboardController@index');
+	Route::resource('users', 'UsersController');
+});

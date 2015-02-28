@@ -35,21 +35,21 @@ App::after(function($request, $response)
 //As of 2/5/15 not 100% sure why or how this works. need to find the documents this came from
 Route::filter('auth', function()
 {
-	if(!Sentry::check()) return Redirect::guest('admin/login');
+	if(!Sentry::check()) return Redirect::guest('/login');
 });
 
 Route::filter('admin', function(){
 	$user = Sentry::getUser();
 	$admin = Sentry::findGroupByName('Admins');
 
-	if(!$user->inGroup($admin)) return Redirect::to('admin/login');
+	if(!$user->inGroup($admin)) return Redirect::to('/login');
 });
 
 Route::filter('standardUser', function(){
 	$user = Sentry::getUser();
 	$users = Sentry::findGroupByName('Users');
 
-	if(!$user->inGroup($users)) return Redirect::to('admin/login');
+	if(!$user->inGroup($users)) return Redirect::to('/login');
 });
 
 

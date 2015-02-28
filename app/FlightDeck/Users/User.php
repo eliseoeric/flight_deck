@@ -2,6 +2,7 @@
 
 
 use FlightDeck\Registration\Events\UserRegistered;
+use FlightDeck\Registration\Events\UserDetailsUpdated;
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
@@ -18,7 +19,13 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 	 *
 	 * @var array
 	 * */
-	protected $fillable = [ 'username', 'email', 'password' ];
+	protected $fillable = [
+		'username',
+		'email',
+		'password',
+		'first_name',
+		'last_name'
+	];
 
 	/**
 	 * The database table used by the model.
@@ -42,14 +49,26 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 	 * @param $password
 	 * @return static
 	 */
-	public static function registration( $username, $email, $password )
+	public static function registration( $username, $email, $password, $first_name, $last_name )
 	{
 
-		$user = new static(compact('username', 'email', 'password'));
+		$user = new static(compact('username', 'email', 'password', 'first_name', 'last_name'));
 //		dd($user->password); // returns hashed
 		$user->raise(new UserRegistered($user));
 
 		return $user;
+	}
+
+	public static function updateUserDetails( $user_wid, $user_details)
+	{
+		foreach($user_details as $detail => $key)
+		{
+			$user_wid->$detail = $key;
+		}
+		$user_wid->raise(new UserDetailsUpdated($user_wid, $user_details));
+
+		return $user_wid;
+
 	}
 
 }
