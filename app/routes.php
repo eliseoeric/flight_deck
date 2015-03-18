@@ -17,8 +17,9 @@
 //	dd('send a notification email');
 //});
 
-Route::get('install',function(){
-
+Route::get('ziptest',function(){
+	$zip = Zipcode::find(4)->with('city')->get();
+	dd($zip[0]->zipcode);
 
 });
 

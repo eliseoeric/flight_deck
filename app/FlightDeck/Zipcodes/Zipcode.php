@@ -18,8 +18,4 @@ class Zipcode extends \Eloquent{
 		return $this->belongsTo('FlightDeck\Cities\City');
 	}
 
-	public function customers()
-	{
-		return $this->belongsToMany('FlightDeck\Customers\Customer');
-	}
 }

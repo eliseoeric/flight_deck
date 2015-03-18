@@ -16,8 +16,4 @@ class Customer extends \Eloquent {
 		return $this->hasMany('FlightDeck\PurchaseOrders\PurchaseOrder');
 	}
 
-	public function zipcode()
-	{
-		return $this->belongsTo('FlightDeck\Zipcodes\Zipcode');
-	}
 }

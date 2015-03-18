@@ -10,12 +10,10 @@ class CustomersTableSeeder extends Seeder {
 	public function run()
 	{
 		$faker = Faker::create();
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-
-
 
 		foreach(range(1, 10) as $index)
 		{
+			$zip = Zipcode::find($faker->numberBetween(1,1200))->with('city')->get();
 
 			$customer = new Customer([
 				'name'      =>  $faker->word,
@@ -23,14 +21,14 @@ class CustomersTableSeeder extends Seeder {
 				'state'     =>  'fl',
 				'phone'     =>  $faker->phoneNumber,
 				'rep_id'    => $faker->numberBetween(1,10),
-				'zipcode_id' => 4
+				'zipcode'   => $zip[0]->zipcode,
+				'city'      => $zip[0]->city->city
 			]);
 
 			$customer->save();
 
 		}
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 
 }

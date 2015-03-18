@@ -17,8 +17,8 @@ class CreateCustomersTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->text('name');
 			$table->text('address');
-			$table->integer('zipcode_id')->unsigned()->index();
-			$table->foreign('zipcode_id')->references('id')->on('zipcodes')->onDelete('cascade');
+			$table->text('city');
+			$table->text('zipcode');
 			$table->text('state');
 			$table->text('phone');
 			$table->integer('rep_id')->unsigned()->index();
