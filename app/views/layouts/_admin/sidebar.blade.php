@@ -17,7 +17,13 @@
             <li>Reports</li>
             <li class="divider"></li>
             <li>Factories</li>
-            <li>Regions</li>
+            <li {{ (Request::is('*regions') ? 'class="active has-dropdown"' : 'class="has-dropdown"' )}}>
+                {{ link_to_route('admin.regions.index', 'Regions')}}
+                <ul class="dropdown">
+                    <li>{{ link_to_route('admin.regions.index', 'All Regions')}}</li>
+                    <li>{{ link_to_route('admin.regions.create', 'New Region')}}</li>
+                </ul>
+            </li>
             <li>Sales</li>
             <li>Customers</li>
             <li>Orders</li>

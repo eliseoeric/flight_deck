@@ -9,7 +9,7 @@
                 {{ link_to_route('admin.users.create', 'New User', array(), array('class' => 'button small')) }}
             </div>
         </div>
-        <div class="deck-row"></div>
+        <div class="deck-row">
             <div class="large-11 medium-10 columns">
                 <table>
                     <thead>
@@ -45,5 +45,5 @@
                     </tfoot>
                 </table>
             </div>
-        </div>
+
 @stop

@@ -71,4 +71,8 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 
 	}
 
+	public function regions(){
+		return $this->belongsToMany('Region');
+	}
+
 }

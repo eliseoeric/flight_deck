@@ -17,11 +17,8 @@
 //	dd('send a notification email');
 //});
 
-Route::get('/install',function(){
-	$user = Sentry::getUser();
+Route::get('install',function(){
 
-	$group = Sentry::findGroupById(1);
-	$user->addGroup($group);
 
 });
 
@@ -45,7 +42,6 @@ Route::post('register', [
 	'as' => 'register_path',
 	'uses' => 'RegistrationController@store'
 ]);
-
 
 /*
  * Sessions
@@ -74,4 +70,5 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));
 	Route::get('dashboard', 'DashboardController@index');
 	Route::resource('users', 'UsersController');
+	Route::resource('regions', 'RegionsController');
 });

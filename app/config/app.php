@@ -126,6 +126,8 @@ return array(
 		'Laracasts\Validation\ValidationServiceProvider',
 		'FlightDeck\Notifications\FlashServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
+		'anlutro\cURL\Laravel\cURLServiceProvider',
+
 
 	),
 
@@ -195,6 +197,7 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 		'Flash'             => 'FlightDeck\Notifications\Flash',
 		'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'cURL'              => 'anlutro\cURL\Laravel\cURL',
 
 	),
 
