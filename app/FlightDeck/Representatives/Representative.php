@@ -14,12 +14,17 @@ class Representative extends \Eloquent{
 	 */
 	public function counties()
 	{
-		return $this->belongsToMany('FlightDeck\Counties\County');
+		return $this->hasMany('FlightDeck\Counties\County');
 	}
 
 	public function customers()
 	{
-		return $this->belongsToMany('FlightDeck\Customers\Customer');
+		return $this->hasMany('FlightDeck\Customers\Customer');
+	}
+
+	public function regions()
+	{
+		return $this->belongsToMany('FlightDeck\Regions\Region', 'counties', 'representative_id', 'region_id')->distinct();
 	}
 
 }

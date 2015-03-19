@@ -18,8 +18,6 @@
 //});
 
 Route::get('ziptest',function(){
-	$zip = Zipcode::find(4)->with('city')->get();
-	dd($zip[0]->zipcode);
 
 });
 
@@ -72,4 +70,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::get('dashboard', 'DashboardController@index');
 	Route::resource('users', 'UsersController');
 	Route::resource('regions', 'RegionsController');
+	Route::resource('representatives', 'RepresentativesController');
+	Route::resource('purchaseOrders', 'PurchaseOrdersController');
 });

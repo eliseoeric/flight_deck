@@ -1,22 +1,22 @@
 <?php
-use FlightDeck\Representatives\Representative;
-class RepresentativesController extends \BaseController {
+use FlightDeck\PurchaseOrders\PurchaseOrder;
+class PurchaseOrdersController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /representatives
+	 * GET /purchaseorders
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$reps = Representative::with('regions')->get();
-		return View::make('representatives.index', compact('reps'));
+		$orders = PurchaseOrder::with('customer', 'dealer', 'manufacturer')->get();
+		return View::make('purchaseOrders.index', compact('orders'));
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /representatives/create
+	 * GET /purchaseorders/create
 	 *
 	 * @return Response
 	 */
@@ -27,7 +27,7 @@ class RepresentativesController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /representatives
+	 * POST /purchaseorders
 	 *
 	 * @return Response
 	 */
@@ -38,7 +38,7 @@ class RepresentativesController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /representatives/{id}
+	 * GET /purchaseorders/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -50,7 +50,7 @@ class RepresentativesController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /representatives/{id}/edit
+	 * GET /purchaseorders/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -62,7 +62,7 @@ class RepresentativesController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /representatives/{id}
+	 * PUT /purchaseorders/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -74,7 +74,7 @@ class RepresentativesController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /representatives/{id}
+	 * DELETE /purchaseorders/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

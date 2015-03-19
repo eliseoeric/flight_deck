@@ -5,8 +5,8 @@
         <h1>Regions</h1>
         <div class="deck-row">
             <div class="large-5 columns panel">
-                <p>Here you can create new Sales Reps or edit current Sales Reps.</p>
-                {{ link_to_route('admin.regions.create', 'New Representative', array(), array('class' => 'button small')) }}
+                <p>Here you can create new regions or edit current regions.</p>
+                {{ link_to_route('admin.regions.create', 'New Region', array(), array('class' => 'button small')) }}
             </div>
         </div>
         <div class="deck-row">
@@ -14,27 +14,32 @@
                 <table>
                     <thead>
                     <tr>
-                        <th width="200">Representative</th>
-                        <th width="200">Phone Number</th>
-                        <th width="150">Regions</th>
-                        <th width="150">Current Sales</th>
+                        <th width="200">Order Number</th>
+                        <th width="150">Customer</th>
+                        <th width="150">Manufacturer</th>
+                        <th width="150">Dealer</th>
+                        <th width="150">Amount</th>
+                        <th width="150">Created On</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @if(count($reps))
-                        @foreach($reps as $rep)
+                    @if(count($orders))
+                        @foreach($orders as $order)
                             <tr>
-                                <td>{{ link_to_route('admin.representatives.edit', $rep->first_name . ' ' .$rep->last_name, array($rep->id))}}</td>
                                 <td>
-                                    {{$rep->phone}}
+                                    {{ link_to_route('admin.purchaseOrders.edit', $order->id, array($order->id))}}
                                 </td>
                                 <td>
-                                    @foreach($rep->regions as $region)
-                                        {{ link_to_route('admin.regions.edit', $region->region, array($region->id))}}
-                                    @endforeach
+                                    {{$order->customer->name}}
                                 </td>
                                 <td>
-                                    {{$rep->net_sales}}
+                                    {{$order->manufacturer->name}}
+                                </td>
+                                <td>
+                                    {{$order->dealer->name}}
+                                </td>
+                                <td>
+                                    {{$order->amount}}
                                 </td>
                             </tr>
                         @endforeach

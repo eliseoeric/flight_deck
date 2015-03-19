@@ -16,4 +16,8 @@ class Customer extends \Eloquent {
 		return $this->hasMany('FlightDeck\PurchaseOrders\PurchaseOrder');
 	}
 
+	public function representative()
+	{
+		return $this->belongsTo('FlightDeck\Representatives\Representative');
+	}
 }

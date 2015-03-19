@@ -24,10 +24,12 @@
                         @foreach($regions as $region)
                             <tr>
                                 <td>{{ link_to_route('admin.regions.edit', $region->region, array($region->id))}}</td>
-                                <td></td>
                                 <td>
-                                    @foreach($region->representatives as $rep)
-                                        {{$rep->first_name}},
+                                    {{$region->reps->sum('net_sales')}}
+                                </td>
+                                <td>
+                                    @foreach($region->reps as $rep)
+                                        {{ link_to_route('admin.representatives.edit', $rep->first_name, array($rep->id))}}
                                     @endforeach
                                 </td>
                             </tr>

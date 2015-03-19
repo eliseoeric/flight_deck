@@ -25,8 +25,8 @@ class CreateRepresentativesTable extends Migration {
 			// customers
 			$table->timestamps();
 
-
 		});
+
 	}
 
 

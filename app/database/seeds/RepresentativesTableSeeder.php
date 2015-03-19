@@ -12,6 +12,7 @@ class RepresentativesTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
+
 			$rep = new Representative([
 				'first_name'    =>  $faker->firstName,
 				'last_name'     =>  $faker->lastName,
@@ -20,6 +21,7 @@ class RepresentativesTableSeeder extends Seeder {
 				'net_sales'     =>  $faker->numberBetween(50,50000)
 			]);
 			$rep->save();
+
 		}
 	}
 

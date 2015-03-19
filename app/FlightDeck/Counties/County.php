@@ -14,9 +14,9 @@ class County extends \Eloquent {
 		return $this->hasMany('FlightDeck\Cities\City');
 	}
 
-	public function representatives()
+	public function representative()
 	{
-		return $this->belongsToMany('FlightDeck\Representatives\Representative');
+		return $this->belongsTo('FlightDeck\Representatives\Representative');
 	}
 
 	public function region()

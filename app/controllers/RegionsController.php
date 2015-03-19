@@ -1,5 +1,6 @@
 <?php
 use FlightDeck\Regions\Region;
+use FlightDeck\Counties\County;
 class RegionsController extends \BaseController {
 
 	/**
@@ -10,7 +11,11 @@ class RegionsController extends \BaseController {
 	public function index()
 	{
 		//get all users from database
-		$regions = Region::with('representatives')->get();
+
+//		$regions = Region::with('counties', 'counties.representative')->get();
+
+		$regions = Region::with('reps')->get();
+//
 		return View::make('regions.index', compact('regions'));
 //		return View::make('regions.index')
 //			->with('regions', Region::with('representatives'));

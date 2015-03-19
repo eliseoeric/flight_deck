@@ -19,4 +19,9 @@ class Region extends \Eloquent {
 		return $this->hasMany('FlightDeck\Counties\County');
 	}
 
+	public function reps()
+	{
+		return $this->belongsToMany('FlightDeck\Representatives\Representative', 'counties', 'region_id', 'representative_id')->distinct();
+	}
+
 }

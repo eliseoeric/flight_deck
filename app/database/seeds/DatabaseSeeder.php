@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('GroupsTableSeeder');
 		$this->call('UsersTableSeeder');
 //		$this->call('RegionsTableSeeder');
-		$this->call('RepresentativesTableSeeder');
 //		$this->call('CountiesTableSeeder');
+		$this->call('RepresentativesTableSeeder');
 		$this->call('DealersTableSeeder');
 		$this->call('ManufacturersTableSeeder');
 		$this->call('CitiesTableSeeder');

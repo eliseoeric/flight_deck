@@ -25,6 +25,7 @@ class CreateRegionsTable extends Migration {
 			$table->string('county')->unique();
 			$table->integer('region_id')->unsigned()->index();
 			$table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+
 			$table->timestamps();
 		});
 

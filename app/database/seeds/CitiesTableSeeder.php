@@ -6,11 +6,13 @@ use FlightDeck\Cities\City;
 use FlightDeck\Counties\County;
 use FlightDeck\Zipcodes\Zipcode;
 use FlightDeck\Regions\Region;
+use FlightDeck\Representatives\Representative;
 
 class CitiesTableSeeder extends Seeder {
 
 	public function run()
 	{
+		$faker = Faker::create();
 		$filename = app_path() . '/uploads/dmg_seed_031415.csv';
 
 		$data = $this->buildCsvObject( $filename );
@@ -31,11 +33,14 @@ class CitiesTableSeeder extends Seeder {
 
 		foreach( $counties as $county )
 		{
+
 			$query = DB::table('regions')->where('region', $county['region'])->first();
 			$region = Region::find($query->id);
 			$new = new County;
 			$new->county = $county['name'];
+			$new->representative_id = $faker->numberBetween(1,10);
 			$new->region()->associate($region);
+
 			$new->save();
 		}
 
