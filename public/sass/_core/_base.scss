@@ -1,0 +1,49 @@
+.shaded{
+	background:$neutral-subtle-grey;
+}
+
+#subfoot{
+	padding: 20px;
+}
+
+.docs{
+	padding-top: 8px;
+}
+
+.wrapper + .wrapper {
+  padding: 75px 20px 70px 20px;
+}
+
+.socbtns {
+  display: inline-block;
+  padding: 15px 0;
+  overflow: hidden;
+
+  li{
+  	float: left;
+  }
+
+  li + li {
+	  border-left: 1px solid #fff;
+	}
+
+}
+
+#credits {
+  text-align: left;
+
+  .socbtns{
+  	float:right;
+  }
+
+}
+
+
+
+.navbar .logo {
+  margin: 0;
+  a {
+	  float: left;
+	  padding-left: 0;
+	}
+}

@@ -1,0 +1,91 @@
+/* TODO
+*
+*
+* change these to be called panels
+*
+*/
+.workbench{
+	background-color: $neutral-subtle-grey;
+	height: 100%;
+	display:block;
+
+	.workbench-core{
+		padding-top: 85px;
+		@include push(1.8);
+		transition: all 0.3s ease-in-out;
+	}
+
+	.sidebar{
+		position: absolute;
+		top:0;
+		@include column(2);
+		z-index: 600;
+		margin-left: 0;
+		height: 100%;
+	}
+
+}
+
+#workbench-sidebar{
+	transition: all 0.3s ease-in-out;
+	&.active{
+		margin-left: -260px;
+	}
+
+	&.active + section.workbench-core{
+		@include push(.10);
+	}
+}
+
+
+.sidebar-nav-wrap{
+	padding-top: $topbar-height;
+	background-color: $brand-bg;
+	height: 100%;
+	// overflow: scroll;
+	
+	#sidebar-nav{
+		background-color: lighten($brand-bg, 5);
+		border-top: 1px solid shade($brand-bg, 10);
+	}
+
+	li{
+		&:first-of-type{
+			padding-top:20px;
+		}
+
+		&:hover{
+			a,i{
+				color: $neutral-white;
+			}
+		}
+		
+		a{
+			min-height: 40px;
+			line-height: 40px;
+			padding-left: 35px;
+			display: inline-block;
+			width: 65%;
+			color: $dark-ui;
+			&:hover{
+				color: $neutral-white;
+			}
+		}
+
+		span i{
+			display: inline-block;
+			min-width:25px;
+			min-height: 25px;
+			padding:10px 16px;
+			color: $dark-ui;
+			background-color: $brand-bg;
+			margin-bottom: 5px;
+		}
+	}
+
+	.drawer {
+		a{
+			font-size: 80%;
+		}
+	}
+}

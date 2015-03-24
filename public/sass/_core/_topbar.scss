@@ -1,0 +1,52 @@
+.wrapper{
+	width: 100%;
+	height: $topbar-height;
+	padding: 0 0 5px 0;
+	z-index: 500;
+	background:$neutral-white;
+}
+
+.top-bar{
+	a{
+		width:100%;
+		height:100%;
+		display: block;
+		padding-top:15px;
+		text-align: center;
+		i{
+			@include font-size(30px);
+		}
+	}
+	
+	.logo{
+		@include column(2);
+		margin-left:0;
+		h3{
+			text-align: center;
+		}
+	}
+
+	.sidebar-toggle{
+		width: 60px;
+		float: left;
+		display: inline-block;
+		height: $topbar-height;
+		border-right: 1px solid $neutral-subtle-grey;
+		
+	}
+
+	.seach-bar{
+		@include column(2);
+		margin-left:5px;
+		padding-top: 12px;
+	}
+
+	nav.user-details{
+		float:right;
+		@include column(2);
+		li{
+			display: inline-block;
+			max-width: 50%;
+		}
+	}
+}
