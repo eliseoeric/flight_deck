@@ -27,7 +27,7 @@ class UpdateCountiesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('users', function($table)
+		Schema::table('counties', function($table)
 		{
 			$table->dropColumn('representative_id');
 		});

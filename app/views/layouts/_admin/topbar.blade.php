@@ -14,15 +14,29 @@
         </ul>
     </div>
 
-    <nav class="user-details">
-       <ul>
+    <nav class="user-menu">
+       <ul class="user-details--interact">
            <li>
-               <a href="#">Hello, {{$currentUser->username}}</a>
+               <a href="#" class="toggle" gumby-trigger="#user-notifications"><span class="default badge">2</span></a>
            </li>
            <li>
-               <a href="#"><i class="icon-network"></i></a>
+               <a href="#" class="toggle" gumby-trigger="#user-interface">Hello, {{$currentUser->username}}</a>
            </li>
        </ul>
+        <ul id="user-notifications" class="user-details notifications">
+            <li>You have 10 new notifications</li>
+            <li><hr></li>
+            <li><a href=""><span class="default badge">!</span> New Sales Rep</a></li>
+            <li><a href=""><span class="default badge">!</span> New Purchase Order</a></li>
+        </ul>
+
+        <ul id="user-interface" class="user-details interface">
+            <li><a href="#"><i class="icon-gauge"></i>Settings</a></li>
+            <li><a href=""><i class="icon-chat"></i>Feedback</a></li>
+            <li><a href=""><i class="icon-info-circled"></i>Help</a></li>
+            <li class="faux-footer"><a href="{{ URL::route('logout_path') }}">Logout<i class="icon-export"></i></a></li>
+        </ul>
+
     </nav>
 
     <div>

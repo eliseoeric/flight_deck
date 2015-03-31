@@ -1,7 +1,11 @@
 <?php
 use FlightDeck\Forms\SignInForm;
 
-
+/*
+ *
+ * Dont think this is even used -- 3/26/15
+ *
+ * */
 class SessionsController extends \BaseController {
 
 	/**

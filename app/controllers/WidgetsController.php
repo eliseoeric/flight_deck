@@ -1,30 +1,37 @@
 <?php
-use FlightDeck\Representatives\Representative;
-use FlightDeck\Representatives\RepresentativeRepository;
-class RepresentativesController extends \BaseController {
 
-	private $repRepo;
+use FlightDeck\Widgets\WidgetRepository;
 
-	function __construct(RepresentativeRepository $representativeRepository)
+class WidgetsController extends \BaseController {
+
+	private $widgetRepo;
+
+	public function __construct(WidgetRepository $widgetRepository)
 	{
-	    $this->repRepo = $representativeRepository;
+	    $this->widgetRepo = $widgetRepository;
 	}
+
 	/**
 	 * Display a listing of the resource.
-	 * GET /representatives
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$reps = $this->repRepo->getRepsWithRegions();
-		$pageTitle = 'Representatives';
-		return View::make('representatives.index', compact('reps','pageTitle'));
+		return Response::json($this->widgetRepo->calcAllWidgets());
 	}
 
+
+	public function getQuerySum($table, $row)
+	{
+		return Response::json(array(
+			'table' => $table,
+			'row' => $row,
+			'sum' => $this->widgetRepo->getMaxOfRowInTable($table, $row)
+		), 200);
+	}
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /representatives/create
 	 *
 	 * @return Response
 	 */
@@ -33,9 +40,9 @@ class RepresentativesController extends \BaseController {
 		//
 	}
 
+
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /representatives
 	 *
 	 * @return Response
 	 */
@@ -44,34 +51,33 @@ class RepresentativesController extends \BaseController {
 		//
 	}
 
+
 	/**
 	 * Display the specified resource.
-	 * GET /representatives/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+		return Response::json( $this->widgetRepo->calcWidgetValue( $id ) );
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /representatives/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		$rep = $this->repRepo->getById($id);
-		View::make('representatives.edit', compact('rep') );
+		//
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /representatives/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -81,9 +87,9 @@ class RepresentativesController extends \BaseController {
 		//
 	}
 
+
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /representatives/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -92,5 +98,6 @@ class RepresentativesController extends \BaseController {
 	{
 		//
 	}
+
 
 }

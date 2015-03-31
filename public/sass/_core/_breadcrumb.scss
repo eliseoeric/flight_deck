@@ -1,0 +1,27 @@
+.breadcrumb{
+	padding: 15px;
+	margin:0;
+	display:block;
+
+	li{
+		display: inline-block;
+		padding-left:0;
+		text-transform: uppercase;
+		@include font-size(14px);
+
+		a{
+			margin-left: 10px;
+			color: $brand-color;
+			font-weight: bold;
+		}
+	}
+
+	li + li{
+		&:before{
+			padding: 0 5px;
+			font-family: 'FontAwesome';
+			content: "\f105";
+			font-weight:bold;
+		}
+	}
+}

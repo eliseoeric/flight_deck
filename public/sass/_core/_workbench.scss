@@ -11,7 +11,7 @@
 
 	.workbench-core{
 		padding-top: 85px;
-		@include push(1.8);
+		@include push(1.6);
 		transition: all 0.3s ease-in-out;
 	}
 
@@ -29,11 +29,11 @@
 #workbench-sidebar{
 	transition: all 0.3s ease-in-out;
 	&.active{
-		margin-left: -260px;
+		margin-left: -300px;
 	}
 
 	&.active + section.workbench-core{
-		@include push(.10);
+		margin-left: 0;
 	}
 }
 

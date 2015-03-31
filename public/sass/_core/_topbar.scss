@@ -41,12 +41,65 @@
 		padding-top: 12px;
 	}
 
-	nav.user-details{
+	nav.user-menu{
 		float:right;
 		@include column(2);
+	}
+
+	.user-details--interact{
 		li{
 			display: inline-block;
 			max-width: 50%;
+		}
+	}
+
+	.user-details{
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease-in-out;
+		position: absolute;
+		padding-top: 12px;
+		top:30px;
+		background: $neutral-white;
+		-webkit-box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  		box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+		li{
+			padding-left:12px;
+			padding-right:12px;
+			a{
+				padding-top: 0;
+				text-align: left;
+			}
+			width: 100%;
+			@include font-size(12px);
+
+			i{
+				@include font-size(12px);
+				margin-left: 0;
+			}
+		}
+
+		&.notifications{
+			right: 120px;
+			width: 200px;
+		}
+
+		&.interface{
+			right: 80px;
+			width: 150px;
+			.faux-footer{
+				background: $neutral-subtle-grey;
+				i{
+					float: right;
+				}
+			}
+		}
+
+		&.active{
+			opacity: 1;
+			visibility: visible;
+			z-index: 100;
+			top: 60px;
 		}
 	}
 }

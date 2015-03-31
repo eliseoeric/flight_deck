@@ -32,8 +32,9 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     {{ HTML::style('css/app.css') }}
-    <script src="js/libs/modernizr-2.6.2.min.js"></script>
+    {{ HTML::script('js/libs/modernizr-2.6.2.min.js') }}
 </head>
 
 <body>
@@ -60,29 +61,45 @@
 <script>
     if(!window.jQuery) {
         if(!oldieCheck) {
-            document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+            document.write('<script src="http://hanger.dev:8000/js/libs/jquery-2.0.2.min.js"><\/script>');
         } else {
-            document.write('<script src="js/libs/jquery-1.10.1.min.js"><\/script>');
+            document.write('<script src="http://hanger.dev:8000/js/libs/jquery-1.10.1.min.js"><\/script>');
         }
     }
 </script>
 <!--
 Include gumby.js followed by UI modules followed by gumby.init.js
 Or concatenate and minify into a single file -->
-<script gumby-touch="js/libs" src="js/libs/gumby.js"></script>
-<script src="js/libs/ui/gumby.retina.js"></script>
-<script src="js/libs/ui/gumby.fixed.js"></script>
-<script src="js/libs/ui/gumby.skiplink.js"></script>
-<script src="js/libs/ui/gumby.toggleswitch.js"></script>
-<script src="js/libs/ui/gumby.checkbox.js"></script>
-<script src="js/libs/ui/gumby.radiobtn.js"></script>
-<script src="js/libs/ui/gumby.tabs.js"></script>
-<script src="js/libs/ui/gumby.navbar.js"></script>
-<script src="js/libs/ui/jquery.validation.js"></script>
-<script src="js/libs/gumby.init.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+{{ HTML::script('js/libs/gumby.js', array('gumby-touch' => 'js/libs')) }}
+{{ HTML::script('js/libs/ui/gumby.retina.js') }}
+{{ HTML::script('js/libs/ui/gumby.fixed.js') }}
+{{ HTML::script('js/libs/ui/gumby.skiplink.js') }}
+{{ HTML::script('js/libs/ui/gumby.toggleswitch.js') }}
+{{ HTML::script('js/libs/ui/gumby.checkbox.js') }}
+{{ HTML::script('js/libs/ui/gumby.radiobtn.js') }}
+{{ HTML::script('js/libs/ui/gumby.tabs.js') }}
+{{ HTML::script('js/libs/ui/jquery.validation.js') }}
+{{ HTML::script('js/libs/gumby.init.js') }}
+{{ HTML::script('js/plugins.js') }}
+{{ HTML::script('js/main.js') }}
 
+{{ HTML::script('js/vendor/underscore.js') }}
+{{ HTML::script('js/vendor/backbone.js') }}
+{{ HTML::script('js/app.js') }}
+{{ HTML::script('js/models.js') }}
+{{ HTML::script('js/collections.js') }}
+{{ HTML::script('js/views.js') }}
+{{ HTML::script('js/router.js') }}
+
+<script>
+    new App.Router;
+    Backbone.history.start();
+
+    App.widgets = new App.Collections.Widgets;
+    App.widgets.fetch().then(function() {
+        new App.Views.App({ collection: App.widgets });
+    });
+</script>
 <!-- Change UA-XXXXX-X to be your site's ID -->
 <!--<script>
 window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];

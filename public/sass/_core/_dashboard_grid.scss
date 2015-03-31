@@ -1,0 +1,72 @@
+.deck-row{
+	@include row();
+	max-width: 100%;
+}
+
+.large-1{
+	@include column(1);
+}
+.large-2{
+	@include column(2);
+}
+.large-3{
+	@include column(3);
+}
+.large-4{
+	@include column(4);
+}
+.large-5{
+	@include column(5);
+}
+.large-6{
+	@include column(6);
+}
+.large-7{
+	@include column(7);
+}
+.large-8{
+	@include column(8);
+}
+.large-9{
+	@include column(9);
+}
+.large-10{
+	@include column(10);
+}
+.large-11{
+	@include column(11);
+}
+.large-12{
+	@include column(12);
+}
+
+
+.widget{
+	background: $neutral-white;
+}
+
+.panel{
+	height:100%;
+
+	.panel-header{
+		padding: 15px 15px 7px 15px;
+		.panel-title{
+			@include font-size(16px);
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	.panel-body{
+		padding: 15px;
+	}
+}
+
+.boiler{
+	margin-bottom: 15px;
+}
+
+.turbine{
+	background: $neutral-white;
+	padding: 15px 25px;
+}

@@ -1,7 +1,13 @@
 <?php
-
+use FlightDeck\Dashboards\DashboardRepository;
 class DashboardController extends \BaseController {
 
+	private $dashRepo;
+
+	function __construct(DashboardRepository $dashboardRepository)
+	{
+		$this->dashRepo = $dashboardRepository;
+	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,8 +15,12 @@ class DashboardController extends \BaseController {
 	 */
 	public function index()
 	{
-
-		return View::make('dashboard.index');
+		//Always default to primary dashboard
+		$pageTitle = "Core Dashboard";
+		$dashboard = $this->dashRepo->getDashboard(1);
+		//evaluate each widget
+//		dd($dashboard->widgets[0]);
+		return View::make('dashboard.index', compact('dashboard','pageTitle'));
 	}
 
 

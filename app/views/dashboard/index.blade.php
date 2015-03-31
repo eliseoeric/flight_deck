@@ -2,11 +2,12 @@
 
 @section('content')
     @include('layouts._admin.herocrumb')
-    <div class="six columns">
-        <h2>Welcome</h2>
+    <div id="boiler" class="boiler">
+        {{--Widgets are populated here via backbone.js --}}
     </div>
-    <div class="six columns">
-        <h2>To Flightdeck</h2>
-    </div>
+    <div class="deck-row turbine">
+        <div class="large-14">
 
+        </div>
+@include('dashboard.widgets.small-box')
 @stop

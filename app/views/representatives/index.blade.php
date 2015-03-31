@@ -1,16 +1,34 @@
 @extends('layouts._admin.default')
 
 @section('content')
-    <div class="large-11 medium-10 columns">
-        <h1>Regions</h1>
+    @include('layouts._admin.herocrumb')
+    <div class="boiler">
         <div class="deck-row">
-            <div class="large-5 columns panel">
-                <p>Here you can create new Sales Reps or edit current Sales Reps.</p>
-                {{ link_to_route('admin.regions.create', 'New Representative', array(), array('class' => 'button small')) }}
+            <div class="large-7">
+                <div class="panel">
+                    <div class="panel-body text-center">
+                        {{ HTML::image('img/tables.jpg') }}
+                    </div>
+                </div>
+            </div>
+            <div class="large-5">
+                <div class="panel">
+                    <header class="panel-header">
+                        <h3 class="panel-title">
+                            Getting Started
+                        </h3>
+                    </header>
+                    <div class="panel-body">
+                        <h3>Create a New Representative</h3>
+                        <p>Flight Deck let's you easily create and manage your sales reps via our simple user friendly tables. Get started now by creating a new rep and see what all the fuss is about.</p>
+                        <div class="medium secondary btn">{{ link_to_route('admin.representatives.create', 'New Representative') }}</div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="deck-row">
-            <div class="large-11 medium-10 columns">
+    </div>
+        <div class="deck-row turbine">
+            <div class="large-12">
                 <table>
                     <thead>
                     <tr>
@@ -49,5 +67,5 @@
                     </tfoot>
                 </table>
             </div>
-        </div>
+
 @stop
