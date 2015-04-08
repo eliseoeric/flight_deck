@@ -5,7 +5,7 @@
         <ul id="sidebar-nav">
 
             <li {{ (Request::is('*dashboard') ? 'class="active"' : '' )}}>
-                {{ link_to_route('admin.dashboard', 'Dashboard') }}
+                {{ link_to_route('admin.index', 'Dashboard') }}
                 <span><i class="icon-layout"></i></span>
             </li>
 
@@ -21,7 +21,7 @@
             <li>Reports</li>
             <li {{ (Request::is('*representatives') ? 'class="active"' : '' )}}>
                 <a href="#"  class="toggle" gumby-trigger="#reps_dropdown">Sales Reps</a>
-                <span><i class="icon-share"></i></span>
+                <span><i class="fa fa-rocket"></i></span>
             </li>
             <div class="drawer" id="reps_dropdown">
                 <li>{{ link_to_route('admin.representatives.index', 'All Reps')}}</li>

@@ -15,4 +15,14 @@ class RepresentativeRepository extends DbRepository{
 	{
 		return Representative::with('regions')->get();
 	}
+
+	function getRepsWithOrders()
+	{
+		return Representative::with('purchaseOrders')->get();
+	}
+
+	function save($model)
+	{
+		return $model->save();
+	}
 }

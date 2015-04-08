@@ -10,9 +10,12 @@
 		@include font-size(14px);
 
 		a{
-			margin-left: 10px;
-			color: $brand-color;
-			font-weight: bold;
+			color: inherit;
+			&.active{
+				margin-left: 10px;
+				color: $brand-color;
+				font-weight: bold;
+			}
 		}
 	}
 

@@ -37,9 +37,9 @@
 </head>
 
 <body>
+    @include('layouts._partials.flash')
     @include('layouts._partials.header')
     <div class="row breathing-room">
-        @include('layouts._partials.flash')
         @yield('content')
     </div>
 

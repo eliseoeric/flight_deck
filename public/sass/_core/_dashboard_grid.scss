@@ -43,15 +43,19 @@
 
 .widget{
 	background: $neutral-white;
+	margin-bottom: 10px;
+	.panel-header + .panel-body{
+		padding: 0 15px 15px 15px;
+	}
 }
 
 .panel{
 	height:100%;
 
 	.panel-header{
-		padding: 15px 15px 7px 15px;
+		padding: 15px 15px 0px 15px;
 		.panel-title{
-			@include font-size(16px);
+			@include font-size(14px);
 			font-weight: bold;
 			text-transform: uppercase;
 		}
@@ -69,4 +73,10 @@
 .turbine{
 	background: $neutral-white;
 	padding: 15px 25px;
+}
+
+.counter {
+	.value{
+		padding: 0;
+	}
 }

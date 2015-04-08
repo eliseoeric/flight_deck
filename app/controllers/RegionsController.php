@@ -1,7 +1,8 @@
 <?php
 use FlightDeck\Regions\Region;
-use FlightDeck\Counties\County;
+
 class RegionsController extends \BaseController {
+
 
 	/**
 	 * Display a listing of the resource.
@@ -41,7 +42,8 @@ class RegionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+
+
 	}
 
 

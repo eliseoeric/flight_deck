@@ -1,18 +1,71 @@
 /* Tables */
 
 table {
+	padding: 1em 1.5em;
 	display: table;
-	background-color: $table-bgcolor;
 	border-collapse: collapse;
 	border-spacing: 0;
 	margin-bottom: 20px;
 	width: 100%;
-	border: $table-border-size $table-border-style $table-border-color;
 
 	caption {
 		text-align: center;
 		font-size: $larger;
 		padding: .75em;
+	}
+
+	tbody tr{
+		background-color: $true-white;
+		padding: 5px 0;
+		&:hover{
+			background-color: $table-stripe-bgcolor;
+		}
+	}
+
+
+
+	thead th{
+		&.sortable{
+			position: relative;
+			a{
+				color: lighten($body-font-color, 30);
+				cursor: pointer;
+				width: 100%;
+				display: inline-table;
+				&:hover{
+					color: $body-font-color;
+				}
+			}
+			&:after{
+				position: absolute;
+				right:15px;
+				content: "\f0dc";
+				font-family: 'FontAwesome';
+				color: lighten($body-font-color, 30);
+			}
+		}
+
+		&.sortable.ascending{
+			a{
+				color: $body-font-color;
+			}
+			&:after{
+				content: "\f0de";
+				font-family: 'FontAwesome';
+				color: inherit;
+			}
+		}
+
+		&.sortable.descending{
+			a{
+				color: $body-font-color;
+			}
+			&:after{
+				content: "\f0dd";
+				font-family: 'FontAwesome';
+				color: inherit;
+			}
+		}
 	}
 
 	thead th,
@@ -22,20 +75,19 @@ table {
 		padding: 10px;
 		vertical-align: top;
 		text-align: left;
-		border-top: $table-cell-border-size $table-cell-border-style $table-cell-border-color;
+		border-bottom: $table-cell-border-size $table-cell-border-style $table-cell-border-color;
 	}
 
 	tr td, tbody tr td {
 		font-size: $norm;
 	}
-
+	
 	tr td:first-child {
 		font-weight: $table-row-first-cell-font-weight;
 	}
 
 	thead {
-		background-color: $table-thead-bgcolor;
-		color: #fff;
+		color: $body-font-color;
 
 		tr th {
 			font-size: $norm;

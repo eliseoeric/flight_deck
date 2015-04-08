@@ -11,14 +11,14 @@
 
 	.workbench-core{
 		padding-top: 85px;
-		@include push(1.6);
+		@include push(1.4);
 		transition: all 0.3s ease-in-out;
 	}
 
 	.sidebar{
-		position: absolute;
+		position: fixed;
 		top:0;
-		@include column(2);
+		@include column(1.8);
 		z-index: 600;
 		margin-left: 0;
 		height: 100%;

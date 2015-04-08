@@ -21,7 +21,7 @@ class CreateRepresentativesTable extends Migration {
 			$table->text('phone');
 			// purchase_order
 			// current sales ?
-			$table->decimal('net_sales', 10, 2);
+			$table->float('net_sales', 10, 2);
 			// customers
 			$table->timestamps();
 

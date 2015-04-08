@@ -14,6 +14,7 @@ class DashboardRepository extends DbRepository{
 	function getDashboard($id)
 	{
 		// return the dashboard and all the widgets
-		return Dashboard::with('widgets')->find($id);
+		return Dashboard::with('widgets', 'widgetMeta')->find($id);
 	}
+
 }

@@ -66,8 +66,8 @@ Route::get('logout', [
 // Here, the 'before' is a filter, being ran before the route can be completed.
 // We are checking it agains the auth and admin fitlers, located/defined in filters.php
 Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
-	Route::get('/', array('as' => 'admin.dashboard', 'uses' => 'DashboardController@index'));
-	Route::get('dashboard', 'DashboardController@index');
+	Route::get('/', array('as' => 'admin.index', 'uses' => 'AdminController@index'));
+	Route::resource('dashboards', 'DashboardsController');
 	Route::resource('users', 'UsersController');
 	Route::resource('regions', 'RegionsController');
 	Route::resource('representatives', 'RepresentativesController');
@@ -75,4 +75,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::resource('widgets', 'WidgetsController');
 
 	Route::get('widgets/sum/{table}/{row}/', 'WidgetsController@getQuerySum');
+});
+
+Route::group(array('prefix' => 'json'), function(){
+	Route::get('representatives', 'RepresentativesController@jsonAll');
 });

@@ -147,12 +147,13 @@ $table-border-size: 1px;
 $table-border-style: solid;
 $table-border-color: #e5e5e5;
 $table-cell-border-size: 1px;
-$table-cell-border-color: #e5e5e5;
+$table-cell-border-color: $neutral-subtle-grey;
 $table-cell-border-style: solid;
 // .rounded
 $table-border-radius: 4px;
 // .striped
-$table-stripe-bgcolor: #e5e5e5;
+// $table-stripe-bgcolor: lighten($brand-color, 60);
+$table-stripe-bgcolor: lighten(#FDF4BB, 10);
 
 // Tooltips
 $tt-min-width: 130px;

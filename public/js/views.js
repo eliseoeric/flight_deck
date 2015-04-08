@@ -9,20 +9,22 @@ App.Views.App = Backbone.View.extend({
 
 /* All Widgets View*/
 App.Views.Widgets = Backbone.View.extend({
+	initialize: function(){	
+		
+	},
+
 	tagName: 'div',
 	className: 'deck-row',
 
 	render: function() {
+		// this.$el.append('<div class="widget">');
 		this.collection.each( this.addOne, this );
-		this.collection.each( this.determineType, this );
+		// this.$el.append('</div>');
 		return this;
 	},
 
-	determineType: function(widget) {
-		console.log(this);
-	},
-
 	addOne: function(widget) {
+		
 		var widgetView = new App.Views.Widget({ model: widget });
 		this.$el.append(widgetView.render().el);
 	}
@@ -32,11 +34,12 @@ App.Views.Widgets = Backbone.View.extend({
 App.Views.Widget = Backbone.View.extend({
 
 	tagName: 'div',
-	className: 'large-3 widget',
+	className: 'large-2',
 
-	template: template('smallBoxTemplate'), 
+	template: template('counterTemplate'), 
 
 	render: function() {
+		console.log(this);
 		this.$el.html( this.template( this.model.toJSON() ) );
 		return this;
 	}

@@ -127,8 +127,7 @@ return array(
 		'FlightDeck\Notifications\FlashServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'anlutro\cURL\Laravel\cURLServiceProvider',
-
-
+		'Laracasts\Utilities\UtilitiesServiceProvider',
 	),
 
 	/*

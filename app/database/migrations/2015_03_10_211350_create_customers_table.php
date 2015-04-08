@@ -21,8 +21,8 @@ class CreateCustomersTable extends Migration {
 			$table->text('zipcode');
 			$table->text('state');
 			$table->text('phone');
-			$table->integer('rep_id')->unsigned()->index();
-			$table->foreign('rep_id')->references('id')->on('representatives')->onDelete('cascade');
+			$table->integer('representative_id')->unsigned()->index();
+			$table->foreign('representative_id')->references('id')->on('representatives')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

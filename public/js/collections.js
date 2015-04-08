@@ -6,6 +6,11 @@ App.Collections.Widgets = Backbone.Collection.extend({
 	// },
 
 	url: function () {
-		return '/admin/widgets/';
+		return '/admin/dashboards/1/';
 	}
+});
+
+App.Collections.Reps = Backbone.Collection.extend({
+  model: App.Models.Rep,
+  url: "/json/representatives/"
 });

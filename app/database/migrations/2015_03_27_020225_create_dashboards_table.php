@@ -15,21 +15,33 @@ class CreateDashboardsTable extends Migration {
 		Schema::create('dashboards', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
-			$table->text('name');
-			$table->text('owner');
+			$table->string('heading');
+			$table->integer('owner');
 			$table->timestamps();
 		});
 
+		//Modeled after the Wordpress Database post type. Post can have different types, which are
+		//rendered differently in the view.
+		//Adding extra details to post is done through the widget_meta.
 		Schema::create('widgets', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
-			$table->text('title');
-			$table->text('row');
-			$table->text('table');
-			$table->text('query');
-			$table->text('classes');
 			$table->integer('dashboard_id')->unsigned()->index();
 			$table->foreign('dashboard_id')->references('id')->on('dashboards')->onDelete('cascade');
+			$table->text('heading');
+			$table->text('size');
+			$table->text('class');
+			$table->text('type');
+		});
+
+
+		Schema::create('widget_metas', function(Blueprint $table)
+		{
+			$table->increments('id')->unsigned();
+			$table->integer('widget_id')->unsigned()->index();
+			$table->foreign('widget_id')->references('id')->on('widgets')->onDelete('cascade');
+			$table->string('meta_key');
+			$table->string('meta_value');
 		});
 	}
 
@@ -40,8 +52,10 @@ class CreateDashboardsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('dealers');
+		Schema::drop('dashboards');
+		Schema::drop('widget_meta');
 		Schema::drop('widgets');
+
 	}
 
 }

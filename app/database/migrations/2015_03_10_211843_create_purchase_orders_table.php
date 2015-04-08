@@ -16,7 +16,7 @@ class CreatePurchaseOrdersTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('customer_id')->unsigned()->index();
-			$table->decimal('amount', 10, 2);
+			$table->float('amount', 10, 2);
 			$table->integer('manufacturer_id')->unsigned()->index();
 			$table->integer('dealer_id')->unsigned()->index();
 			$table->timestamps();

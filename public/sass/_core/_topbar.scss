@@ -19,7 +19,7 @@
 	}
 	
 	.logo{
-		@include column(2);
+		@include column(1.8);
 		margin-left:0;
 		h3{
 			text-align: center;

@@ -56,10 +56,11 @@ class CreateRegionsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('regions');
-		Schema::drop('counties');
-		Schema::drop('cities');
 		Schema::drop('zipcodes');
+		Schema::drop('cities');
+		Schema::drop('counties');
+		Schema::drop('regions');
+
 	}
 
 }

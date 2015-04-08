@@ -1,7 +1,13 @@
 <?php
+use Carbon\Carbon;
 use FlightDeck\Representatives\Representative;
 use FlightDeck\Representatives\RepresentativeRepository;
+use Laracasts\Commander\CommanderTrait;
+use FlightDeck\Representatives\OnBoardRepCommand;
+
 class RepresentativesController extends \BaseController {
+
+	use CommanderTrait;
 
 	private $repRepo;
 
@@ -17,9 +23,49 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function index()
 	{
+		//This should all probably be pulled out of
+		// the controller and put in a widget repo or something
+		$reps = $this->repRepo->getRepsWithRegions();
+
+		$reps_list = [];
+		$data = [];
+		foreach($reps as $rep)
+		{
+			$reps_list[] = $rep->first_name;
+			$data[] = $rep->net_sales;
+		}
+
+		JavaScript::put([
+			'chart' => [
+			'type' => 'bar'
+				],
+				'title' => [
+			'text' => 'Representative Sales'
+		],
+				'xAxis' => [
+					'categories' => $reps_list
+		],
+				'yAxis' => [
+			'title' => [
+				'text' => 'Sales'
+			]
+		],
+				'series' => [
+					'name' => 'Sales',
+					'data' => $data
+				]
+		]);
+
+
+		return View::make('representatives.index', compact('reps'));
+	}
+
+	public function jsonAll()
+	{
 		$reps = $this->repRepo->getRepsWithRegions();
 		$pageTitle = 'Representatives';
-		return View::make('representatives.index', compact('reps','pageTitle'));
+		return Response::json($reps);
+//		return View::make('representatives.index', compact('reps','pageTitle'));
 	}
 
 	/**
@@ -30,7 +76,7 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('representatives.create');
 	}
 
 	/**
@@ -41,7 +87,20 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+
+		$rep = $this->execute(OnBoardRepCommand::class);
+
+//		// Validate the form input
+//		$this->userUpdateForm->validate(Input::all());
+//
+//		extract(Input::only('username', 'email', 'password', 'first_name', 'last_name'));
+//
+//		$user  = $this->execute(
+//			new CreateRepCommand($username, $email, $password, $first_name, $last_name)
+//		);
+//
+		Flash::success($rep->first_name . ' was successfully created');
+		return  Redirect::back();
 	}
 
 	/**

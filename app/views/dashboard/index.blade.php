@@ -1,7 +1,15 @@
 @extends('layouts._admin.default')
 
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li>Dashboard </li>
+    </ul>
+@stop
+
 @section('content')
-    @include('layouts._admin.herocrumb')
+
+
+
     <div id="boiler" class="boiler">
         {{--Widgets are populated here via backbone.js --}}
     </div>
@@ -9,5 +17,18 @@
         <div class="large-14">
 
         </div>
-@include('dashboard.widgets.small-box')
+    </div>
+@include('dashboard._widgets.counter')
+@stop
+
+@section('backbone')
+    <script>
+        new App.Router;
+        Backbone.history.start();
+
+        App.widgets = new App.Collections.Widgets;
+        App.widgets.fetch().then(function() {
+            new App.Views.App({ collection: App.widgets });
+        });
+    </script>
 @stop

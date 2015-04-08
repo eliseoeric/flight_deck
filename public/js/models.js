@@ -1,3 +1,5 @@
 App.Models.Widget = Backbone.Model.extend({
-	//validate
+
 });
+
+App.Models.Rep = Backbone.Model.extend({});

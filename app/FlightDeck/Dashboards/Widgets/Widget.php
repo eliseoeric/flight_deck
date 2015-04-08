@@ -1,4 +1,4 @@
-<?php namespace FlightDeck\Widgets;
+<?php namespace FlightDeck\Dashboards\Widgets;
 
 class Widget extends \Eloquent{
 	// Add your validation rules here
@@ -12,6 +12,11 @@ class Widget extends \Eloquent{
 	public function dashboard()
 	{
 		return $this->belongsTo('FlightDeck\Dashboards\Dashboard');
+	}
+
+	public function meta()
+	{
+		return $this->hasMany('FlightDeck\Dashboards\Widgets\WidgetMeta');
 	}
 
 }

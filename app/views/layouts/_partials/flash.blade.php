@@ -2,9 +2,19 @@
     @if (Session::has('flash_notification.overlay'))
         @include('layouts._partials.modal', ['modalID' => 'flash-modal', 'title' => Session::get('flash_notification.title'), 'body' => Session::get('flash_notification.message')])
     @else
-        <div data-alert class="alert-box {{ Session::get('flash_notification.level') }}">
-            {{ Session::get('flash_notification.message') }}
-            <a href="#" class="close">&times;</a>
-        </div>
+        @section('notification')
+            var notification = new NotificationFx({
+            message : '<div class="ns-thumb {{ Session::get('flash_notification.level') }}"><i class="fa fa-cogs"></i></div><div class="ns-content "><p>{{ Session::get('flash_notification.message') }}</p></div>',
+            layout : 'other',
+            ttl : 6000,
+            effect : 'thumbslider',
+            type : 'notice', // notice, warning, error or success
+            onClose : function() {
+            bttn.disabled = false;
+            }
+            });
+            notification.show();
+        @stop
     @endif
 @endif
+
