@@ -42,14 +42,14 @@ Route::filter('admin', function(){
 	$user = Sentry::getUser();
 	$admin = Sentry::findGroupByName('Admins');
 
-	if(!$user->inGroup($admin)) return Redirect::to('/login');
+	if(!$user->inGroup($admin)) return Redirect::to('/portal');
 });
 
 Route::filter('standardUser', function(){
 	$user = Sentry::getUser();
 	$users = Sentry::findGroupByName('Users');
 
-	if(!$user->inGroup($users)) return Redirect::to('/login');
+	if(!$user->inGroup($users)) return Redirect::to('/portal');
 });
 
 

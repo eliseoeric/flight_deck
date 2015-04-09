@@ -50,7 +50,7 @@ class FlashNotifier {
 		return $this;
 	}
 
-	public function message($message, $level = '', $fa_icon)
+	public function message($message, $level = '', $fa_icon = 'fa-cogs')
 	{
 		$this->session->flash('flash_notification.message', $message);
 		$this->session->flash('flash_notification.level', $level);
