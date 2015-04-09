@@ -89,7 +89,7 @@ class RepresentativesController extends \BaseController {
 	public function store()
 	{
 
-		$rep = $this->execute(OnBoardRepCommand::class);
+		$rep = $this->execute( new OnBoardRepCommand( Input::all() ) );
 
 		Flash::success($rep->first_name . ' was successfully created');
 		return  Redirect::back();
@@ -131,7 +131,8 @@ class RepresentativesController extends \BaseController {
 	{
 		$model = Input::all();
 		$model['id'] = $id;
-		$rep = $this->execute(UpdateRepCommand::class, $model);
+		$rep = $this->execute(new UpdateUserCommand($model));
+
 
 		Flash::success($rep->first_name . ' ' .$rep->last_name . ' was updated successfully');
 		return Redirect::route('admin.representatives.edit', ['id' => $id]);
