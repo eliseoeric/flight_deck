@@ -1,6 +1,6 @@
 <div class="wrapper top-bar" gumby-fixed="top">
     <div class="logo" >
-       <h3>flight.<strong>DECK</strong></h3>
+       <h3>flight<strong>deck</strong></h3>
     </div>
     <div class="sidebar-toggle">
         <a href="#" class="toggle" gumby-trigger="#workbench-sidebar"><i class="icon-menu"></i></a>

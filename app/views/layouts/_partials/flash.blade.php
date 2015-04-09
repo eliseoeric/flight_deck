@@ -4,7 +4,7 @@
     @else
         @section('notification')
             var notification = new NotificationFx({
-            message : '<div class="ns-thumb {{ Session::get('flash_notification.level') }}"><i class="fa fa-cogs"></i></div><div class="ns-content "><p>{{ Session::get('flash_notification.message') }}</p></div>',
+            message : '<div class="ns-thumb {{ Session::get('flash_notification.level') }}"><i class="fa {{ Session::get('flash_notification.fa_icon') }}"></i></div><div class="ns-content "><p>{{ Session::get('flash_notification.message') }}</p></div>',
             layout : 'other',
             ttl : 6000,
             effect : 'thumbslider',

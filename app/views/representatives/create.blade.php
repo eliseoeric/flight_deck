@@ -52,7 +52,7 @@
                     </div>
                     <div class="row">
                         <div class="">
-                            <div class="medium primary btn">
+                            <div class="medium primary rounded  btn">
                                 {{ Form::submit('Create Rep', ['class' => '']) }}
                             </div>
                         </div>
@@ -106,19 +106,23 @@
         }, {
             name: "first_name",
             label: "First Name",
+            editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
             cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
         }, {
             name: "last_name",
             label: "Last Name",
+            editable: false,
             cell: "string" // An integer cell is a number cell that displays humanized integers
         }, {
             name: "email",
             label: "Email Address",
+            editable: false,
             cell: "email" // A cell type for floating point value, defaults to have a precision 2 decimal numbers
         }, {
             name: "net_sales",
             label: "Current Sales",
+            editable: false,
             cell: "Number"
         }];
 

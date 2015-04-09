@@ -7,4 +7,8 @@ class PagesController extends \BaseController {
 		return View::make('pages.home');
 	}
 
+	public function portal()
+	{
+		return View::make('pages.portal');
+	}
 }

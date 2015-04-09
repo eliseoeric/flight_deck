@@ -45,4 +45,12 @@ class Representative extends \Eloquent{
 		return $rep;
 	}
 
+	public static function updated( $command )
+	{
+		$rep = Representative::findOrFail($command->id);
+		$rep->fill(get_object_vars($command));
+		$rep->raise( new RepOnBoarded( $rep ) );
+		return $rep;
+	}
+
 }

@@ -74,14 +74,12 @@
 
 @section('backbone')
     <script>
-
+        $(function () {
+            $('#rep_sales').highcharts(Charts);
+        });
         new App.Router;
         Backbone.history.start();
 
-        //    App.widgets = new App.Collections.Widgets;
-        //    App.widgets.fetch().then(function() {
-        //        new App.Views.App({ collection: App.widgets });
-        //    });
 
         App.reps = new App.Collections.Reps;
 
@@ -96,19 +94,23 @@
         }, {
             name: "first_name",
             label: "First Name",
+            editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-            cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+            cell: "uri-id" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
         }, {
             name: "last_name",
             label: "Last Name",
-            cell: "string" // An integer cell is a number cell that displays humanized integers
+            editable: false,
+            cell: "uri-id"
         }, {
             name: "email",
             label: "Email Address",
-            cell: "email" // A cell type for floating point value, defaults to have a precision 2 decimal numbers
+            editable: false,
+            cell: "email" // custom cell that wraps the content in an anchor tag that goes to the edit path
         }, {
             name: "net_sales",
             label: "Current Sales",
+            editable: false,
             cell: "Number"
         }];
 

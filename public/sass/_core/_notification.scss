@@ -402,6 +402,14 @@
 	&.success{
 		background-color: $success-color;
 	}
+
+	&.warning{
+		background-color:$warning-hover-color;
+	}
+
+	&.error {
+		background-color:$danger-hover-color;
+	}
 }
 
 .ns-effect-thumbslider .ns-content {

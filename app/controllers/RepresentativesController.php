@@ -4,6 +4,7 @@ use FlightDeck\Representatives\Representative;
 use FlightDeck\Representatives\RepresentativeRepository;
 use Laracasts\Commander\CommanderTrait;
 use FlightDeck\Representatives\OnBoardRepCommand;
+use FlightDeck\Representatives\UpdateRepCommand;
 
 class RepresentativesController extends \BaseController {
 
@@ -90,15 +91,6 @@ class RepresentativesController extends \BaseController {
 
 		$rep = $this->execute(OnBoardRepCommand::class);
 
-//		// Validate the form input
-//		$this->userUpdateForm->validate(Input::all());
-//
-//		extract(Input::only('username', 'email', 'password', 'first_name', 'last_name'));
-//
-//		$user  = $this->execute(
-//			new CreateRepCommand($username, $email, $password, $first_name, $last_name)
-//		);
-//
 		Flash::success($rep->first_name . ' was successfully created');
 		return  Redirect::back();
 	}
@@ -125,7 +117,7 @@ class RepresentativesController extends \BaseController {
 	public function edit($id)
 	{
 		$rep = $this->repRepo->getById($id);
-		View::make('representatives.edit', compact('rep') );
+		return View::make('representatives.edit', compact('rep') );
 	}
 
 	/**
@@ -137,7 +129,12 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$model = Input::all();
+		$model['id'] = $id;
+		$rep = $this->execute(UpdateRepCommand::class, $model);
+
+		Flash::success($rep->first_name . ' ' .$rep->last_name . ' was updated successfully');
+		return Redirect::route('admin.representatives.edit', ['id' => $id]);
 	}
 
 	/**

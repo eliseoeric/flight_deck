@@ -10,33 +10,33 @@ class FlashNotifier {
 	    $this->session  = $session;
 	}
 
-	public function info($message)
+	public function info($message, $fa_icon='fa-cogs')
 	{
-		$this->message($message, 'info');
+		$this->message($message, 'info', $fa_icon);
 		return $this;
 	}
 
-	public function success($message)
+	public function success($message, $fa_icon='fa-cogs')
 	{
-		$this->message($message, 'success');
+		$this->message($message, 'success', $fa_icon);
 		return $this;
 	}
 
-	public function error($message)
+	public function error($message, $fa_icon='fa-cogs')
 	{
-		$this->message($message, 'alert');
+		$this->message($message, 'alert', $fa_icon);
 		return $this;
 	}
 
-	public function warning($message)
+	public function warning($message, $fa_icon='fa-cogs')
 	{
-		$this->message($message, 'warning');
+		$this->message($message, 'warning', $fa_icon);
 		return $this;
 	}
 
-	public function secondary($message)
+	public function secondary($message, $fa_icon='fa-cogs')
 	{
-		$this->message($message, 'secondary');
+		$this->message($message, 'secondary', $fa_icon);
 		return $this;
 	}
 
@@ -50,10 +50,11 @@ class FlashNotifier {
 		return $this;
 	}
 
-	public function message($message, $level = '')
+	public function message($message, $level = '', $fa_icon)
 	{
 		$this->session->flash('flash_notification.message', $message);
 		$this->session->flash('flash_notification.level', $level);
+		$this->session->flash('flash_notification.fa_icon', $fa_icon);
 
 		return $this;
 	}

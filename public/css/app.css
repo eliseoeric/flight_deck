@@ -1720,6 +1720,10 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 .navbar .logo { margin: 0; }
 .navbar .logo a { float: left; padding-left: 0; }
 
+.mg-b-20 { margin-bottom: 20px; }
+
+.text-white { color: #FAFAFA !important; }
+
 b { font-weight: bold; }
 
 /* TODO
@@ -1763,7 +1767,7 @@ form .form-group { margin-bottom: 10px; text-align: left; color: #595959; }
 form .form-group label { font-size: 11px; text-transform: uppercase; font-weight: 600; }
 form .form-group select { cursor: pointer; border: none; width: 100%; }
 form .form-group select:focus, form .form-group select:active { border: none; }
-form .form-group-default { background-color: #FAFAFA; position: relative; border: 1px solid #e5e5e5; border-radius: 2px; padding-top: 7px; padding-left: 12px; padding-right: 12px; padding-bottom: 4px; overflow: hidden; -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); -moz-transition: background-color, 0.2s, ease; -o-transition: background-color, 0.2s, ease; -webkit-transition: background-color, 0.2s, ease; transition: background-color, 0.2s, ease; }
+form .form-group-default { background-color: #FAFAFA; position: relative; border: 1px solid #e5e5e5; border-radius: 2px; padding-top: 7px; padding-left: 12px; padding-right: 12px; padding-bottom: 4px; overflow: hidden; -moz-transition: background-color, 0.2s, ease; -o-transition: background-color, 0.2s, ease; -webkit-transition: background-color, 0.2s, ease; transition: background-color, 0.2s, ease; }
 form .form-group-default.focused { background-color: #fefced label; background-color-opacity: 0.6; }
 form .form-group-default.disabled { background-color: #EFE8E8; }
 form .form-group-default.disabled label { opacity: 0.5; }
@@ -1994,6 +1998,8 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 .ns-effect-thumbslider .ns-thumb { position: absolute; z-index: 100; overflow: hidden; background: #58365B; }
 .ns-effect-thumbslider .ns-thumb i.fa { font-size: 33px; color: #FAFAFA; padding: 15px; }
 .ns-effect-thumbslider .ns-thumb.success { background-color: #58c026; }
+.ns-effect-thumbslider .ns-thumb.warning { background-color: #fdd27f; }
+.ns-effect-thumbslider .ns-thumb.error { background-color: #f14f4f; }
 
 .ns-effect-thumbslider .ns-content { background: #EFE8E8; color: #555555; font-weight: bold; padding: 0 40px 0 80px; height: 63px; line-height: 60px; font-size: 16px; font-size: 1.14286rem; }
 .ns-effect-thumbslider .ns-content p { padding-top: 7px; }
@@ -2135,3 +2141,18 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 .ns-close::before { -webkit-transform: translate(-50%, -50%) rotate(45deg); transform: translate(-50%, -50%) rotate(45deg); }
 
 .ns-close::after { -webkit-transform: translate(-50%, -50%) rotate(-45deg); transform: translate(-50%, -50%) rotate(-45deg); }
+
+.login_wrapper { height: 100%; background: #FAFAFA; }
+.login_wrapper--image { width: 100%; position: absolute; overflow: hidden; }
+.login_wrapper--image img { height: 100%; opacity: 0.9; }
+.login_wrapper--image__branded { position: absolute; right: 510px; top: 45%; text-align: right; }
+.login_wrapper--image__branded h1 { font-weight: bold; line-height: 1.1; padding-bottom: 5px; font-size: 95px; font-size: 6.78571rem; }
+.login_wrapper--image__branded h3 { padding-top: 5px; font-size: 45px; font-size: 3.21429rem; }
+.login_wrapper--image__branded h1, .login_wrapper--image__branded h3 { text-transform: uppercase; }
+.login_wrapper--image__description { position: absolute; bottom: 0; color: #FAFAFA; padding-left: 20px; max-width: 500px; }
+.login_wrapper--footer { position: absolute; bottom: 0; padding: 50px 50px 20px 50px; }
+
+.login_wrapper > * { height: 100%; }
+
+.portal_login { position: relative; float: right; width: 496px; display: block; background: #FAFAFA; }
+.portal_login--form { padding: 50px; }

@@ -59,6 +59,17 @@ Route::get('logout', [
 	'as' => 'logout_path',
 	'uses' => 'SessionsController@destroy'
 ]);
+
+
+/*
+ * Pages
+ *
+ */
+Route::get('portal', [
+	'as' => 'portal',
+	'uses' => 'PagesController@portal'
+]);
+
 /**
  * Dashboard
  */

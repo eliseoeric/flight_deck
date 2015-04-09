@@ -60,14 +60,14 @@ class SessionsController extends \BaseController {
 			$user = Sentry::authenticate($formData, false);
 			if($user)
 			{
-				Flash::success('Welcome back ' .$user->username );
+				Flash::success('Welcome back ' .$user->username, 'fa-user');
 				return Redirect::intended('admin');
 			}
 		}
 		catch(\Exception $e)
 		{
-			Flash::warning($e->getMessage());
-			return Redirect::route('login_path');
+			Flash::warning($e->getMessage(), 'fa-user-times');
+			return Redirect::route('portal');
 		}
 
 	}

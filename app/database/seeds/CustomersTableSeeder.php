@@ -20,7 +20,7 @@ class CustomersTableSeeder extends Seeder {
 				'address'   =>  $faker->streetAddress,
 				'state'     =>  'fl',
 				'phone'     =>  $faker->phoneNumber,
-				'representative_id'    => $faker->numberBetween(1,10),
+				'representative_id'    => $faker->numberBetween(1,5),
 				'zipcode'   => $zip[0]->zipcode,
 				'city'      => $zip[0]->city->city
 			]);

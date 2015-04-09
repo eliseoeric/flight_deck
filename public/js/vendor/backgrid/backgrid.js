@@ -976,7 +976,47 @@ var StringCell = Backgrid.StringCell = Cell.extend({
   formatter: StringFormatter
 
 });
+var UriIdCell = Backgrid.UriIdCell = Cell.extend({
 
+    /** @property */
+    className: "uri-id-cell",
+
+    /**
+     @property {string} [title] The title attribute of the generated anchor. It
+     uses the display value formatted by the `formatter.fromRaw` by default.
+     */
+    title: null,
+
+    /**
+     @property {string} [target="_blank"] The target attribute of the generated
+     anchor.
+     */
+    target: "",
+
+    initialize: function (options) {
+        UriCell.__super__.initialize.apply(this, arguments);
+        this.title = options.title || this.title;
+        this.target = options.target || this.target;
+    },
+
+    render: function () {
+        // console.log(this.model.url()); returns /json/reps/id
+        this.$el.empty();
+        // console.log(this.$el); returns the td element
+        var editUrl = this.model.url().replace('/json', '/admin') + '/edit/';
+        var rawValue = this.model.get(this.column.get("name"));
+        var formattedValue = this.formatter.fromRaw(rawValue, this.model);
+        this.$el.append($("<a>", {
+            tabIndex: -1,
+            href: editUrl,
+            title: rawValue,
+            target: this.target
+        }).text(formattedValue));
+        this.delegateEvents();
+        return this;
+    }
+
+});
 /**
    UriCell renders an HTML `<a>` anchor for the value and accepts URIs as user
    input values. No type conversion or URL validation is done by the formatter

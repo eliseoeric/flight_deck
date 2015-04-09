@@ -12,8 +12,8 @@
 			 More info: h5bp.com/b/378 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>Flight Deck || Semantic Administration Dashboard</title>
-    <meta name="description" content="" />
+    <title>@yield('meta_title', 'Downing Management Group Dashboard')</title>
+    <meta name="description" content="@yield('meta_description', 'Downing Management Group Dashboard')" />
     <meta name="keywords" content="" />
     <meta name="author" content="humans.txt">
 
