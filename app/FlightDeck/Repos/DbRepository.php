@@ -19,4 +19,13 @@ abstract class DbRepository {
 		return $this->model->get();
 	}
 
+	function save($model)
+	{
+		return $model->save();
+	}
+
+	function delete($id)
+	{
+		return $this->model->findOrFail($id)->delete();
+	}
 }

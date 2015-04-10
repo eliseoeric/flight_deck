@@ -64,9 +64,22 @@ class RepresentativesController extends \BaseController {
 	public function jsonAll()
 	{
 		$reps = $this->repRepo->getRepsWithRegions();
-		$pageTitle = 'Representatives';
+
 		return Response::json($reps);
 //		return View::make('representatives.index', compact('reps','pageTitle'));
+	}
+
+	/**
+	 * @param $id
+	 *
+	 * Returns all purchase orders associated with the rep in json
+	 * @return mixed
+	 */
+	public function jsonRepOrders($id)
+	{
+		$rep = $this->repRepo->getRepOrders($id);
+
+		return Response::json($rep);
 	}
 
 	/**
@@ -89,9 +102,16 @@ class RepresentativesController extends \BaseController {
 	public function store()
 	{
 
-		$rep = $this->execute( new OnBoardRepCommand( Input::all() ) );
+		$rep = $this->execute( OnBoardRepCommand::class );
 
-		Flash::success($rep->first_name . ' was successfully created');
+		if( $rep )
+		{
+			Flash::success($rep->first_name . ' ' .$rep->last_name . ' was created successfully.');
+		}
+		else
+		{
+			Flash::warning('Something went wrong! Rep was not created!');
+		}
 		return  Redirect::back();
 	}
 
@@ -117,6 +137,7 @@ class RepresentativesController extends \BaseController {
 	public function edit($id)
 	{
 		$rep = $this->repRepo->getById($id);
+
 		return View::make('representatives.edit', compact('rep') );
 	}
 
@@ -129,12 +150,20 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$model = Input::all();
-		$model['id'] = $id;
-		$rep = $this->execute(new UpdateUserCommand($model));
+		$input = Input::all();
+		$input['id'] = $id;
+		$rep = $this->execute(UpdateRepCommand::class, $input );
+		//validate this
+		//check for this
+		if( $rep )
+		{
+			Flash::success($rep->first_name . ' ' .$rep->last_name . ' was updated successfully');
+		}
+		else
+		{
+			Flash::warning('Something went wrong! Rep not saved.');
+		}
 
-
-		Flash::success($rep->first_name . ' ' .$rep->last_name . ' was updated successfully');
 		return Redirect::route('admin.representatives.edit', ['id' => $id]);
 	}
 
@@ -147,7 +176,17 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		if( $this->repRepo->delete($id) )
+		{
+			Flash::success('Representative was deleted successfully.');
+		}
+		else
+		{
+			Flash::warning('Something went wrong!');
+		}
+
+		return Redirect::route('admin.representatives.index');
+
 	}
 
 }

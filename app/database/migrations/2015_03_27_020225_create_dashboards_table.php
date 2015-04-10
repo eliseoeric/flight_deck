@@ -27,7 +27,7 @@ class CreateDashboardsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('dashboard_id')->unsigned()->index();
-			$table->foreign('dashboard_id')->references('id')->on('dashboards')->onDelete('cascade');
+//			$table->foreign('dashboard_id')->references('id')->on('dashboards')->onDelete('set null');
 			$table->text('heading');
 			$table->text('size');
 			$table->text('class');
@@ -39,7 +39,7 @@ class CreateDashboardsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('widget_id')->unsigned()->index();
-			$table->foreign('widget_id')->references('id')->on('widgets')->onDelete('cascade');
+//			$table->foreign('widget_id')->references('id')->on('widgets')->onDelete('set null');
 			$table->string('meta_key');
 			$table->string('meta_value');
 		});
@@ -52,9 +52,9 @@ class CreateDashboardsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('dashboards');
-		Schema::drop('widget_meta');
+		Schema::drop('widget_metas');
 		Schema::drop('widgets');
+		Schema::drop('dashboards');
 
 	}
 

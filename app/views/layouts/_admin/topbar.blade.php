@@ -31,10 +31,10 @@
         </ul>
 
         <ul id="user-interface" class="user-details interface">
-            <li><a href="#"><i class="icon-gauge"></i>Settings</a></li>
-            <li><a href=""><i class="icon-chat"></i>Feedback</a></li>
-            <li><a href=""><i class="icon-info-circled"></i>Help</a></li>
-            <li class="faux-footer"><a href="{{ URL::route('logout_path') }}">Logout<i class="icon-export"></i></a></li>
+            <li><a href="#"><i class="fa fa-tachometer"></i>Settings</a></li>
+            <li><a href=""><i class="fa fa-comments-o"></i>Feedback</a></li>
+            <li><a href=""><i class="fa fa-cog"></i>Help</a></li>
+            <li class="faux-footer"><a href="{{ URL::route('logout_path') }}">Logout<i class="fa fa-power-off"></i></a></li>
         </ul>
 
     </nav>

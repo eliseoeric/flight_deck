@@ -24,7 +24,7 @@ class CreateRegionsTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->string('county')->unique();
 			$table->integer('region_id')->unsigned()->index();
-			$table->foreign('region_id')->references('id')->on('regions')->onDelete('cascade');
+//			$table->foreign('region_id')->references('id')->on('regions');
 
 			$table->timestamps();
 		});
@@ -34,7 +34,7 @@ class CreateRegionsTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->string('city')->unique();
 			$table->integer('county_id')->unsigned()->index();
-			$table->foreign('county_id')->references('id')->on('counties')->onDelete('cascade');
+//			$table->foreign('county_id')->references('id')->on('counties');
 			$table->timestamps();
 		});
 
@@ -43,7 +43,7 @@ class CreateRegionsTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->string('zipcode')->unqiue();
 			$table->integer('city_id')->unsigned()->index();
-			$table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+//			$table->foreign('city_id')->references('id')->on('cities');
 			$table->timestamps();
 		});
 

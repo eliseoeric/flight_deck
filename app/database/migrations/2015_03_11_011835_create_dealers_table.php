@@ -19,11 +19,11 @@ class CreateDealersTable extends Migration {
 			$table->timestamps();
 		});
 
-		Schema::table('purchase_orders', function($table) {
-			$table->foreign('customer_id')->references('id')->on('customers');
-			$table->foreign('manufacturer_id')->references('id')->on('manufacturers');
-			$table->foreign('dealer_id')->references('id')->on('dealers');
-		});
+//		Schema::table('purchase_orders', function($table) {
+//			$table->foreign('customer_id')->references('id')->on('customers');
+//			$table->foreign('manufacturer_id')->references('id')->on('manufacturers');
+//			$table->foreign('dealer_id')->references('id')->on('dealers');
+//		});
 	}
 
 

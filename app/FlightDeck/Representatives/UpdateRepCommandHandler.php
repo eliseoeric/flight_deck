@@ -16,7 +16,6 @@ class UpdateRepCommandHandler implements CommandHandler{
 
 	public function __construct(RepresentativeRepository $representativeRepository)
 	{
-
 		$this->repRepo = $representativeRepository;
 	}
 
@@ -30,11 +29,14 @@ class UpdateRepCommandHandler implements CommandHandler{
 	public function handle( $command )
 	{
 		$rep = Representative::updated($command);
-
-		$this->repRepo->save($rep);
-		$this->dispatchEventsFor($rep);
-
-		return $rep;
-
+		if( $this->repRepo->save($rep) )
+		{
+			$this->dispatchEventsFor($rep);
+			return $rep;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

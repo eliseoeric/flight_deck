@@ -51,6 +51,15 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="form-col-6">
+                            <! -- Goal Form Input -->
+                            <div class="form-group form-group-default">
+                                {{ Form::label('sales_goal', 'Sales Goal:') }}
+                                {{ Form::text('sales_goal', null, ['class' => 'form-control']) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="">
                             <div class="medium primary rounded  btn">
                                 {{ Form::submit('Create Rep', ['class' => '']) }}
@@ -108,12 +117,12 @@
             label: "First Name",
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-            cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+            cell: "uri-id" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
         }, {
             name: "last_name",
             label: "Last Name",
             editable: false,
-            cell: "string" // An integer cell is a number cell that displays humanized integers
+            cell: "uri-id" // An integer cell is a number cell that displays humanized integers
         }, {
             name: "email",
             label: "Email Address",

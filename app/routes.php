@@ -17,6 +17,13 @@
 //	dd('send a notification email');
 //});
 
+//Event::listen('illuminate.query', function($sql) {
+////	var_dump($sql);
+//$queries = DB::getQueryLog();
+//$last_query = end($queries);
+//dd($last_query);
+//});
+
 Route::get('ziptest',function(){
 
 });
@@ -90,4 +97,5 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 
 Route::group(array('prefix' => 'json'), function(){
 	Route::get('representatives', 'RepresentativesController@jsonAll');
+	Route::get('representatives/{id}', 'RepresentativesController@jsonRepOrders');
 });

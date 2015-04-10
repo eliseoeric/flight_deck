@@ -14,3 +14,4 @@ App.Collections.Reps = Backbone.Collection.extend({
   model: App.Models.Rep,
   url: "/json/representatives/"
 });
+

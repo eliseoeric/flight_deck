@@ -1755,6 +1755,8 @@ b { font-weight: bold; }
 
 .inline.login { width: 30%; }
 
+#delete { float: right; }
+
 form { margin-top: 5px; }
 form .form-col-6 { width: 49.12281%; margin-left: 0; margin-right: 0; }
 @media only screen and (max-width: 767px) { form .form-col-6 { float: left; margin-left: 0; width: 100%; } }

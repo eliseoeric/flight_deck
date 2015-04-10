@@ -14,7 +14,7 @@ class UpdateCountiesTable extends Migration {
 	{
 		Schema::table('counties', function(Blueprint $table){
 			$table->integer('representative_id')->unsigned();
-			$table->foreign('representative_id')->references('id')->on('representatives')->onDelete('cascade');
+//			$table->foreign('representative_id')->references('id')->on('representatives');
 		});
 
 

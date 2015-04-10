@@ -120,7 +120,7 @@ class SessionsController extends \BaseController {
 		Sentry::logout();
 
 		Flash::info('You are now logged out', 'fa-user-times');
-		return Redirect::home();
+		return Redirect::route('portal');
 	}
 
 

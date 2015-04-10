@@ -35,7 +35,7 @@ App::after(function($request, $response)
 //As of 2/5/15 not 100% sure why or how this works. need to find the documents this came from
 Route::filter('auth', function()
 {
-	if(!Sentry::check()) return Redirect::guest('/login');
+	if(!Sentry::check()) return Redirect::guest('/portal');
 });
 
 Route::filter('admin', function(){

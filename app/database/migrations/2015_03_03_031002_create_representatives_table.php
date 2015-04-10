@@ -20,7 +20,7 @@ class CreateRepresentativesTable extends Migration {
 			$table->text('email');
 			$table->text('phone');
 			// purchase_order
-			// current sales ?
+			$table->float('sales_goal', 10, 2);
 			$table->float('net_sales', 10, 2);
 			// customers
 			$table->timestamps();
