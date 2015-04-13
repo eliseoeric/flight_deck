@@ -9,38 +9,38 @@
                 <span><i class="icon-layout"></i></span>
             </li>
 
-            <li {{ (Request::is('*users') ? 'class="active"' : '' )}}>
+            <li>
                 <a href="#"  class="toggle" gumby-trigger="#users_dropdown">Users</a>
                 <span><i class="icon-users"></i></span>
             </li>
-            <div class="drawer" id="users_dropdown">
+            <div {{ (Request::is('*users') ? 'class="active drawer"' : 'class="drawer"' )}} id="users_dropdown">
                 <li>{{ link_to_route('admin.users.index', 'All Users')}}</li>
                 <li>{{ link_to_route('admin.users.create', 'New User')}}</li>
                 <li>{{ link_to_route('admin.users.edit', 'Your Profile')}}</li>
             </div>
             <li>Reports</li>
-            <li {{ (Request::is('*representatives') ? 'class="active"' : '' )}}>
+            <li>
                 <a href="#"  class="toggle" gumby-trigger="#reps_dropdown">Sales Reps</a>
                 <span><i class="fa fa-rocket"></i></span>
             </li>
-            <div class="drawer" id="reps_dropdown">
+            <div {{ (Request::is('*representatives') ? 'class="active drawer"' : 'class="drawer"' )}} id="reps_dropdown">
                 <li>{{ link_to_route('admin.representatives.index', 'All Reps')}}</li>
                 <li>{{ link_to_route('admin.representatives.create', 'New Rep')}}</li>
             </div>
 
-            <li {{ (Request::is('*regions') ? 'class="active has-dropdown"' : 'class="has-dropdown"' )}}>
-                {{ link_to_route('admin.regions.index', 'Regions')}}
+            <li>
+                <a href="#"  class="toggle" gumby-trigger="#regions_dropdown">Regions</a>
                 <span><i class="icon-share"></i></span>
             </li>
-            <div class="dropdown">
+            <div {{ (Request::is('*regions') ? 'class="active drawer"' : 'class="drawer"' )}} id="regions_dropdown">
                 <li>{{ link_to_route('admin.regions.index', 'All Regions')}}</li>
                 <li>{{ link_to_route('admin.regions.create', 'New Region')}}</li>
             </div>
-            <li {{ (Request::is('*purchaseOrders') ? 'class="active has-dropdown"' : 'class="has-dropdown"' )}}>
-                {{ link_to_route('admin.purchaseOrders.index', 'Purchase Orders')}}
+            <li>
+                <a href="#" class="toggle" gumby-trigger="#orders_dropdown">Purchase Orders</a>
                 <span><i class="icon-share"></i></span>
             </li>
-            <div class="dropdown">
+            <div  {{ (Request::is('*purchaseOrders') ? 'class="active drawer"' : 'class="drawer"' )}} id="orders_dropdown">
                 <li>{{ link_to_route('admin.purchaseOrders.index', 'All Orders')}}</li>
                 <li>{{ link_to_route('admin.purchaseOrders.create', 'New Order')}}</li>
             </div>

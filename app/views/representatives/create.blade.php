@@ -1,5 +1,5 @@
 @extends('layouts._admin.default')
-
+@include('layouts._partials.errors')
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li>{{ link_to_route('admin.index', 'Dashboard') }}</li>
@@ -16,7 +16,7 @@
                     <header class="panel-header">
 
                     </header>
-                    @include('layouts._partials.errors')
+
                     {{ Form::open(['route' => 'admin.representatives.store', 'method' => 'post']) }}
                     <div class="row">
                         <div class="form-col-6">

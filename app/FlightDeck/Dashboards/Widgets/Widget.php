@@ -1,6 +1,13 @@
 <?php namespace FlightDeck\Dashboards\Widgets;
 
-class Widget extends \Eloquent{
+use FlightDeck\Core\Presenters\Contracts\PresentableInterface;
+use FlightDeck\Core\Presenters\PresentableTrait;
+
+class Widget extends \Eloquent implements PresentableInterface{
+
+	use PresentableTrait;
+	protected $presenter = "FlightDeck\Core\Presenters\Widget";
+
 	// Add your validation rules here
 	public static $rules = [
 
@@ -17,6 +24,12 @@ class Widget extends \Eloquent{
 	public function meta()
 	{
 		return $this->hasMany('FlightDeck\Dashboards\Widgets\WidgetMeta');
+	}
+
+	//ensures that whatever is returned by these fields is a Carbon instance
+	public function getDates()
+	{
+		return ['created_at', 'updated_at'];
 	}
 
 }

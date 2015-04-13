@@ -1,0 +1,28 @@
+.gravatar-frame{
+	.badge{
+	  background-color: $brand-bg;
+	  z-index: 2;
+	  border: 4px solid #EFE8E8;
+	  display: inline-block;
+	  padding: 4px 6px;
+	  text-decoration: none;
+	  border-radius: 0;
+	  /* text-align: center; */
+	  position: relative;
+	  bottom: -210px;
+	  height:33px;
+	}
+}
+.gravatar-frame{
+	background-color: $brand-bg;
+	box-shadow: 0 0 0 8px $brand-bg;
+	width: 16rem;
+	height: 16rem;
+	position: relative;
+	margin:auto;
+	margin-bottom: 1rem;
+	border-radius: 50%;
+	background-size:cover;
+	background-position: center center;
+	text-align:center;
+}

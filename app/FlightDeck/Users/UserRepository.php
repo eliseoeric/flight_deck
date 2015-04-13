@@ -1,22 +1,26 @@
 <?php namespace FlightDeck\Users;
 
+use FlightDeck\Repos\DbRepository;
 
 use Cartalyst\Sentry\Sentry;
 
-class UserRepository {
-	public $sentry;
-	public function __construct(Sentry $sentry)
+class UserRepository  extends DbRepository{
+
+	protected $model;
+	/**
+	 * @var Sentry
+	 */
+	private $sentry;
+
+	public function __construct(User $model, Sentry $sentry)
 	{
+		$this->model = $model;
 		$this->sentry = $sentry;
 	}
-	/**
-	 * Persist a user
-	 * @param User $user
-	 *
-	 * @return mixed
-	 */
-	public function save(User $user)
+
+	public function getById($id)
 	{
-		return $user->save();
+		$user = $this->sentry->findUserById($id);
+		return $user;
 	}
 }

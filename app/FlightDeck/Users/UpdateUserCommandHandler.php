@@ -26,9 +26,7 @@ class UpdateUserCommandHandler implements CommandHandler{
 	 * @return mixed
 	 */
 	public function handle( $command ) {
-		$user = User::updateUserDetails(
-			$command->user_wid, $command->user_details
-		);
+		$user = User::updateUserDetails( $command );
 		$this->repository->save($user);
 		$this->dispatchEventsFor($user);
 

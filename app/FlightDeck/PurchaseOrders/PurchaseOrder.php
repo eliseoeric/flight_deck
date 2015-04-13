@@ -35,4 +35,10 @@ class PurchaseOrder extends \Eloquent {
 		return $this->belongsTo('FlightDeck\Manufacturers\Manufacturer');
 	}
 
+	//ensures that whatever is returned by these fields is a Carbon instance
+	public function getDates()
+	{
+		return ['created_at', 'updated_at'];
+	}
+
 }

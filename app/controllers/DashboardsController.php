@@ -73,7 +73,17 @@ class DashboardsController extends \BaseController {
 		$built = [];
 		foreach($dashboard->widgets as $widget)
 		{
-			$built[] = $this->widgetRepo->constructWidget($widget);
+			$method = $widget->type;
+			$value = $widget->present()->$method();
+			$render = array(
+				'id' => $widget->id,
+				'heading' => $widget->heading,
+				'size' => $widget->size,
+				'class' => $widget->class,
+				'type' => $widget->type,
+				'value' => $value
+			);
+			$built[] = $render;
 		}
 
 		return Response::json($built);

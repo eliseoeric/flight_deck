@@ -1,6 +1,7 @@
 <?php namespace FlightDeck\Registration\Events;
 
-use FlightDeck\Users\User;
+use Cartalyst\Sentry\Users\Eloquent\User;
+
 class UserDetailsUpdated {
 	public $user;
 

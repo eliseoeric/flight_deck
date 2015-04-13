@@ -128,6 +128,8 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'anlutro\cURL\Laravel\cURLServiceProvider',
 		'Laracasts\Utilities\UtilitiesServiceProvider',
+		'Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider',
+
 	),
 
 	/*
@@ -197,6 +199,7 @@ return array(
 		'Flash'             => 'FlightDeck\Notifications\Flash',
 		'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'cURL'              => 'anlutro\cURL\Laravel\cURL',
+		'Gravatar' => 'Thomaswelton\LaravelGravatar\Facades\Gravatar',
 
 	),
 

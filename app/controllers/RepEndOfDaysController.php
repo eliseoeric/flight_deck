@@ -18,7 +18,7 @@ class RepEndOfDaysController extends \BaseController {
 	 * GET /rependofdays/create
 	 *
 	 * @return Response
-	 */
+	 *
 	public function create()
 	{
 		//

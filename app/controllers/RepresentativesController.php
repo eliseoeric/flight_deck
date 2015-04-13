@@ -35,7 +35,6 @@ class RepresentativesController extends \BaseController {
 			$reps_list[] = $rep->first_name;
 			$data[] = $rep->net_sales;
 		}
-
 		JavaScript::put([
 			'chart' => [
 			'type' => 'bar'

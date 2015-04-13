@@ -3,23 +3,31 @@ use FlightDeck\Users\UpdateUserCommand;
 use FlightDeck\Registration\RegisterUserCommand;
 use FlightDeck\Forms\UserUpdateForm;
 use FlightDeck\Forms\RegistrationForm;
-use FlightDeck\Core\CommandBus;
+use FlightDeck\Users\UserRepository;
+use Laracasts\Commander\CommanderTrait;
 use FlightDeck\Users\User;
 
 class UsersController extends \BaseController {
-	Use CommandBus;
+
+	use CommanderTrait;
+
 	/**
 	 * @var UserUpdateForm
 	 */
 	private $userUpdateForm;
 	private $registrationForm;
+	/**
+	 * @var UserRepository
+	 */
+	private $userRepo;
 
 
 	/**
 	 * @param UserUpdateForm $userUpdateForm
 	 * @param RegistrationForm $registrationForm
+	 * @param UserRepository $userRepository
 	 */
-	public function __construct(UserUpdateForm $userUpdateForm, RegistrationForm $registrationForm)
+	public function __construct(UserUpdateForm $userUpdateForm, RegistrationForm $registrationForm, UserRepository $userRepository)
 	{
 		$this->userUpdateForm = $userUpdateForm;
 
@@ -27,6 +35,7 @@ class UsersController extends \BaseController {
 		$this->beforeFilter('admin');
 
 		$this->registrationForm = $registrationForm;
+		$this->userRepo = $userRepository;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -37,9 +46,15 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		//get all users from database
-		$users = User::all();
+		$users = $this->userRepo->getAll();
 		//send that to view
 		return View::make('users.index', compact('users'));
+	}
+
+	public function jsonAll()
+	{
+		$users = $this->userRepo->getAll();
+		return Response::json($users);
 	}
 
 	/**
@@ -95,9 +110,9 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$user = Sentry::findUserById($id);
+		$user = $this->userRepo->getById($id);
 
-		return View::make('users.edit', compact('user'));
+		return View::make( 'users.edit', compact('user') );
 	}
 
 	/**
@@ -109,24 +124,24 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//Validate the user input -- this could be updated to have more advanced
-		//validation and feedback
-		$this->userUpdateForm->validate(Input::all());
-		//get the user by the id
-		$user_wid = Sentry::findUserById($id);
-		//get the form input
-		$user_details = Input::only('username', 'email', 'first_name', 'last_name');
-		//don't overwrite the password with an empty string
-		if(Input::has('password'))
-		{
-			$user_details['password'] = Input::get('password');
-		}
-		//run update user command
-		$user  = $this->execute(
-			new UpdateUserCommand($user_wid, $user_details)
-		);
+		$input = Input::all();
+		$input['id'] = $id;
 
-		Flash::success($user->username . ' was updated successfully');
+		try
+		{
+			if( Input::has('password') )
+			{
+				$user = $this->execute(UpdateUserCommand::class, $input);
+			} else {
+				$input['password'] = null;
+				$user = $this->execute(UpdateUserCommand::class, $input);
+			}
+			Flash::success($user->username . ' was updated successfully');
+		}
+		catch(Exception $e){
+			Flash::error($e->getMessage());
+		}
+
 		return Redirect::route('admin.users.edit', ['id' => $id]);
 	}
 

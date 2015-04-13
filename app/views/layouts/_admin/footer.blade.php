@@ -36,6 +36,7 @@ Or concatenate and minify into a single file -->
 
 {{ HTML::script('js/vendor/underscore.js') }}
 {{ HTML::script('js/vendor/backbone.js') }}
+{{ HTML::script('js/vendor/backbone.paginator.js') }}
 {{ HTML::script('js/app.js') }}
 {{ HTML::script('js/models.js') }}
 {{ HTML::script('js/collections.js') }}
@@ -43,6 +44,7 @@ Or concatenate and minify into a single file -->
 {{ HTML::script('js/router.js') }}
 
 {{ HTML::script('js/vendor/backgrid/backgrid.js') }}
+{{ HTML::script('js/vendor/backgrid/backgrid-paginator.min.js') }}
 {{ HTML::script('js/vendor/highcharts/highcharts.js') }}
 
 {{ HTML::script('js/vendor/classie.js') }}

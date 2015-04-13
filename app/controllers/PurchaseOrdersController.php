@@ -1,7 +1,21 @@
 <?php
 use FlightDeck\PurchaseOrders\PurchaseOrder;
+use FlightDeck\PurchaseOrders\PurchseOrdersRepository;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+
 class PurchaseOrdersController extends \BaseController {
 
+	/**
+	 * @var PurchseOrdersRepository
+	 */
+	private $ordersRepository;
+
+	public function __construct(PurchseOrdersRepository $ordersRepository)
+	{
+
+		$this->ordersRepository = $ordersRepository;
+	}
 	/**
 	 * Display a listing of the resource.
 	 * GET /purchaseorders
@@ -14,6 +28,12 @@ class PurchaseOrdersController extends \BaseController {
 		return View::make('purchaseOrders.index', compact('orders'));
 	}
 
+	public function jsonAll()
+	{
+		$orders = $this->ordersRepository->getOrdersWithDetails();
+		return Response::json($orders);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /purchaseorders/create
@@ -22,7 +42,10 @@ class PurchaseOrdersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$customers = DB::table('customers')->lists('name', 'id');
+		$manufacturers = DB::table('manufacturers')->lists('name', 'id');
+		$dealers = DB::table('dealers')->lists('name', 'id');
+		return View::make('purchaseOrders.create', compact('customers', 'dealers', 'manufacturers'));
 	}
 
 	/**

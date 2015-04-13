@@ -19,9 +19,15 @@ abstract class DbRepository {
 		return $this->model->get();
 	}
 
+	/**
+	 * @param $model
+	 *
+	 * Persist the model
+	 * @return mixed
+	 */
 	function save($model)
 	{
-		return $model->save();
+		 return $model->save();
 	}
 
 	function delete($id)

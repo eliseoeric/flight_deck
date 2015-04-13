@@ -20,6 +20,7 @@
                                 <div id="delete" class="medium danger btn">
                                     {{ Form::submit('Delete Rep', ['class' => '']) }}
                                 </div>
+
                             {{ Form::close() }}
                         </div>
                     </header>

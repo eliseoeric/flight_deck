@@ -15,10 +15,11 @@ class CreatePurchaseOrdersTable extends Migration {
 		Schema::create('purchase_orders', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
+			$table->string('order_number');
 			$table->integer('customer_id')->unsigned()->index();
-			$table->float('amount', 10, 2);
 			$table->integer('manufacturer_id')->unsigned()->index();
 			$table->integer('dealer_id')->unsigned()->index();
+			$table->float('amount', 10, 2);
 			$table->timestamps();
 		});
 	}

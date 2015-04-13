@@ -1,6 +1,7 @@
 <?php namespace FlightDeck\Users;
 
 
+use Cartalyst\Sentry\Facades\Native\Sentry;
 use FlightDeck\Registration\Events\UserRegistered;
 use FlightDeck\Registration\Events\UserDetailsUpdated;
 use Illuminate\Auth\UserTrait;
@@ -59,15 +60,18 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 		return $user;
 	}
 
-	public static function updateUserDetails( $user_wid, $user_details)
+	public static function updateUserDetails($command)
 	{
-		foreach($user_details as $detail => $key)
+		$user = User::findOrFail($command->id);
+		foreach($command as $detail => $key)
 		{
-			$user_wid->$detail = $key;
+			if($key != null)
+			{
+				$user->{$detail} = $key;
+			}
 		}
-		$user_wid->raise(new UserDetailsUpdated($user_wid, $user_details));
-
-		return $user_wid;
+		$user->raise(new UserDetailsUpdated( $user ) );
+		return $user;
 
 	}
 
