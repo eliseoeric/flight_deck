@@ -32,6 +32,7 @@ class CreateDashboardsTable extends Migration {
 			$table->text('size');
 			$table->text('class');
 			$table->text('type');
+			$table->timestamps();
 		});
 
 
@@ -42,6 +43,7 @@ class CreateDashboardsTable extends Migration {
 //			$table->foreign('widget_id')->references('id')->on('widgets')->onDelete('set null');
 			$table->string('meta_key');
 			$table->string('meta_value');
+			$table->timestamps();
 		});
 	}
 

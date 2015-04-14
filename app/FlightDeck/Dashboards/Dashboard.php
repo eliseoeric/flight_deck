@@ -3,6 +3,7 @@
 
 class Dashboard extends \Eloquent{
 
+	protected $fillable = ['heading', 'owner'];
 
 	public function widgets()
 	{

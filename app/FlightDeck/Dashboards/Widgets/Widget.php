@@ -14,7 +14,7 @@ class Widget extends \Eloquent implements PresentableInterface{
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $fillable = ['dashboard_id', 'heading', 'size', 'class', 'type'];
 
 	public function dashboard()
 	{
