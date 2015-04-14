@@ -1,5 +1,5 @@
 App.Models.Widget = Backbone.Model.extend({
-
+	url: '/admin/widgets'
 });
 
 App.Models.Rep = Backbone.Model.extend({});

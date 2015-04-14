@@ -4,6 +4,18 @@
 	padding: 0 0 5px 0;
 	z-index: 500;
 	background:$neutral-white;
+	border-bottom: $neutral-subtle-grey;
+}
+
+.gravatar-icon{
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	vertical-align: middle;
+	background-color: #272B35;
+	box-shadow: 0 0 0 4px #272B35;
+	border-radius: 50%;
+	margin-left: 15px;
 }
 
 .top-bar{

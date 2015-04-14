@@ -8,6 +8,15 @@
 
 form {
 	margin-top: 5px;
+	.form-col-12{
+		@include column(12);
+		margin-left:0;
+		margin-right: 0;
+
+		input{
+			width: 100%;
+		}
+	}
 	.form-col-6{
 		@include column(6);
 		margin-left:0;

@@ -98,7 +98,23 @@ class DashboardsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$dashboard = $this->dashRepo->getDashboard($id);
+		$built = [];
+		foreach($dashboard->widgets as $widget)
+		{
+			$method = $widget->type;
+			$value = $widget->present()->$method();
+			$render = array(
+				'id' => $widget->id,
+				'heading' => $widget->heading,
+				'size' => $widget->size,
+				'class' => $widget->class,
+				'type' => $widget->type,
+				'value' => $value
+			);
+			$built[] = $render;
+		}
+		return View::make('dashboard.edit', compact('built', 'dashboard'));
 	}
 
 

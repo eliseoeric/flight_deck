@@ -2,6 +2,7 @@
 <body>
 <div class="workbench">
     @include('layouts._admin.topbar')
+    @yield('right-sidebar')
     @include('layouts._admin.sidebar')
     @include('layouts._partials.flash')
     <section class="workbench-core">

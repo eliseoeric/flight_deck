@@ -36,14 +36,14 @@
                         <! -- Customer Form Input -->
                         <div class="form-group form-group-default">
                             {{ Form::label('customer', 'Customer:') }}
-                            {{ Form::select('customer', array($customers), null, ['class' => 'form-control']) }}
+                            {{ Form::select('customer', $customers, null, ['class' => 'form-control customer-select']) }}
                         </div>
                     </div>
                     <div class="form-col-6">
                         <! -- Manufacturer Form Input -->
                         <div class="form-group form-group-default">
                             {{ Form::label('manufacturer', 'Manufacturer:') }}
-                            {{ Form::select('manufacturer', array($manufacturers), null, ['class' => 'form-control']) }}
+                            {{ Form::select('manufacturer', $manufacturers, null, ['class' => 'form-control manufacturer-select']) }}
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                         <! -- Dealer Form Input -->
                         <div class="form-group form-group-default">
                             {{ Form::label('dealer', 'Dealer:') }}
-                            {{ Form::select('dealer', array($dealers), null, ['class' => 'form-control']) }}
+                            {{ Form::select('dealer', $dealers, null, ['class' => 'form-control dealers-select']) }}
                         </div>
                     </div>
                 </div>
@@ -79,4 +79,14 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('backbone')
+    <script>
+    $(document).ready(function() {
+        $('.form-control.dealers-select').select2();
+        $('.form-control.manufacturer-select').select2();
+        $('.form-control.customer-select').select2();
+    })
+    </script>
 @stop

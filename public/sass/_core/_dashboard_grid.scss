@@ -47,6 +47,12 @@
 	.panel-header + .panel-body{
 		padding: 0 15px 15px 15px;
 	}
+
+	&:hover{
+		cursor: pointer;
+		-webkit-box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+		box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+	}
 }
 
 .panel{
@@ -59,6 +65,12 @@
 			font-weight: bold;
 			text-transform: uppercase;
 		}
+	}
+
+
+	.panel-header.builder{
+		padding: 0 15px;
+		text-align: center;
 	}
 
 	.panel-body{

@@ -22,6 +22,9 @@
            <li>
                <a href="#" class="toggle" gumby-trigger="#user-interface">Hello, {{$currentUser->username}}</a>
            </li>
+           <li>
+               <div class="gravatar-icon" style='background-image:url({{ Gravatar::src($currentUser->email, 32) }})';></div>
+           </li>
        </ul>
         <ul id="user-notifications" class="user-details notifications">
             <li>You have 10 new notifications</li>

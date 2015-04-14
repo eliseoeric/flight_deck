@@ -3,11 +3,15 @@
 <section id="workbench-sidebar" class="sidebar"  gumby-fixed="top" >
     <nav class="vertical-nav sidebar-nav-wrap">
         <ul id="sidebar-nav">
-
-            <li {{ (Request::is('*dashboard') ? 'class="active"' : '' )}}>
-                {{ link_to_route('admin.index', 'Dashboard') }}
-                <span><i class="icon-layout"></i></span>
+            <li>
+                <a href="#"  class="toggle" gumby-trigger="#dashboard_dropdown">Dashboard</a>
+                <span><i class="icon-users"></i></span>
             </li>
+            <div {{ (Request::is('*dashboard') ? 'class="active drawer"' : 'class="drawer"' )}} id="dashboard_dropdown">
+                <li>{{ link_to_route('admin.index', 'View Dashboard') }}</li>
+                <li>{{ link_to_route('admin.widgets.create', 'New Widget')}}</li>
+                <li><a href="/admin/dashboards/{{$currentUser->id}}/edit/">Dashboard Builder</a></li>
+            </div>
 
             <li>
                 <a href="#"  class="toggle" gumby-trigger="#users_dropdown">Users</a>
@@ -18,7 +22,6 @@
                 <li>{{ link_to_route('admin.users.create', 'New User')}}</li>
                 <li>{{ link_to_route('admin.users.edit', 'Your Profile')}}</li>
             </div>
-            <li>Reports</li>
             <li>
                 <a href="#"  class="toggle" gumby-trigger="#reps_dropdown">Sales Reps</a>
                 <span><i class="fa fa-rocket"></i></span>

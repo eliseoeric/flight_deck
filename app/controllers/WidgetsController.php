@@ -1,6 +1,7 @@
 <?php
 
-use FlightDeck\Widgets\WidgetRepository;
+use FlightDeck\Dashboards\Widgets\Widget;
+use FlightDeck\Dashboards\Widgets\WidgetRepository;
 
 class WidgetsController extends \BaseController {
 
@@ -37,7 +38,7 @@ class WidgetsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('widgets.create');
 	}
 
 
@@ -48,7 +49,9 @@ class WidgetsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// Need to put in some repository crap here
+		$widget = Widget::create(Input::all());
+		return $widget;
 	}
 
 

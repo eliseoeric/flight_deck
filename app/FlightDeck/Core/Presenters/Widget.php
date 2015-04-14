@@ -41,4 +41,28 @@ class Widget extends Presenter{
 				->where( 'created_at', '>=', Carbon::yesterday() )
 				->sum($meta['row']);
 	}
+
+	public function sumToDate()
+	{
+		$keys = $this->entity->meta;
+		$meta = $this->stripMetaKeys($keys);
+
+		return DB::table($meta['table'])->sum($meta['row']);
+	}
+
+	public function sumThisMonth()
+	{
+		$keys = $this->entity->meta;
+		$meta = $this->stripMetaKeys($keys);
+
+		return DB::table($meta['table'])
+			->where( 'created_at', '<', Carbon::today() )
+			->where( 'created_at', '>=', Carbon::now()->subMonth() )
+			->sum($meta['row']);
+	}
+
+	public function blank()
+	{
+		return '';
+	}
 }
