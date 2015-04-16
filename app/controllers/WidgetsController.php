@@ -2,8 +2,13 @@
 
 use FlightDeck\Dashboards\Widgets\Widget;
 use FlightDeck\Dashboards\Widgets\WidgetRepository;
+use Laracasts\Commander\CommanderTrait;
+use FlightDeck\Dashboards\Widgets\AddNewWidgetCommand;
+use FlightDeck\Dashboards\Widgets\UpdateWidgetCommand;
 
 class WidgetsController extends \BaseController {
+
+	use CommanderTrait;
 
 	private $widgetRepo;
 
@@ -19,7 +24,7 @@ class WidgetsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json($this->widgetRepo->calcAllWidgets());
+//		return Response::json($this->widgetRepo->calcAllWidgets());
 	}
 
 
@@ -49,9 +54,17 @@ class WidgetsController extends \BaseController {
 	 */
 	public function store()
 	{
-		// Need to put in some repository crap here
-		$widget = Widget::create(Input::all());
-		return $widget;
+		$widget = $this->execute( AddNewWidgetCommand::class );
+
+		if($widget)
+		{
+			return Response::json($widget->heading . 'was created successfully.', 200);
+		}
+		else
+		{
+			return Response::json('Error from Widgets Controller.');
+		}
+
 	}
 
 
@@ -63,7 +76,7 @@ class WidgetsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		return Response::json( $this->widgetRepo->calcWidgetValue( $id ) );
+		return Response::json( $this->widgetRepo->widgetWMeta( $id ) );
 	}
 
 
@@ -87,7 +100,18 @@ class WidgetsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		$input['id'] = $id;
+		$widget = $this->execute(UpdateWidgetCommand::class, $input);
+		if( $widget )
+		{
+			return Response::json($widget->heading . ' was successfully updated.', 200);
+		}
+		else
+		{
+			return Response::json('Error from the Widget Controller.');
+		}
+
 	}
 
 
@@ -99,7 +123,7 @@ class WidgetsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Widget::destroy($id);
 	}
 
 

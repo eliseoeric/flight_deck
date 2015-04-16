@@ -114,7 +114,23 @@ class DashboardsController extends \BaseController {
 			);
 			$built[] = $render;
 		}
-		return View::make('dashboard.edit', compact('built', 'dashboard'));
+
+		$widgetTypes = array(
+			'sumThisMonth' => 'Total number this month',
+			'sumToDate' => 'Total number to date',
+			'sumYesterday' => 'Total number yesterday',
+			'sumToday' => 'Total number today',
+		);
+
+		$widgetSize = array(
+			'large-2' => 'One Sixth',
+			'large-3' => 'One Fourth',
+			'large-4' => 'One Third',
+			'large-6' => 'One Half',
+			'large-8' => 'Two Thirds',
+			'large-9' => 'Three Fourths',
+		);
+		return View::make('dashboard.edit', compact('built', 'dashboard', 'widgetTypes', 'widgetSize'));
 	}
 
 

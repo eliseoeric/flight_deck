@@ -12,7 +12,7 @@ App.Collections.Widgets = Backbone.Collection.extend({
 
 App.Collections.TrueWidgets = Backbone.Collection.extend({
 	model: App.Models.Widget,
-	url: "/admin/widgets/"
+	url: "/admin/widgets"
 });
 
 App.Collections.Reps = Backbone.Collection.extend({

@@ -24,9 +24,9 @@
 		height: 100%;
 		&.builder{
 			position: fixed;
-			@include column(2.3);
+			@include column(2.6);
 			right:0;
-			margin-right: -341px;
+			margin-right: -391px;
 		}
 	}
 }
@@ -67,7 +67,7 @@
 	box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 	transition: all 0.3s ease-in-out;
 	&.active{
-		margin-right: -0px;
+		margin-right: 0px;
 	}
 }
 

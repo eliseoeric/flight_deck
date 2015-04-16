@@ -5,17 +5,12 @@ use FlightDeck\Repos\DbRepository;
 use FlightDeck\Dashboards\Widgets\Widget;
 use Illuminate\Support\Facades\DB;
 
-class WidgetRepository extends DbRepository{
+class WidgetMetaRepository extends DbRepository{
 
 	protected $model;
 
-	function __construct(Widget $model)
+	function __construct(WidgetMeta $model)
 	{
 		$this->model = $model;
-	}
-
-	function widgetWMeta($id)
-	{
-		return Widget::with('meta')->where('id', $id)->get();
 	}
 }

@@ -90,8 +90,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::resource('regions', 'RegionsController');
 	Route::resource('representatives', 'RepresentativesController');
 	Route::resource('purchaseOrders', 'PurchaseOrdersController');
-	Route::resource('widgets', 'WidgetsController');
-
+	Route::resource('widgets', 'WidgetsController'); // -- might be able to keep this behind /json/
+	Route::resource('meta', 'WidgetMetaController');
 	Route::get('widgets/sum/{table}/{row}/', 'WidgetsController@getQuerySum');
 });
 
