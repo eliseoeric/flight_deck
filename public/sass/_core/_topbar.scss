@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper.top-bar{
 	width: 100%;
 	height: $topbar-height;
 	padding: 0 0 5px 0;
@@ -17,6 +17,20 @@
 	border-radius: 50%;
 	margin-left: 15px;
 }
+
+#logo.negative{
+	h3{
+		color: $neutral-white;
+	}
+}
+
+
+.sidebar{
+	#logo{
+		text-align: center;
+	}
+}
+
 
 .top-bar{
 	a{

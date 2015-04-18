@@ -1718,11 +1718,22 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .shaded { background: #EFE8E8; }
 
+.negative { color: #FAFAFA; }
+.negative h3 { color: #FAFAFA; }
+
+.dark-bg { background: #272B35; }
+
 #subfoot { padding: 20px; }
 
 .docs { padding-top: 8px; }
 
+.newsletter { padding-top: 14px; }
+
 .wrapper + .wrapper { padding: 75px 20px 70px 20px; }
+
+.wrapper.flush { padding: 75px 20px 0px 20px; }
+
+.row.flush-image img { position: relative; margin-bottom: -8px; }
 
 .socbtns { display: inline-block; padding: 15px 0; overflow: hidden; }
 .socbtns li { float: left; }
@@ -1731,10 +1742,16 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 #credits { text-align: left; }
 #credits .socbtns { float: right; }
 
+.featured { margin-bottom: 20px; }
+
 .navbar .logo { margin: 0; }
 .navbar .logo a { float: left; padding-left: 0; }
 
 .mg-b-20 { margin-bottom: 20px; }
+
+.mg-t-10 { margin-top: 10px; }
+
+.p-b-50 { padding-bottom: 50px; }
 
 .text-white { color: #FAFAFA !important; }
 
@@ -1766,7 +1783,7 @@ b { font-weight: bold; }
 #builder-sidebar { background: #FAFAFA; -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s ease-in-out; }
 #builder-sidebar.active { margin-right: 0px; }
 
-.sidebar-nav-wrap { padding-top: 60px; background-color: #272B35; height: 100%; }
+.sidebar-nav-wrap { padding-top: 2px; background-color: #272B35; height: 100%; }
 .sidebar-nav-wrap #sidebar-nav { background-color: #323744; border-top: 1px solid #23262f; }
 .sidebar-nav-wrap li:first-of-type { padding-top: 20px; }
 .sidebar-nav-wrap li:hover a, .sidebar-nav-wrap li:hover i { color: #FAFAFA; }
@@ -1810,9 +1827,13 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 
 .form-control { background-color: #FAFAFA; background-image: none; border: 1px solid #EFE8E8; -webkit-appearance: none; color: #595959; outline: 0; height: 35px; padding: 9px 12px; line-height: normal; font-size: 14px; font-weight: normal; vertical-align: middle; min-height: 35px; -webkit-transition: all 0.12s ease; transition: all 0.12s ease; -webkit-box-shadow: none; box-shadow: none; border-radius: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -webkit-transition: background 0.2s linear 0s; transition: background 0.2s linear 0s; }
 
-.wrapper { width: 100%; height: 60px; padding: 0 0 5px 0; z-index: 500; background: #FAFAFA; border-bottom: #EFE8E8; }
+.wrapper.top-bar { width: 100%; height: 60px; padding: 0 0 5px 0; z-index: 500; background: #FAFAFA; border-bottom: #EFE8E8; }
 
 .gravatar-icon { width: 32px; height: 32px; display: inline-block; vertical-align: middle; background-color: #272B35; box-shadow: 0 0 0 4px #272B35; border-radius: 50%; margin-left: 15px; }
+
+#logo.negative h3 { color: #FAFAFA; }
+
+.sidebar #logo { text-align: center; }
 
 .top-bar a { width: 100%; height: 100%; display: block; padding-top: 15px; text-align: center; }
 .top-bar a i { font-size: 30px; font-size: 2.14286rem; }
@@ -2194,3 +2215,14 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 .gravatar-frame .badge { background-color: #272B35; z-index: 2; border: 4px solid #EFE8E8; display: inline-block; padding: 4px 6px; text-decoration: none; border-radius: 0; /* text-align: center; */ position: relative; bottom: -210px; height: 33px; }
 
 .gravatar-frame { background-color: #272B35; box-shadow: 0 0 0 8px #272B35; width: 16rem; height: 16rem; position: relative; margin: auto; margin-bottom: 1rem; border-radius: 50%; background-size: cover; background-position: center center; text-align: center; }
+
+nav[role="navigation"] ul { text-align: right; margin-top: 20px; }
+nav[role="navigation"] li { display: inline-block; height: 50px; text-align: center; }
+nav[role="navigation"] li a { margin: 15px 15px; text-transform: uppercase; font-weight: bold; padding-bottom: 5px; }
+nav[role="navigation"] li a:hover { border-bottom: 3px solid #FAFAFA; }
+
+nav.transparent li a { color: #FAFAFA; }
+
+.projector { height: 100%; background-image: url(../img/post_it.jpg); background-size: cover; }
+.projector .hookline { position: relative; top: 15em; text-align: center; }
+.projector .hookline.negative h1 { color: #FAFAFA; }

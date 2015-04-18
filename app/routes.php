@@ -28,12 +28,6 @@ Route::get('ziptest',function(){
 
 });
 
-
-Route::get('/', [
-	'as' => 'home',
-	'uses' => 'PagesController@home'
-]);
-
 /*
  * Registration
  *
@@ -75,6 +69,10 @@ Route::get('logout', [
 Route::get('portal', [
 	'as' => 'portal',
 	'uses' => 'PagesController@portal'
+]);
+Route::get('/', [
+	'as' => 'index',
+	'uses' => 'PagesController@index'
 ]);
 
 /**

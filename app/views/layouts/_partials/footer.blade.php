@@ -32,8 +32,8 @@ Or concatenate and minify into a single file -->
 {{ HTML::script('js/libs/ui/jquery.validation.js') }}
 {{ HTML::script('js/libs/gumby.init.js') }}
 {{ HTML::script('js/plugins.js') }}
+{{ HTML::script('js/vendor/select2/select2.min.js') }}
 {{ HTML::script('js/main.js') }}
-
 
 {{ HTML::script('js/vendor/classie.js') }}
 {{ HTML::script('js/vendor/notificationFx.js') }}

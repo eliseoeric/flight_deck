@@ -1,6 +1,15 @@
 .shaded{
 	background:$neutral-subtle-grey;
 }
+.negative{
+  color: $neutral-white;
+  h3{
+    color:$neutral-white;
+  }
+}
+.dark-bg{
+  background:$brand-bg;
+}
 
 #subfoot{
 	padding: 20px;
@@ -10,9 +19,25 @@
 	padding-top: 8px;
 }
 
+.newsletter{
+  padding-top: 14px;
+}
+
 .wrapper + .wrapper {
   padding: 75px 20px 70px 20px;
 }
+
+.wrapper.flush{
+  padding: 75px 20px 0px 20px;
+}
+
+.row.flush-image{
+  img{
+    position: relative;
+    margin-bottom: -8px;
+  }
+}
+
 
 .socbtns {
   display: inline-block;
@@ -35,7 +60,10 @@
   .socbtns{
   	float:right;
   }
+}
 
+.featured {
+  margin-bottom: 20px;
 }
 
 
@@ -53,6 +81,13 @@
   margin-bottom: 20px;
 }
 
+.mg-t-10{
+  margin-top: 10px;
+}
+
+.p-b-50{
+  padding-bottom: 50px;
+}
 .text-white{
   color: $neutral-white !important;
 }

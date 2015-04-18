@@ -11,4 +11,9 @@ class PagesController extends \BaseController {
 	{
 		return View::make('pages.portal');
 	}
+
+	public function index()
+	{
+		return View::make('pages.index');
+	}
 }

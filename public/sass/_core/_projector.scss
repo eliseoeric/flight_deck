@@ -1,0 +1,17 @@
+.projector{	
+	height: 100%;
+	background-image: url(../img/post_it.jpg);
+	background-size: cover;
+
+	.hookline{
+	  	position: relative;
+		top: 15em;
+		text-align: center;
+	}
+
+	.hookline.negative{
+		h1{
+			color: $neutral-white;
+		}
+	}
+}

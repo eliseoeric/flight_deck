@@ -1,0 +1,27 @@
+nav[role="navigation"]{
+	ul{
+		text-align: right;
+		margin-top: 20px;
+	}
+	li{
+		display: inline-block;
+		height: 50px;
+		text-align:center;
+
+		a{
+			margin: 15px 15px;
+			text-transform: uppercase;
+			font-weight: bold;
+			padding-bottom: 5px;
+			&:hover{
+				border-bottom: 3px solid $neutral-white;
+			}
+		}
+	}
+}
+
+nav.transparent{
+	li a{
+		color: $neutral-white;
+	}
+}

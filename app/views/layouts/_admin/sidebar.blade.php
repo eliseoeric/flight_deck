@@ -2,6 +2,9 @@
 
 <section id="workbench-sidebar" class="sidebar"  gumby-fixed="top" >
     <nav class="vertical-nav sidebar-nav-wrap">
+        <div id="logo" class="logo negative" >
+            <h3>flight<strong>deck</strong></h3>
+        </div>
         <ul id="sidebar-nav">
             <li>
                 <a href="#"  class="toggle" gumby-trigger="#dashboard_dropdown">Dashboard</a>
