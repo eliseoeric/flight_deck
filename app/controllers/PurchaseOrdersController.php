@@ -24,8 +24,10 @@ class PurchaseOrdersController extends \BaseController {
 	 */
 	public function index()
 	{
+		$chart_values = $this->ordersRepository->totalOrdersThisMonth()->toJson();
+
 		$orders = PurchaseOrder::with('customer', 'dealer', 'manufacturer')->get();
-		return View::make('purchaseOrders.index', compact('orders'));
+		return View::make('purchaseOrders.index', compact('orders', 'chart_values'));
 	}
 
 	public function jsonAll()

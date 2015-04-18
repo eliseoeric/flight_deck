@@ -2,6 +2,7 @@
 
 
 
+use Carbon\Carbon;
 use FlightDeck\Repos\DbRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,13 @@ class PurchseOrdersRepository extends DbRepository{
 	public function __construct(PurchaseOrder $order)
 	{
 		$this->order = $order;
+	}
+
+	public function totalOrdersThisMonth()
+	{
+		return PurchaseOrder::where( 'created_at', '<', Carbon::today() )
+			->where( 'created_at', '>=', Carbon::now()->subMonth() )
+			->get();
 	}
 
 	function getOrdersWithDetails()

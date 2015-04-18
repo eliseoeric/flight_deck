@@ -28,6 +28,12 @@ Route::get('ziptest',function(){
 
 });
 
+
+Route::get('/', [
+	'as' => 'home',
+	'uses' => 'PagesController@home'
+]);
+
 /*
  * Registration
  *
@@ -70,10 +76,6 @@ Route::get('portal', [
 	'as' => 'portal',
 	'uses' => 'PagesController@portal'
 ]);
-Route::get('/', [
-	'as' => 'index',
-	'uses' => 'PagesController@index'
-]);
 
 /**
  * Dashboard
@@ -89,7 +91,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::resource('representatives', 'RepresentativesController');
 	Route::resource('purchaseOrders', 'PurchaseOrdersController');
 	Route::resource('widgets', 'WidgetsController'); // -- might be able to keep this behind /json/
-	Route::resource('meta', 'WidgetMetaController');
+
+	Route::group(array('prefix' => 'widgets'), function(){
+		Route::resource('meta', 'WidgetMetaController');
+	});
 	Route::get('widgets/sum/{table}/{row}/', 'WidgetsController@getQuerySum');
 });
 

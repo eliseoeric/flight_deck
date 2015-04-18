@@ -4,7 +4,7 @@ class PagesController extends \BaseController {
 
 	public function home()
 	{
-		return View::make('pages.home');
+		return View::make('pages.index');
 	}
 
 	public function portal()
@@ -12,8 +12,4 @@ class PagesController extends \BaseController {
 		return View::make('pages.portal');
 	}
 
-	public function index()
-	{
-		return View::make('pages.index');
-	}
 }
