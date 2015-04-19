@@ -140,7 +140,7 @@ class RepresentativesController extends \BaseController {
 			$chartData[] = array($current->timestamp*1000, $ordersToday);
 			$current->subDay();
 		}
-		
+
 		return View::make('representatives.edit', compact('rep', 'chartData') );
 	}
 

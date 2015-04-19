@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder {
 		$user->addGroup($adminGroup);
 
 		$user2 = User::create([
-			'email'         =>  'gene@thinkgeneric.com',
+			'email'         =>  'geeque75@gmail.com',
 			'username'      =>  'geeque75',
 			'password'      =>  'geeque75',
 			'first_name'    =>  'gene',
