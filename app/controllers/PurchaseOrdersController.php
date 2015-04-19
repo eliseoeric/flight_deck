@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 use FlightDeck\PurchaseOrders\PurchaseOrder;
 use FlightDeck\PurchaseOrders\PurchseOrdersRepository;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,30 @@ class PurchaseOrdersController extends \BaseController {
 	 */
 	public function index()
 	{
-		$chart_values = $this->ordersRepository->totalOrdersThisMonth()->toJson();
+		$monthOfOrders = $this->ordersRepository->totalOrdersThisMonth();
+		$monthOfOrders = $monthOfOrders->sortBy(function($order) {
+				return $order->created_at;
+		});
+
+		$start = Carbon::now()->today();
+		$current = $start;
+
+
+		$end = Carbon::now()->subMonth();
+		$dates = array();
+		$chartData = array();
+		while( ! $current->isSameDay( $end ) )
+		{
+			$ordersToday = $monthOfOrders->filter( function( $item ) use ($current) {
+				return $item->created_at->isSameDay( $current );
+			})->sum('amount');
+			$chartData[] =  array($current->getTimestamp(),  $ordersToday);
+//			$dates[] = ;
+			$current->subDay();
+		}
 
 		$orders = PurchaseOrder::with('customer', 'dealer', 'manufacturer')->get();
-		return View::make('purchaseOrders.index', compact('orders', 'chart_values'));
+		return View::make('purchaseOrders.index', compact('orders', 'chartData'));
 	}
 
 	public function jsonAll()

@@ -20,7 +20,7 @@
         <div class="portal_login--form">
             <div class="row">
                 <div class="logo mg-b-20">
-                    <h3>flight<strong>deck</strong></h3>
+                    <a href="/"><h3>flight<strong>deck</strong></h3></a>
                 </div>
                 <p>Sign into your Flightdeck account</p>
             </div>

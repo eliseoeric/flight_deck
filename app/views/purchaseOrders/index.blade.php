@@ -23,7 +23,7 @@
            <div class="large-8">
                <div class="row">
                    <div class="panel widget twelve columns">
-                       <p>Going to have the sales over the last x amount of days here</p>
+                       <div id="total_sales"></div>
                    </div>
                </div>
            </div>
@@ -38,6 +38,47 @@
 
 @section('backbone')
     <script>
+        $(function () {
+            $('#total_sales').highcharts({
+                chart: {
+                    type: 'areaspline'
+                },
+                title: {
+                    text: 'Sales this Month'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    floating: true,
+                    borderWidth: 1
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: {
+                        month: '%e. %b',
+                        year: '%b'
+                    },
+                    title: {
+                        text: 'Date'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Net Sales'
+                    },
+                    min: 0
+                },
+                plotOptions: {
+                    areapsline: {
+                        fillOpacity: 1
+                    }
+                },
+                series: [{
+                    name: 'Sales',
+                    data: {{json_encode($chartData)}}
+                }]
+            });
+        });
         new App.Router;
         Backbone.history.start();
 
