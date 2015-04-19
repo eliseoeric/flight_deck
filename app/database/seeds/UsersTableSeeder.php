@@ -10,7 +10,7 @@ class UsersTableSeeder extends Seeder {
 		$user = User::create([
 			'email'         =>  'eric@thinkgeneric.com',
 			'username'      =>  'eliseoeric',
-			'password'      =>  'eat@joes1',
+			'password'      =>  'password',
 			'first_name'    =>  'eric',
 			'last_name'     =>  'eliseo',
 			'activated'     =>  true,
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder {
 		$user2 = User::create([
 			'email'         =>  'geeque75@gmail.com',
 			'username'      =>  'geeque75',
-			'password'      =>  'geeque75',
+			'password'      =>  'password',
 			'first_name'    =>  'gene',
 			'last_name'     =>  'downing',
 			'activated'     =>  true,
