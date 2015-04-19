@@ -1,15 +1,19 @@
 <?php namespace FlightDeck\PurchaseOrders;
 
+use FlightDeck\PurchaseOrders\Events\NewOrderPlaced;
 use FlightDeck\Representatives\Representative;
+use Laracasts\Commander\Events\EventGenerator;
 
 class PurchaseOrder extends \Eloquent {
+	use EventGenerator;
+
 	// Add your validation rules here
 	public static $rules = [
 
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = ['customer_id', 'amount', 'manufacturer_id'];
+	protected $fillable = ['order_number', 'customer_id', 'amount', 'dealer_id','manufacturer_id'];
 
 	/**
 	 * @return mixed
@@ -41,4 +45,10 @@ class PurchaseOrder extends \Eloquent {
 		return ['created_at', 'updated_at'];
 	}
 
+	public static function placeOrder($command)
+	{
+		$order = new static( get_object_vars( $command ) );
+		$order->raise( new NewOrderPlaced( $order ) );
+		return $order;
+	}
 }

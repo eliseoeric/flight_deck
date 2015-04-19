@@ -39,6 +39,12 @@
 @section('backbone')
     <script>
         $(function () {
+            Highcharts.setOptions({
+                lang: {
+                    thousandsSep: ',',
+                    decimalPoint: '.'
+                }
+            });
             $('#total_sales').highcharts({
                 chart: {
                     type: 'areaspline'
@@ -54,7 +60,7 @@
                 },
                 xAxis: {
                     type: 'datetime',
-                    dateTimeLabelFormats: {
+                    dateTimeLabelFormats: { // don't display the dummy year
                         month: '%e. %b',
                         year: '%b'
                     },
@@ -67,6 +73,10 @@
                         text: 'Net Sales'
                     },
                     min: 0
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name} on {point.x:%e. %b}</b><br>',
+                    pointFormat: '${point.y:,.2f}'
                 },
                 plotOptions: {
                     areapsline: {

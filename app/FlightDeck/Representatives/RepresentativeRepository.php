@@ -1,5 +1,6 @@
 <?php namespace FlightDeck\Representatives;
 
+use Carbon\Carbon;
 use FlightDeck\Repos\DbRepository;
 use FlightDeck\Representatives\Representative;
 use Illuminate\Support\Facades\DB;
@@ -21,6 +22,23 @@ class RepresentativeRepository extends DbRepository{
 	function getRepsWithOrders()
 	{
 		return Representative::with('purchaseOrders')->get();
+	}
+
+	function getRepWithOrdersThisMonth($id)
+	{
+		return Representative::with('purchaseOrdersThisMonth')->where('id', '=', $id)->first();
+	}
+
+	function getRepsSalesThisMonth()
+	{
+		return Representative::with('purchaseOrdersThisMonth')
+			->get();
+	}
+
+	function getRepsSalesThisWeek()
+	{
+		return Representative::with('purchaseOrdersThisWeek')
+		                     ->get();
 	}
 
 	function getRepOrders($id)

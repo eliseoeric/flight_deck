@@ -35,15 +35,15 @@
                     <div class="form-col-6">
                         <! -- Customer Form Input -->
                         <div class="form-group form-group-default">
-                            {{ Form::label('customer', 'Customer:') }}
-                            {{ Form::select('customer', $customers, null, ['class' => 'form-control customer-select']) }}
+                            {{ Form::label('customer_id', 'Customer:') }}
+                            {{ Form::select('customer_id', $customers, null, ['class' => 'form-control customer-select']) }}
                         </div>
                     </div>
                     <div class="form-col-6">
                         <! -- Manufacturer Form Input -->
                         <div class="form-group form-group-default">
-                            {{ Form::label('manufacturer', 'Manufacturer:') }}
-                            {{ Form::select('manufacturer', $manufacturers, null, ['class' => 'form-control manufacturer-select']) }}
+                            {{ Form::label('manufacturer_id', 'Manufacturer:') }}
+                            {{ Form::select('manufacturer_id', $manufacturers, null, ['class' => 'form-control manufacturer-select']) }}
                         </div>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                     <div class="form-col-6">
                         <! -- Dealer Form Input -->
                         <div class="form-group form-group-default">
-                            {{ Form::label('dealer', 'Dealer:') }}
-                            {{ Form::select('dealer', $dealers, null, ['class' => 'form-control dealers-select']) }}
+                            {{ Form::label('dealer_id', 'Dealer:') }}
+                            {{ Form::select('dealer_id', $dealers, null, ['class' => 'form-control dealers-select']) }}
                         </div>
                     </div>
                 </div>

@@ -26,33 +26,18 @@
             <div class="large-8">
                 <div class="row">
                     <div class="four columns">
-                        <div class="panel widget counter">
-                            <header class="panel-header">
-                                <h3 class="panel-title">Top Earner <i class="fa fa-chevron-right"></i></h3>
-                            </header>
-                            <div class="panel-body">
-                                <h3 class="value">$16,000</h3>
-                                <p class="hint"><span class="default label">$2,150</span> until goal</p>
+                        @for($i = 0; $i <= 2; $i++)
+                            <div class="panel widget counter">
+                                <header class="panel-header">
+                                    <h3 class="panel-title">{{$topEarners[$i]->first_name . ' ' . $topEarners[$i]->last_name}} <i class="fa fa-chevron-right"></i></h3>
+                                </header>
+                                <div class="panel-body">
+                                    <h3 class="value">{{$topEarners[$i]->present()->net_sales}}</h3>
+                                    <p class="hint"><span class="default label">{{$topEarners[$i]->present()->until_goal}}</span> until goal</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel widget counter">
-                            <header class="panel-header">
-                                <h3 class="panel-title">Top Earner <i class="fa fa-chevron-right"></i></h3>
-                            </header>
-                            <div class="panel-body">
-                                <h3 class="value">$16,000</h3>
-                                <p class="hint"><span class="default label">$2,150</span> until goal</p>
-                            </div>
-                        </div>
-                        <div class="panel widget counter">
-                            <header class="panel-header">
-                                <h3 class="panel-title">Top Earner <i class="fa fa-chevron-right"></i></h3>
-                            </header>
-                            <div class="panel-body">
-                                <h3 class="value">$16,000</h3>
-                                <p class="hint"><span class="default label">$2,150</span> until goal</p>
-                            </div>
-                        </div>
+                        @endfor
+
                     </div>
                     <div class="panel widget eight columns">
                         <div id="rep_sales" class="panel-body">
@@ -75,7 +60,59 @@
 @section('backbone')
     <script>
         $(function () {
-            $('#rep_sales').highcharts(Charts);
+            Highcharts.setOptions({
+                lang: {
+                    thousandsSep: ',',
+                    decimalPoint: '.'
+                }
+            });
+            $('#rep_sales').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Sales Last 7 Days'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    floating: true,
+                    borderWidth: 1
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: { // don't display the dummy year
+                        month: '%e. %b',
+                        year: '%b'
+                    },
+                    title: {
+                        text: 'Date'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Net Sales'
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name} on {point.x:%e. %b}</b><br>',
+                    pointFormat: '${point.y:,.2f}'
+                },
+                plotOptions: {
+                    areapsline: {
+                        fillOpacity: 1
+                    }
+                },
+                series: [
+                    @foreach($reps as $rep)
+                    {
+                    name: '{{$rep->first_name . " " . $rep->last_name}}',
+                    data: {{json_encode($chartData[$rep->id])}}
+                    },
+                    @endforeach
+                ]
+            });
         });
         new App.Router;
         Backbone.history.start();

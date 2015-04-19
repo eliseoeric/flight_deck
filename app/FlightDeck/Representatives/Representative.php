@@ -1,16 +1,18 @@
 <?php namespace FlightDeck\Representatives;
 
+use Carbon\Carbon;
 use FlightDeck\Core\Presenters\Contracts\PresentableInterface;
 use FlightDeck\Core\Presenters\PresentableTrait;
 use FlightDeck\Representatives\Events\RepOnBoarded;
 use FlightDeck\Representatives\Events\RepUpdated;
 use Laracasts\Commander\Events\EventGenerator;
 
-class Representative extends \Eloquent implements PresentableInterface{
+class Representative extends \Eloquent{
 
     use EventGenerator;
 
 	use PresentableTrait;
+
 	protected $presenter = 'FlightDeck\Core\Presenters\Representative';
 
 	// Add your validation rules here
@@ -44,6 +46,15 @@ class Representative extends \Eloquent implements PresentableInterface{
 		return $this->hasManyThrough('FlightDeck\PurchaseOrders\PurchaseOrder', 'FlightDeck\Customers\Customer');
 	}
 
+	public function purchaseOrdersThisMonth()
+	{
+		return $this->hasManyThrough('FlightDeck\PurchaseOrders\PurchaseOrder', 'FlightDeck\Customers\Customer')->where('purchase_orders.created_at', '<', Carbon::today())->where('purchase_orders.created_at', '>=', Carbon::now()->subMonth())->orderBy('created_at', 'asc');
+	}
+
+	public function purchaseOrdersThisWeek()
+	{
+		return $this->hasManyThrough('FlightDeck\PurchaseOrders\PurchaseOrder', 'FlightDeck\Customers\Customer')->where('purchase_orders.created_at', '<', Carbon::today())->where('purchase_orders.created_at', '>=', Carbon::now()->subWeek())->orderBy('created_at', 'asc');
+	}
 
 	public static function onboard( $command )
 	{

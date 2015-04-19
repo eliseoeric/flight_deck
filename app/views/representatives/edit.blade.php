@@ -77,7 +77,7 @@
                     {{ Form::close() }}
                 </div>
             </div>
-            <div class="large-4">
+            <div class="large-2">
                 <div class="panel ">
                     <header class="panel-header">
                         <h3 class="panel-title">Sales Statistics</h3>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="panel widget counter">
                             <header class="panel-header">
-                                <h3 class="panel-title">Top Earner <i class="fa fa-chevron-right"></i></h3>
+                                <h3 class="panel-title">Largest Order <i class="fa fa-chevron-right"></i></h3>
                             </header>
                             <div class="panel-body">
                                 <h3 class="value">$16,000</h3>
@@ -103,6 +103,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="deck-row">
+            <div class="large-12">
+                <div class="panel widget" id="rep_sales"></div>
             </div>
         </div>
     </div>
@@ -114,13 +119,60 @@
 
 @section('backbone')
     <script>
+        $(function () {
+            Highcharts.setOptions({
+                lang: {
+                    thousandsSep: ',',
+                    decimalPoint: '.'
+                }
+            });
+            $('#rep_sales').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Sales Last 7 Days'
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    floating: true,
+                    borderWidth: 1
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: { // don't display the dummy year
+                        month: '%e. %b',
+                        year: '%b'
+                    },
+                    title: {
+                        text: 'Date'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: 'Net Sales'
+                    },
+                    min: 0
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name} on {point.x:%e. %b}</b><br>',
+                    pointFormat: '${point.y:,.2f}'
+                },
+                plotOptions: {
+                    areapsline: {
+                        fillOpacity: 1
+                    }
+                },
+                series: [{
+                    name: 'Sales',
+                    data: {{json_encode($chartData)}}
+                }]
+            });
+        });
         new App.Router;
         Backbone.history.start();
 
-        //    App.widgets = new App.Collections.Widgets;
-        //    App.widgets.fetch().then(function() {
-        //        new App.Views.App({ collection: App.widgets });
-        //    });
         App.Collections.Rep = Backbone.Collection.extend({
             model: App.Models.PurchaseOrder,
             url: "/json/representatives/{{ $rep->id }}"

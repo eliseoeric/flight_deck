@@ -4,7 +4,7 @@ use FlightDeck\Core\Presenters\Exceptions\PresenterException;
 
 trait PresentableTrait {
 
-	protected static $presenterInstance;
+	protected $presenterInstance;
 
 	public function present()
 	{
@@ -14,11 +14,11 @@ trait PresentableTrait {
 			throw new PresenterException('Please set the $protected property to your presenter path.');
 		}
 
-		if( ! isset(static::$presenterInstance ) )
+		if( ! $this->presenterInstance )
 		{
-			static::$presenterInstance = new $this->presenter($this);
+			$this->presenterInstance = new $this->presenter($this);
 		}
-		return static::$presenterInstance;
+		return $this->presenterInstance;
 	}
 
 }

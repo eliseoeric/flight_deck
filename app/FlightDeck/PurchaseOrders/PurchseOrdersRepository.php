@@ -20,7 +20,7 @@ class PurchseOrdersRepository extends DbRepository{
 
 	public function totalOrdersThisMonth()
 	{
-		return PurchaseOrder::where( 'created_at', '<', Carbon::today() )
+		return PurchaseOrder::where( 'created_at', '<', Carbon::now()->endOfDay() )
 			->where( 'created_at', '>=', Carbon::now()->subMonth() )
 			->get();
 	}

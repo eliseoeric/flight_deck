@@ -24,40 +24,30 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function index()
 	{
-		//This should all probably be pulled out of
-		// the controller and put in a widget repo or something
 		$reps = $this->repRepo->getRepsWithRegions();
+		$repsWithOrders = $this->repRepo->getRepsSalesThisWeek();
 
-		$reps_list = [];
-		$data = [];
-		foreach($reps as $rep)
+		$end = Carbon::now()->subWeek();
+		$chartData = array();
+
+		foreach($repsWithOrders as $rep )
 		{
-			$reps_list[] = $rep->first_name;
-			$data[] = $rep->net_sales;
+			$current = Carbon::now()->today();
+			while( !$current->isSameDay( $end ) )
+			{
+				$ordersToday = $rep->purchaseOrders->filter( function( $order ) use($current) {
+					return $order->created_at->isSameDay( $current );
+				})->sum('amount');
+				$chartData[$rep->id][] = array($current->timestamp*1000, $ordersToday);
+				$current->subDay();
+			}
+
 		}
-		JavaScript::put([
-			'chart' => [
-			'type' => 'bar'
-				],
-				'title' => [
-			'text' => 'Representative Sales'
-		],
-				'xAxis' => [
-					'categories' => $reps_list
-		],
-				'yAxis' => [
-			'title' => [
-				'text' => 'Sales'
-			]
-		],
-				'series' => [
-					'name' => 'Sales',
-					'data' => $data
-				]
-		]);
 
+//		dd($chartData[1]);
+		$topEarners = $reps->sortByDesc('net_sales')->take(3);
 
-		return View::make('representatives.index', compact('reps'));
+		return View::make('representatives.index', compact('reps', 'topEarners', 'chartData'));
 	}
 
 	public function jsonAll()
@@ -135,9 +125,23 @@ class RepresentativesController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$rep = $this->repRepo->getById($id);
+		$rep = $this->repRepo->getRepWithOrdersThisMonth($id);
 
-		return View::make('representatives.edit', compact('rep') );
+		$end = Carbon::now()->subWeek();
+		$chartData = array();
+
+		$current = Carbon::now()->today();
+		while( !$current->isSameDay( $end ) )
+		{
+			$ordersToday = 0;
+			$ordersToday = $rep->purchaseOrders->filter( function( $order ) use($current) {
+				return $order->created_at->isSameDay( $current );
+			})->sum('amount');
+			$chartData[] = array($current->timestamp*1000, $ordersToday);
+			$current->subDay();
+		}
+		
+		return View::make('representatives.edit', compact('rep', 'chartData') );
 	}
 
 	/**

@@ -1,12 +1,15 @@
 <?php
 use Carbon\Carbon;
+use FlightDeck\PurchaseOrders\NewOrderPlacedCommand;
 use FlightDeck\PurchaseOrders\PurchaseOrder;
 use FlightDeck\PurchaseOrders\PurchseOrdersRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Laracasts\Commander\CommanderTrait;
 
 class PurchaseOrdersController extends \BaseController {
 
+	use CommanderTrait;
 	/**
 	 * @var PurchseOrdersRepository
 	 */
@@ -30,22 +33,24 @@ class PurchaseOrdersController extends \BaseController {
 				return $order->created_at;
 		});
 
-		$start = Carbon::now()->today();
+		$start = Carbon::now()->endOfDay();
 		$current = $start;
 
 
 		$end = Carbon::now()->subMonth();
-		$dates = array();
+
 		$chartData = array();
 		while( ! $current->isSameDay( $end ) )
 		{
 			$ordersToday = $monthOfOrders->filter( function( $item ) use ($current) {
 				return $item->created_at->isSameDay( $current );
 			})->sum('amount');
-			$chartData[] =  array($current->getTimestamp(),  $ordersToday);
-//			$dates[] = ;
+//			JavaScript works in milliseconds, so you'll first have to convert the UNIX timestamp from seconds to milliseconds
+			$chartData[] =  array($current->timestamp*1000,  $ordersToday);
+//
 			$current->subDay();
 		}
+//		dd($chartData);
 
 		$orders = PurchaseOrder::with('customer', 'dealer', 'manufacturer')->get();
 		return View::make('purchaseOrders.index', compact('orders', 'chartData'));
@@ -79,7 +84,19 @@ class PurchaseOrdersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+//		dd(Input::all());
+		$order = $this->execute( NewOrderPlacedCommand::class );
+
+		if( $order )
+		{
+			Flash::success($order->order_number . ' was placed succesfully.');
+		}
+		else
+		{
+			Flash::warning('Something went wrong, your order was not placed.');
+		}
+
+		return Redirect::back();
 	}
 
 	/**
