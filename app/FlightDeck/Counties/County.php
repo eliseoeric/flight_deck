@@ -9,7 +9,7 @@ class County extends \Eloquent {
 	// Don't forget to fill this array
 	protected $fillable = ['county', 'region_id'];
 
-	public function cites()
+	public function cities()
 	{
 		return $this->hasMany('FlightDeck\Cities\City');
 	}
@@ -23,4 +23,10 @@ class County extends \Eloquent {
 	{
 		return $this->belongsTo('FlightDeck\Regions\Region');
 	}
+
+	public function customers()
+	{
+		return $this->hasManyThrough('FlightDeck\Customers\Customer', 'FligthDeck\Cities\City');
+	}
+
 }

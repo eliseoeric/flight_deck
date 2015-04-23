@@ -19,5 +19,4 @@ class City extends \Eloquent {
 	{
 		return $this->belongsTo('FlightDeck\Counties\County');
 	}
-
 }

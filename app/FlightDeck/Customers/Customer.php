@@ -9,7 +9,7 @@ class Customer extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = ['name', 'address', 'city', 'zip', 'state', 'phone', 'rep_id', 'county'];
+	protected $fillable = ['name', 'address', 'city', 'zip', 'state', 'phone', 'rep_id', 'county', 'region_id'];
 
 	public function purchase_orders()
 	{
@@ -20,4 +20,15 @@ class Customer extends \Eloquent {
 	{
 		return $this->belongsTo('FlightDeck\Representatives\Representative');
 	}
+
+	public function region()
+	{
+		return $this->belongsTo('FlightDeck\Regions\Region');
+	}
+
+	public function totalSales()
+	{
+		return $this->purchase_orders()->sum('amount');
+	}
+
 }

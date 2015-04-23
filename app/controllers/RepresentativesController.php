@@ -156,8 +156,7 @@ class RepresentativesController extends \BaseController {
 		$input = Input::all();
 		$input['id'] = $id;
 		$rep = $this->execute(UpdateRepCommand::class, $input );
-		//validate this
-		//check for this
+
 		if( $rep )
 		{
 			Flash::success($rep->first_name . ' ' .$rep->last_name . ' was updated successfully');

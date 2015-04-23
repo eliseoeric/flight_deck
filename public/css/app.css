@@ -1673,7 +1673,7 @@ table thead th.sortable.ascending a { color: #555555; }
 table thead th.sortable.ascending:after { content: "\f0de"; font-family: 'FontAwesome'; color: inherit; }
 table thead th.sortable.descending a { color: #555555; }
 table thead th.sortable.descending:after { content: "\f0dd"; font-family: 'FontAwesome'; color: inherit; }
-table thead th, table tbody td, table tr td { display: table-cell; padding: 10px; vertical-align: top; text-align: left; border-bottom: 1px solid #EFE8E8; }
+table thead th, table tbody td, table tr td { max-width: 650px; display: table-cell; padding: 10px; vertical-align: top; text-align: left; border-bottom: 1px solid #EFE8E8; }
 table tr td, table tbody tr td { font-size: 14px; }
 table tr td:first-child { font-weight: bold; }
 table thead { color: #555555; }
@@ -2226,3 +2226,5 @@ nav.transparent li a { color: #FAFAFA; }
 .projector { height: 100%; background-image: url(../img/post_it.jpg); background-size: cover; }
 .projector .hookline { position: relative; top: 15em; text-align: center; }
 .projector .hookline.negative h1 { color: #FAFAFA; }
+
+.intable { margin-right: 3px; }

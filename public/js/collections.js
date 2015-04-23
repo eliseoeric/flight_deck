@@ -25,6 +25,11 @@ App.Collections.Users = Backbone.Collection.extend({
 	url: "/json/users/"
 });
 
+App.Collections.Regions = Backbone.Collection.extend({
+	model: App.Models.Region,
+	url: "/json/regions"
+});
+
 App.Collections.Orders = Backbone.PageableCollection.extend({
 	model: App.Models.PurchaseOrder,
 	url: "/json/purchaseOrders/",

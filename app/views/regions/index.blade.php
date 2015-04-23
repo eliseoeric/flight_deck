@@ -1,49 +1,122 @@
 @extends('layouts._admin.default')
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li>{{ link_to_route('admin.index', 'Dashboard') }}</li>
+        <li><a href="#" class="active">Representatives</a>
+        </li>
+    </ul>
+@stop
 
 @section('content')
-    <div class="large-11 medium-10 columns">
-        <h1>Regions</h1>
+    <div class="boiler">
         <div class="deck-row">
-            <div class="large-5 columns panel">
-                <p>Here you can create new regions or edit current regions.</p>
-                {{ link_to_route('admin.regions.create', 'New Region', array(), array('class' => 'button small')) }}
+            <div class="large-4">
+                <div class="panel ">
+                    <header class="panel-header">
+                        <h3 class="panel-title">Getting Started</h3>
+                    </header>
+                    <div class="panel-body">
+                        <h3>Create a New Region</h3>
+                        <p>Here is some boiler plat copy about regions. We need to clean this up. Don't forget about it.</p>
+                        <div class="medium secondary btn">{{ link_to_route('admin.regions.create', 'New Region') }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="large-8">
+                <div class="row">
+                    <div class="panel widget twelve columns">
+                        <div id="regions_table" class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
-        <div class="deck-row">
-            <div class="large-11 medium-10 columns">
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="200">Region</th>
-                        <th width="150">Current Sales</th>
-                        <th width="150">Sales Reps</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @if(count($regions))
-                        @foreach($regions as $region)
-                            <tr>
-                                <td>{{ link_to_route('admin.regions.edit', $region->region, array($region->id))}}</td>
-                                <td>
-                                    {{$region->reps->sum('net_sales')}}
-                                </td>
-                                <td>
-                                    @foreach($region->reps as $rep)
-                                        {{ link_to_route('admin.representatives.edit', $rep->first_name, array($rep->id))}}
-                                    @endforeach
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th width="200">Region</th>
-                        <th width="150">Current Sales</th>
-                        <th width="150">Sales Reps</th>
-                    </tr>
-                    </tfoot>
-                </table>
-            </div>
     </div>
+    <div class="deck-row turbine">
+        <div id="table_wrap" class="large-12">
+
+        </div>
+    </div>
+@stop
+
+@section('backbone')
+    <script>
+
+        $(function () {
+            $('#regions_table').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Stacked bar chart'
+                },
+                xAxis: {
+                    categories: [
+                            @foreach($regions as $region)
+                            '{{$region->region}}',
+                            @endforeach
+                    ]
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Total fruit consumption'
+                    }
+                },
+                legend: {
+                    reversed: true
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                series: {{json_encode(array_values($chartData))}}
+            });
+        });
+        new App.Router;
+        Backbone.history.start();
+
+
+        App.regions = new App.Collections.Regions;
+
+        var columns = [{
+            name: "id", // The key of the model attribute
+            label: "ID", // The name to display in the header
+            editable: false, // By default every cell in a column is editable, but *ID* shouldn't be
+            // Defines a cell type, and ID is displayed as an integer without the ',' separating 1000s.
+            cell: Backgrid.IntegerCell.extend({
+                orderSeparator: ''
+            })
+        }, {
+            name: "region",
+            label: "Region",
+            editable: false,
+            cell: "uri-id"
+        }, {
+            name: "representatives",
+            label: "Representatives",
+            editable: false,
+            cell: "rep"
+        }, {
+            name: "net_sales",
+            label: "Net Sales",
+            editable: false,
+            cell: "number"
+        }];
+
+        // Initialize a new Grid instance
+        var grid = new Backgrid.Grid({
+            columns: columns,
+            collection: App.regions
+        });
+
+        // Render the grid and attach the root to your HTML document
+        $("#table_wrap").append(grid.render().el);
+
+        App.regions.fetch({reset: true});
+    </script>
 @stop

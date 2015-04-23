@@ -8,6 +8,9 @@ App.Models.WidgetMeta = Backbone.Model.extend({
 	urlRoot: '/admin/widgetMeta'
 });
 
+App.Models.Region = Backbone.Model.extend({
+});
+
 App.Models.PurchaseOrder = Backbone.Model.extend({});
 
 App.Models.User = Backbone.Model.extend({});

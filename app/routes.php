@@ -103,4 +103,5 @@ Route::group(array('prefix' => 'json'), function(){
 	Route::get('representatives/{id}', 'RepresentativesController@jsonRepOrders');
 	Route::get('purchaseOrders', 'PurchaseOrdersController@jsonAll');
 	Route::get('users', 'UsersController@jsonAll');
+	Route::get('regions', 'RegionsController@jsonAll');
 });

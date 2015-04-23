@@ -132,13 +132,17 @@
             name: "first_name",
             label: "First Name",
             editable: false,
-            // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-            cell: "uri-id" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+            cell: "uri-id"
         }, {
             name: "last_name",
             label: "Last Name",
             editable: false,
             cell: "uri-id"
+        }, {
+            name: "regions",
+            label: "Regions",
+            editable: false,
+            cell: "region"
         }, {
             name: "email",
             label: "Email Address",

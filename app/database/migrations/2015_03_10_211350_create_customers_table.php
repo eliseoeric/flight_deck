@@ -22,6 +22,7 @@ class CreateCustomersTable extends Migration {
 			$table->text('state');
 			$table->text('phone');
 			$table->integer('representative_id')->unsigned()->index();
+			$table->integer('region_id')->unsigned()->index();
 //			$table->foreign('representative_id')->references('id')->on('representatives');
 			$table->timestamps();
 		});

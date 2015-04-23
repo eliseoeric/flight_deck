@@ -71,6 +71,7 @@ table {
 	thead th,
 	tbody td,
 	tr td {
+		max-width: 650px;
 		display: table-cell;
 		padding: 10px;
 		vertical-align: top;

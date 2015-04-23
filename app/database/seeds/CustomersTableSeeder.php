@@ -13,16 +13,17 @@ class CustomersTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			$zip = Zipcode::find($faker->numberBetween(1,1200))->with('city')->get();
+			$zip = Zipcode::with('city.county.representative', 'city.county.region')->find($faker->numberBetween(1,1200));
 
 			$customer = new Customer([
 				'name'      =>  $faker->word,
 				'address'   =>  $faker->streetAddress,
 				'state'     =>  'fl',
 				'phone'     =>  $faker->phoneNumber,
-				'representative_id'    => $faker->numberBetween(1,5),
-				'zipcode'   => $zip[0]->zipcode,
-				'city'      => $zip[0]->city->city
+				'representative_id'    => $zip->city->county->representative->id,
+				'zipcode'   => $zip->zipcode,
+				'city'      => $zip->city->city,
+				'region_id' => $zip->city->county->region->id
 			]);
 
 			$customer->save();
