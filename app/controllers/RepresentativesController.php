@@ -1,5 +1,6 @@
 <?php
 use Carbon\Carbon;
+use FlightDeck\Counties\CountyRepository;
 use FlightDeck\Representatives\Representative;
 use FlightDeck\Representatives\RepresentativeRepository;
 use Laracasts\Commander\CommanderTrait;
@@ -11,10 +12,15 @@ class RepresentativesController extends \BaseController {
 	use CommanderTrait;
 
 	private $repRepo;
+	/**
+	 * @var CountyRepository
+	 */
+	private $countyRepository;
 
-	function __construct(RepresentativeRepository $representativeRepository)
+	function __construct(RepresentativeRepository $representativeRepository, CountyRepository $countyRepository)
 	{
 	    $this->repRepo = $representativeRepository;
+		$this->countyRepository = $countyRepository;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -44,7 +50,6 @@ class RepresentativesController extends \BaseController {
 
 		}
 
-//		dd($chartData[1]);
 		$topEarners = $reps->sortByDesc('net_sales')->take(3);
 
 		return View::make('representatives.index', compact('reps', 'topEarners', 'chartData'));
@@ -126,6 +131,8 @@ class RepresentativesController extends \BaseController {
 	public function edit($id)
 	{
 		$rep = $this->repRepo->getRepWithOrdersThisMonth($id);
+		$countiesAll = $this->countyRepository->getAll()->lists('county', 'id');
+		$counties = $rep->counties->lists('id');
 
 		$end = Carbon::now()->subWeek();
 		$chartData = array();
@@ -133,7 +140,6 @@ class RepresentativesController extends \BaseController {
 		$current = Carbon::now()->today();
 		while( !$current->isSameDay( $end ) )
 		{
-			$ordersToday = 0;
 			$ordersToday = $rep->purchaseOrders->filter( function( $order ) use($current) {
 				return $order->created_at->isSameDay( $current );
 			})->sum('amount');
@@ -141,7 +147,7 @@ class RepresentativesController extends \BaseController {
 			$current->subDay();
 		}
 
-		return View::make('representatives.edit', compact('rep', 'chartData') );
+		return View::make('representatives.edit', compact('rep', 'chartData', 'counties', 'countiesAll') );
 	}
 
 	/**

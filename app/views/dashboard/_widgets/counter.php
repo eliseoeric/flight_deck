@@ -1,5 +1,5 @@
-<script id="counterTemplate" type="text/template">
-    <div class="panel widget <%= size %>">
+<script id="Counter" type="text/template">
+    <div class="panel widget {{ size }}">
         <div class="panel-header">
         <div class="panel-controls">
             <ul>
@@ -8,9 +8,9 @@
             </ul>
         </div>
         </div>
-        <div id="<%= id %>" class="panel-body">
-            <h2><strong><%= value %></strong></h2>
-            <p><%= heading %></p>
+        <div id="{{ id }}" class="panel-body">
+            <h2>${{ content }}</h2>
+            <p>{{ heading }}</p>
         </div>
     </div>
 </script>

@@ -15,3 +15,5 @@ App.Models.PurchaseOrder = Backbone.Model.extend({});
 
 App.Models.User = Backbone.Model.extend({});
 
+App.Models.Customer = Backbone.Model.extend({});
+

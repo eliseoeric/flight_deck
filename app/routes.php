@@ -24,6 +24,9 @@
 ////dd($last_query);
 //});
 
+Event::listen('FlightDeck.PurchaseOrders.Events.NewOrderPlaced', 'FlightDeck\Listeners\WatchSales');
+
+
 Route::get('ziptest',function(){
 
 });
@@ -90,6 +93,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 	Route::resource('regions', 'RegionsController');
 	Route::resource('representatives', 'RepresentativesController');
 	Route::resource('purchaseOrders', 'PurchaseOrdersController');
+	Route::resource('customers', 'CustomersController');
 	Route::resource('widgets', 'WidgetsController'); // -- might be able to keep this behind /json/
 
 	Route::group(array('prefix' => 'widgets'), function(){
@@ -100,6 +104,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function(){
 
 Route::group(array('prefix' => 'json'), function(){
 	Route::get('representatives', 'RepresentativesController@jsonAll');
+	Route::get('customers', 'CustomersController@jsonAll');
 	Route::get('representatives/{id}', 'RepresentativesController@jsonRepOrders');
 	Route::get('purchaseOrders', 'PurchaseOrdersController@jsonAll');
 	Route::get('users', 'UsersController@jsonAll');

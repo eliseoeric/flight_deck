@@ -60,6 +60,13 @@
                     </div>
                     <div class="row">
                         <div class="form-col-6">
+                            <! -- Counties Input -->
+                            <div class="form-group form-group-default">
+                                {{ Form::label('counties', 'Counties:') }}
+                                {{ Form::select('counties[]', $countiesAll, $counties, ['class' => 'form-control counties-select', 'multiple' => 'multiple']) }}
+                            </div>
+                        </div>
+                        <div class="form-col-6">
                             <! -- Goal Form Input -->
                             <div class="form-group form-group-default">
                                 {{ Form::label('sales_goal', 'Sales Goal:') }}
@@ -120,6 +127,7 @@
 @section('backbone')
     <script>
         $(function () {
+            $('.form-control.counties-select').select2();
             Highcharts.setOptions({
                 lang: {
                     thousandsSep: ',',

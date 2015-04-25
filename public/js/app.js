@@ -25,5 +25,12 @@
             });
             notification.show();
 	}
-	
+Handlebars.registerHelper('img', function(text, url) {
+  text = Handlebars.Utils.escapeExpression(text);
+  url  = Handlebars.Utils.escapeExpression(url);
+
+  var result = '< img src="' + url + '">';
+
+  return result;
+});
 })();

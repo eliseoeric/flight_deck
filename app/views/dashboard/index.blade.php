@@ -19,6 +19,7 @@
         </div>
     </div>
 @include('dashboard._widgets.counter')
+@include('dashboard/_widgets/newsfeed')
 @stop
 
 @section('backbone')

@@ -1,5 +1,6 @@
 <?php
 
+use FlightDeck\Core\WidgetFactory;
 use FlightDeck\Dashboards\Widgets\Widget;
 use FlightDeck\Dashboards\Widgets\WidgetRepository;
 use Laracasts\Commander\CommanderTrait;
@@ -24,7 +25,15 @@ class WidgetsController extends \BaseController {
 	 */
 	public function index()
 	{
-//		return Response::json($this->widgetRepo->calcAllWidgets());
+		$widgets = $this->widgetRepo->getAllWithMeta();
+		$rendered = array();
+		foreach($widgets as $widget)
+		{
+			$rendered[] = WidgetFactory::render($widget);
+		}
+//		return Response::json($rendered);
+		return $rendered;
+
 	}
 
 

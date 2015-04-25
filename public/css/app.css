@@ -1755,6 +1755,8 @@ table.rounded thead th, table.rounded thead td, table.rounded caption + tbody tr
 
 .text-white { color: #FAFAFA !important; }
 
+.m-l-5 { margin-left: 5px; }
+
 b { font-weight: bold; }
 
 /* TODO
@@ -1872,7 +1874,7 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 .large-2 { width: 15.20468%; }
 @media only screen and (max-width: 767px) { .large-2 { float: left; margin-left: 0; width: 100%; } }
 
-.large-3 { width: 23.68421%; }
+.large-3 { width: 22.83626%; }
 @media only screen and (max-width: 767px) { .large-3 { float: left; margin-left: 0; width: 100%; } }
 
 .large-4 { width: 32.16374%; }
@@ -1907,13 +1909,13 @@ label, input, button, select, textarea { font-size: 14px; font-weight: normal; l
 .widget:hover { cursor: pointer; -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); }
 
 .panel { height: 100%; position: relative; }
-.panel .panel-header { padding: 15px 15px 0px 15px; }
+.panel .panel-header { padding: 15px 15px 0px 15px; position: absolute; top: 0; right: 0; z-index: 10; }
 .panel .panel-header .panel-title { font-size: 14px; font-size: 1rem; font-weight: bold; text-transform: uppercase; }
 .panel .panel-controls { float: right; line-height: 0.5; }
 .panel .panel-controls ul { margin: 0; padding: 0; }
 .panel .panel-controls li { font-size: 10px; font-size: 0.71429rem; display: inline-block; padding-left: 3px; }
 .panel .panel-header.builder { padding: 0 15px; text-align: center; }
-.panel .panel-body { padding: 15px; }
+.panel .panel-body { padding: 15px; position: relative; z-index: 10; }
 
 .boiler { margin-bottom: 15px; }
 
@@ -2228,3 +2230,8 @@ nav.transparent li a { color: #FAFAFA; }
 .projector .hookline.negative h1 { color: #FAFAFA; }
 
 .intable { margin-right: 3px; }
+
+.newsfeed .maintain-aspect { content: ""; display: block; padding-top: 56.6%; }
+.newsfeed .panel-background { background-size: cover; opacity: 0.85; height: 100%; width: 100%; top: 0; left: 0; position: absolute; }
+.newsfeed .backdrop { background: url(/img/linear_gradient.png) repeat-x; }
+.newsfeed .backdrop h2, .newsfeed .backdrop p.desc { color: #FAFAFA; }

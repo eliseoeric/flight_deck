@@ -2,6 +2,7 @@
 
 
 
+use FlightDeck\Counties\CountyRepository;
 use Laracasts\Commander\CommandHandler;
 use FlightDeck\Representatives\RepresentativeRepository;
 use FlightDeck\Representatives\Representative;
@@ -13,10 +14,15 @@ class UpdateRepCommandHandler implements CommandHandler{
 	 * @var RepresentativeRepository
 	 */
 	private $repRepo;
+	/**
+	 * @var CountyRepository
+	 */
+	private $countyRepo;
 
-	public function __construct(RepresentativeRepository $representativeRepository)
+	public function __construct(RepresentativeRepository $representativeRepository, CountyRepository $countyRepo)
 	{
 		$this->repRepo = $representativeRepository;
+		$this->countyRepo = $countyRepo;
 	}
 
 	/**
@@ -28,6 +34,17 @@ class UpdateRepCommandHandler implements CommandHandler{
 	 */
 	public function handle( $command )
 	{
+		$repCounties = $this->repRepo->getRepCounties($command->id);
+
+		foreach($repCounties->counties as $county)
+		{
+			$this->countyRepo->assignRep($county->id, 0);
+		}
+
+		foreach($command->counties as $county)
+		{
+			$this->countyRepo->assignRep($county, $command->id);
+		}
 		$rep = Representative::updated($command);
 		if( $this->repRepo->save($rep) )
 		{

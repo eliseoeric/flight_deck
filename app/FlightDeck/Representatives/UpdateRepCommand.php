@@ -8,6 +8,7 @@ class UpdateRepCommand {
 	public $email;
 	public $phone;
 	public $sales_goal;
+	public $counties;
 
 	/**
 	 * @param $id
@@ -16,8 +17,11 @@ class UpdateRepCommand {
 	 * @param $email
 	 * @param $phone
 	 * @param $sales_goal
+	 * @param $category
+	 *
+	 * @internal param $counties
 	 */
-	public function __construct($id, $first_name, $last_name, $email, $phone, $sales_goal)
+	public function __construct($id, $first_name, $last_name, $email, $phone, $sales_goal, $counties)
 	{
 		$this->first_name = $first_name;
 		$this->last_name = $last_name;
@@ -25,5 +29,6 @@ class UpdateRepCommand {
 		$this->phone = $phone;
 		$this->id = $id;
 		$this->sales_goal = floatval($sales_goal);
+		$this->counties = $counties;
 	}
 }

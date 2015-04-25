@@ -11,6 +11,7 @@
 	  	"cartalyst/sentry": "2.1.*",
 	    "laracasts/utilities": "~1.0",
 	  	"thomaswelton/laravel-gravatar": "0.1.x"
+
 	},
 	"require-dev": {
 	  "way/generators": "~2.0",

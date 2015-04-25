@@ -1,0 +1,25 @@
+.newsfeed{
+
+	.maintain-aspect{
+		content: "";
+		display: block;
+		padding-top: 56.6%;
+	}	
+
+	.panel-background{
+		background-size: cover;
+		opacity: 0.85;
+		height:100%;
+		width:100%;
+		top:0;
+		left:0;
+		position: absolute;
+	}
+
+	.backdrop{
+		background: url(/img/linear_gradient.png) repeat-x;
+		h2,p.desc{
+			color: $neutral-white;
+		}
+	}
+}

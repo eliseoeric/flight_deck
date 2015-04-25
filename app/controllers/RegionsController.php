@@ -77,7 +77,6 @@ class RegionsController extends \BaseController {
 		$regions = $this->regionsRepo->getRegionsWithReps();
 
 		$regionsArray = $regions->toArray();
-//		dd($regionsArray);
 
 		foreach($regions as $region)
 		{
@@ -132,7 +131,12 @@ class RegionsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$region = $this->regionsRepo->getRepsCountiesCustomers($id);
+		$counties = $region->counties->lists('county', 'id');
+		$reps = $region->representatives->lists('first_name', 'last_name', 'id');
+		$customers = $region->customers->lists('name', 'id');
+		return View::make('regions.edit', compact('customers', 'counties', 'reps',
+			'region'));
 	}
 
 

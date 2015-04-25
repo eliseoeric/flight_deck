@@ -18,7 +18,8 @@ class RepresentativesTableSeeder extends Seeder {
 				'last_name'     =>  $faker->lastName,
 				'phone'         =>  $faker->phoneNumber,
 				'email'         =>  $faker->email,
-				'net_sales'     =>  $faker->numberBetween(50,50000)
+				'net_sales'     =>  $faker->numberBetween(50,50000),
+				'sales_goal'    =>  $faker->numberBetween(1000, 50000)
 			]);
 			$rep->save();
 

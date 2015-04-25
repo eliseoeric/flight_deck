@@ -29,4 +29,5 @@ class Region extends \Eloquent {
 		return $this->hasMany('FlightDeck\Customers\Customer');
 	}
 
+
 }

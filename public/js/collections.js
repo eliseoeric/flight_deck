@@ -6,7 +6,7 @@ App.Collections.Widgets = Backbone.Collection.extend({
 	// },
 
 	url: function () {
-		return '/admin/dashboards/1/';
+		return '/admin/widgets/';
 	}
 });
 
@@ -28,6 +28,11 @@ App.Collections.Users = Backbone.Collection.extend({
 App.Collections.Regions = Backbone.Collection.extend({
 	model: App.Models.Region,
 	url: "/json/regions"
+});
+
+App.Collections.Customers = Backbone.Collection.extend({
+	model: App.Models.Customer,
+	url: "/json/customers"
 });
 
 App.Collections.Orders = Backbone.PageableCollection.extend({

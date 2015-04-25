@@ -19,7 +19,7 @@
 
         </div>
     </div>
-    @include('dashboard._widgets.counter')
+    @include('dashboard._widgets.counter.php')
     @include('dashboard._widgets.counterEdit')
 @stop
 

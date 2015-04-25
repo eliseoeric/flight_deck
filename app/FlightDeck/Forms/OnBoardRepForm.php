@@ -15,7 +15,7 @@ class OnBoardRepForm extends FormValidator{
 		"last_name" => 'required',
 		'email' => 'required | email',
 		'phone' => 'required',
-		'sales_goal' => 'alpha_num'
+		'sales_goal' => 'alpha_num | required'
 	];
 
 }

@@ -50,8 +50,16 @@
                 <li>{{ link_to_route('admin.purchaseOrders.index', 'All Orders')}}</li>
                 <li>{{ link_to_route('admin.purchaseOrders.create', 'New Order')}}</li>
             </div>
-            <li>Customers</li>
-            <li>Orders</li>
+
+            <li>
+                <a href="#" class="toggle" gumby-trigger="#customers_dropdow">Customers</a>
+                <span><i class="icon-share"></i></span>
+            </li>
+            <div  {{ (Request::is('*customers') ? 'class="active drawer"' : 'class="drawer"' )}} id="customers_dropdow">
+                <li>{{ link_to_route('admin.customers.index', 'All Customers')}}</li>
+                <li>{{ link_to_route('admin.customers.create', 'New Customer')}}</li>
+            </div>
+
             <li>Dealers</li>
             <li>Facebook</li>
             <li>Twitter</li>

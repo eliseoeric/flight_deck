@@ -18,4 +18,9 @@ class WidgetRepository extends DbRepository{
 	{
 		return Widget::with('meta')->where('id', $id)->get();
 	}
+
+	public function getAllWithMeta()
+	{
+		return $this->model->with('meta')->get();
+	}
 }

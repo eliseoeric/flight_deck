@@ -16,14 +16,23 @@ class RegionsRepository extends DbRepository{
 
 	public function getRegionsWithReps()
 	{
-		return Region::with('Representatives')->get();
+		return $this->model->with('Representatives')->get();
 	}
 
 	public function getRegionsOrders()
 	{
-		return Region::with('customers.purchase_orders', 'representatives')->get();
+		return $this->model->with('customers.purchase_orders', 'representatives')->get();
 
 	}
+
+	public function getRepsCountiesCustomers($id)
+	{
+		return $this->model->with('customers.purchase_orders', 'representatives', 'counties')
+			->find($id)
+			->first();
+	}
+
+//	public function getWith
 
 //	public function getRegionsRepsOrders()
 //	{

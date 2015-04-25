@@ -34,7 +34,7 @@ Or concatenate and minify into a single file -->
 {{ HTML::script('js/plugins.js') }}
 {{ HTML::script('js/vendor/select2/select2.min.js') }}
 {{ HTML::script('js/main.js') }}
-
+{{ HTML::script('js/vendor/handlebars.js') }}
 {{ HTML::script('js/vendor/underscore.js') }}
 {{ HTML::script('js/vendor/backbone.js') }}
 {{ HTML::script('js/vendor/backbone.paginator.js') }}
