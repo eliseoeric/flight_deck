@@ -60,10 +60,7 @@
                 <li>{{ link_to_route('admin.customers.create', 'New Customer')}}</li>
             </div>
 
-            <li>Dealers</li>
-            <li>Facebook</li>
-            <li>Twitter</li>
-            <li>Whatever</li>
+            
             <li><a href="#">Settings</a><span><i class="icon-cog"></i></span></li>
 
 
