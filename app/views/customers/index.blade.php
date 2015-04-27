@@ -18,7 +18,7 @@
                     </header>
                     <div class="panel-body">
                         <h3>Create a New Customer</h3>
-                        <p>Flight Deck let's you easily create and manage your sales reps via our simple user friendly tables. Get started now by creating a new rep and see what all the fuss is about.</p>
+                        <p>Flight Deck let's you easily create and manage your customers via our simple user friendly tables. Get started now by creating a new customer and see what all the fuss is about.</p>
                         <div class="medium secondary btn">{{ link_to_route('admin.customers.create', 'New Customer') }}</div>
                     </div>
                 </div>

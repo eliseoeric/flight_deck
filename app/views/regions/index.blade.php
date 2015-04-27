@@ -17,7 +17,7 @@
                     </header>
                     <div class="panel-body">
                         <h3>Region Details</h3>
-                        <p>Here is some boiler plat copy about regions. We need to clean this up. Don't forget about it.</p>
+                        <p>Region Details page breaks down the sales per region by representative.  Quickly see who is performing the best in which region.</p>
                         {{--<div class="medium secondary btn">{{ link_to_route('admin.regions.create', 'New Region') }}</div>--}}
                     </div>
                 </div>
