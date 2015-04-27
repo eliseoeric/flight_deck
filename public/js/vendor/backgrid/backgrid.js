@@ -1004,6 +1004,7 @@ var UriIdCell = Backgrid.UriIdCell = Cell.extend({
         this.$el.empty();
         // console.log(this.$el); returns the td element
         var editUrl = this.model.url().replace('/json', '/admin') + '/edit/';
+        
         var rawValue = this.model.get(this.column.get("name"));
         var formattedValue = this.formatter.fromRaw(rawValue, this.model);
         this.$el.append($("<a>", {

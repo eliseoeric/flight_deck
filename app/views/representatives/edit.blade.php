@@ -181,9 +181,15 @@
         new App.Router;
         Backbone.history.start();
 
-        App.Collections.Rep = Backbone.Collection.extend({
+        App.Collections.Rep = Backbone.PageableCollection.extend({
             model: App.Models.PurchaseOrder,
-            url: "/json/representatives/{{ $rep->id }}"
+            url: "/json/representatives/{{ $rep->id }}",
+            state: {
+                pageSize: 15,
+                // sortKey: "updated",
+                // order: 1
+            },
+            mode: "client"
         });
 
         App.orders = new App.Collections.Rep;
@@ -225,8 +231,24 @@
             collection: App.orders
         });
 
-        // Render the grid and attach the root to your HTML document
-        $("#table_wrap").append(grid.render().el);
+        var table_wrap = $('#table_wrap');
+        table_wrap.append(grid.render().el);
+        var paginator = new Backgrid.Extension.Paginator({
+            collection: App.orders
+        });
+        // Initialize a client-side filter to filter on the client
+        // mode pageable collection's cache.
+        var filter = new Backgrid.Extension.ClientSideFilter({
+            collection: App.orders,
+            fields: ['name']
+        });
+        // Render the filter
+        table_wrap.before(filter.render().el);
+        // Add some space to the filter and move it to the right
+        $(filter.el).css({float: "right", margin: "20px"});
+
+        // Render the paginator
+        table_wrap.after(paginator.render().el);
 
         App.orders.fetch({reset: true});
     </script>

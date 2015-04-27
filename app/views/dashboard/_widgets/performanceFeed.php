@@ -12,8 +12,9 @@
 			<div class="row no-padding">
 				<h3>DMG Performance Feed</h3>
 				<div class="eight columns" id="feed_{{ id }}"></div>
-				<div class="four columns">
-					<p>Region Sales Breakdown ${{content.performance.total}}</p>
+				<div class="three columns m-l-20">
+					<h3>Region Sales Breakdown</h3>
+					<h4><strong>Total Sales: </strong>${{content.performance.total}}</h4>
 					{{#each content.performance.regions}}
 					<div>
 						<p>{{this.name}} -- {{calcPerc this.sales ../content.performance.total}}%</p>

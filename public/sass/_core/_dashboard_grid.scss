@@ -4,40 +4,40 @@
 }
 
 .large-1{
-	@include column(1);
+	@include column(.95);
 }
 .large-2{
-	@include column(2);
+	@include column(1.95);
 }
 .large-3{
-	@include column(2.9);
+	@include column(2.95);
 }
 .large-4{
-	@include column(4);
+	@include column(3.95);
 }
 .large-5{
-	@include column(5);
+	@include column(4.95);
 }
 .large-6{
-	@include column(6);
+	@include column(5.95);
 }
 .large-7{
-	@include column(7);
+	@include column(6.95);
 }
 .large-8{
-	@include column(8);
+	@include column(7.95);
 }
 .large-9{
-	@include column(9);
+	@include column(8.95);
 }
 .large-10{
-	@include column(10);
+	@include column(9.95);
 }
 .large-11{
-	@include column(11);
+	@include column(10.95);
 }
 .large-12{
-	@include column(12);
+	@include column(11.95);
 }
 
 

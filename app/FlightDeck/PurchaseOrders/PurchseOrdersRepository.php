@@ -34,6 +34,7 @@ class PurchseOrdersRepository extends DbRepository{
 			->select(
 				'purchase_orders.id',
 				'purchase_orders.amount AS amount',
+				'purchase_orders.order_number AS order_number',
 				'customers.name AS customer',
 				'purchase_orders.customer_id',
 				'manufacturers.name AS manufacturer',

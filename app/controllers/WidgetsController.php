@@ -3,6 +3,7 @@
 use FlightDeck\Core\WidgetFactory;
 use FlightDeck\Dashboards\Widgets\Widget;
 use FlightDeck\Dashboards\Widgets\WidgetRepository;
+use Illuminate\Support\Facades\Cache;
 use Laracasts\Commander\CommanderTrait;
 use FlightDeck\Dashboards\Widgets\AddNewWidgetCommand;
 use FlightDeck\Dashboards\Widgets\UpdateWidgetCommand;

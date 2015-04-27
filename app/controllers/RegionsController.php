@@ -96,7 +96,7 @@ class RegionsController extends \BaseController {
 		{
 			$regionsArray[$region->id - 1]['net_sales'] = $data[$region->id]['sales'];
 		}
-		
+
 		return Response::json($regionsArray);
 	}
 

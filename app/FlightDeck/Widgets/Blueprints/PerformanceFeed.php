@@ -74,7 +74,7 @@ class PerformanceFeed extends WidgetBlueprint{
 		$c = new Collection($data);
 		$c->sortByDesc('sales');
 		$result = array(
-			'total' => $total,
+			'total' => round($total, 2),
 			'regions' => $c->take(5)->toArray()
 		);
 		return $result;
