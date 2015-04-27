@@ -9,7 +9,7 @@
         </div>
         </div>
         <div id="{{ id }}" class="panel-body">
-            <h2>${{ content }}</h2>
+            <h2>{{ content }}</h2>
             <p>{{ heading }}</p>
         </div>
     </div>
