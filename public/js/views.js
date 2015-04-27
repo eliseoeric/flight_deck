@@ -129,11 +129,12 @@ App.Views.Widget = Backbone.View.extend({
 
 	initialize: function(){
 		var source = $('#' + this.model.get('type') ).html();
+		console.log(this.model.get('type'));
 		console.log(source);
 		this.template = Handlebars.compile(source);
 		App.pubSub.on('postRender', this.postRender, this);
 		this.model.on('destroy', this.unrender, this);
-	},
+	}, 
 
 	events: {
 		'click .widget' : 'editWidget',
