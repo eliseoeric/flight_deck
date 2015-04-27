@@ -17,6 +17,7 @@
                        <h3>Place New Purchse Order</h3>
                        <p>Here you can manage, view and track current purchase orders.  Orders can be placed within the dashboard or via our portal link.</p>
                        <div class="medium secondary btn">{{ link_to_route('admin.purchaseOrders.create', 'New Purcahse Order') }}</div>
+                       <div class="medium info btn">{{ link_to_route('orderForm', 'Quick Order') }}</div>
                    </div>
                </div>
            </div>

@@ -8,9 +8,8 @@
         <div class="row">
             <section class="tabs">
                 <ul class="tab-nav centered eight columns mg-t-30">
-                    <li class="active"><a href="#">First Tab</a></li>
-                    <li> <a href="#">Second Tab</a></li>
-                    <li><a href="#">Third Tab</a></li>
+                    <li class="active"><a href="#">Manual Input</a></li>
+                    <li> <a href="#">Upload File</a></li>
                 </ul>
                 <div class="tab-content active">
                     <div class="panel widget centered eight columns">
