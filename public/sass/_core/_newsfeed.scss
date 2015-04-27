@@ -16,6 +16,13 @@
 		position: absolute;
 	}
 
+	.panel .panel-header{
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 10;
+	}
+
 	.backdrop{
 		background: url(/img/linear_gradient.png) repeat-x;
 		h2,p.desc{

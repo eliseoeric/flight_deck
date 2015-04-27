@@ -64,6 +64,60 @@ class ManufacturersTableSeeder extends Seeder {
 			'phone' => '920-857-9069',
 			'email' => $faker->companyEmail
 		]);
+		Manufacturer::create([
+			'name' => "Dudson",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
+		Manufacturer::create([
+			'name' => "Panaz",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
+		Manufacturer::create([
+			'name' => "GateHouse",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
+		Manufacturer::create([
+			'name' => "room360",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
+		Manufacturer::create([
+			'name' => "Smart Buffetware",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
+		Manufacturer::create([
+			'name' => "Dot",
+			'address' => ' ',
+			'city' => ' ',
+			'zip' => ' ',
+			'state' => 'Fl',
+			'phone' => $faker->phoneNumber,
+			'email' => $faker->companyEmail
+		]);
 	}
 
 }

@@ -1056,7 +1056,7 @@ var RegionCell = Backgrid.RegionCell = Cell.extend({
           
           this.$el.append($("<a>", {
               tabIndex: -1,
-              href: '/admin/regions/' + regionId + "/edit/",
+              href: '/admin/regions/' + regionId + "/",
               title: region,
               class: 'default label intable',
               target: this.target
@@ -1097,7 +1097,7 @@ var RegionSingleCell = Backgrid.RegionSingleCell = Cell.extend({
         // console.log(this.$el); returns the td element
         var editUrl = this.model.url().replace('/json', '/admin') + '/edit/';
         var rawValue = this.model.get(this.column.get("name"));
-        console.log(rawValue);
+        // console.log(rawValue);
         var html = "<span>";
         var region = rawValue.region;
         var regionId = rawValue.id;
@@ -1105,7 +1105,7 @@ var RegionSingleCell = Backgrid.RegionSingleCell = Cell.extend({
           
         this.$el.append($("<a>", {
             tabIndex: -1,
-            href: '/admin/regions/' + regionId + "/edit/",
+            href: '/admin/regions/' + regionId + "/",
             title: region,
             class: 'default label intable',
             target: this.target

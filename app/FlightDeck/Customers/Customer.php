@@ -2,6 +2,7 @@
 
 
 use FlightDeck\Customers\Events\CustomerCreated;
+use FlightDeck\Customers\Events\CustomerUpdated;
 use Laracasts\Commander\Events\EventGenerator;
 class Customer extends \Eloquent {
 
@@ -35,6 +36,14 @@ class Customer extends \Eloquent {
 		$customer = new static (get_object_vars($command));
 		$customer->raise( new CustomerCreated($customer));
 		return $customer;
+	}
+
+	public static function updateInfo($command)
+	{
+		$rep = Customer::findOrFail($command->id);
+		$rep->fill(get_object_vars($command));
+		$rep->raise( new CustomerUpdated( $rep ) );
+		return $rep;
 	}
 
 }

@@ -1,6 +1,7 @@
 <?php
 use FlightDeck\Customers\CustomersRepository;
 use FlightDeck\Customers\NewCustomerCommand;
+use FlightDeck\Customers\UpdateCustomerCommand;
 use FlightDeck\Zipcodes\ZipcodesRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
@@ -135,7 +136,9 @@ class CustomersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$customer = $this->customersRepo->getById($id);
+		$zips = DB::table('zipcodes')->lists('zipcode', 'id');
+		return View::make('customers.edit', compact('customer', 'zips'));
 	}
 
 	/**
@@ -147,7 +150,19 @@ class CustomersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::all();
+		$input['id'] = $id;
+
+		$customer = $this->execute(UpdateCustomerCommand::class, $input);
+		if($customer)
+		{
+			Flash::success($customer->name . ' was updated successfully');
+		}
+		else
+		{
+			Flash::warning('Something went wrong! Rep not saved.');
+		}
+		return Redirect::route('admin.customers.index');
 	}
 
 	/**

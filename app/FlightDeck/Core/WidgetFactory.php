@@ -9,7 +9,16 @@ class WidgetFactory {
 
 		if(class_exists($class))
 		{
-			$content =  new $class($widget->meta);
+			switch ($widget->type) {
+				case 'PerformanceFeed':
+					$content =  new $class($widget->meta);
+					break;
+
+				default:
+					$content =  new $class($widget->meta);
+					break;
+			}
+
 
 			return $widget = array(
 				'id' => $widget->id,

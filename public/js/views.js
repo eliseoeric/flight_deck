@@ -3,6 +3,7 @@ App.Views.App = Backbone.View.extend({
 	initialize: function() {
 		var allWidgetsView = new App.Views.Widgets({ collection: App.widgets}).render();
 		$('#boiler').append(allWidgetsView.el);
+		App.pubSub.trigger('postRender');
 	}
 });
 
@@ -16,6 +17,7 @@ App.Views.WidgetBuilder = Backbone.View.extend({
 		var editWidetView = new App.Views.EditWidgetCollection({collection: App.trueWidgets}).render();
 
 		$('#boiler').append(allWidgetsView.el);
+		App.pubSub.trigger('postRender');
 		$('#editWidgetForm-shell').prepend(editWidetView.el);
 	}
 
@@ -97,7 +99,7 @@ App.Views.Widgets = Backbone.View.extend({
 	},
 
 	refresh: function() {
-		console.log('hellow from refresh');
+		console.log('hello from refresh');
 		this.collection.fetch();
 	},
 
@@ -126,9 +128,9 @@ App.Views.Widget = Backbone.View.extend({
 	template: this.type, 
 
 	initialize: function(){
-
 		var source = $('#' + this.model.get('type') ).html();
 		this.template = Handlebars.compile(source);
+		App.pubSub.on('postRender', this.postRender, this);
 		this.model.on('destroy', this.unrender, this);
 	},
 
@@ -152,12 +154,90 @@ App.Views.Widget = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html( this.template( this.model.toJSON() ) );
+		
+		this.$el.html( this.template( this.model.toJSON() ) ); 
 		return this;
 	},
 
 	unrender: function(){
 		this.remove(); 
+	},
+
+	postRender: function() {
+		switch(this.model.get('type')) {
+			case 'Backgrid':
+				this.buildBackgrid();
+				break;
+			case 'PerformanceFeed':
+				this.buildFeed();
+				break;
+			default:
+				return;
+		}
+	},
+
+	buildFeed: function() {
+		Highcharts.setOptions({
+                lang: {
+                    thousandsSep: ',',
+                    decimalPoint: '.'
+                }
+            });
+		var content = this.model.get('content');
+		console.log(content.chartConfig);
+		//get the widget wrapper
+		$('#feed_' + this.model.get('id')).highcharts(content.chartConfig);
+	},
+
+	buildBackgrid: function(){
+		
+		if(this.model.get('type') != 'Backgrid'){
+			return
+		} else {
+			var gridID = 'backgrid_' + this.model.get('id');
+			var content = this.model.get('content');
+
+			App.Collections.DashOrders = Backbone.PageableCollection.extend({
+				model: App.Models.PurchaseOrder,
+				url: "/json/purchaseOrders/",
+				state: {
+				    pageSize: 9,
+				    // sortKey: "updated",
+				    // order: 1
+				  },
+				  mode: "client"
+			});
+
+			//this is being hardcoded to use Collection.Orders -- in the future 
+			//we need this to create a collection based on the model's 'resource' attribute.
+			App.gridID = new App.Collections.DashOrders;
+			var $columns = [];
+			for(var i = 0; i < content.columns.length; i++)
+			{
+				$columns.push({
+					cell: content.columns[i].type,
+					editable: false,
+					label: content.columns[i].label,
+					name: content.columns[i].name
+				});
+			}	
+			
+			var grid = new Backgrid.Grid({
+				columns: $columns,
+				collection: App.gridID
+			});
+
+			var widget_wrap = $('#backgrid_7');
+			
+			widget_wrap.append(grid.render().el);
+			var paginator = new Backgrid.Extension.Paginator({
+				collection: App.gridID
+			});
+
+			widget_wrap.after(paginator.render().el);
+
+			App.gridID.fetch({reset:true});
+		}
 	}
 
 });

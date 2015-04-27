@@ -75,6 +75,8 @@
                     min: 0
                 },
                 tooltip: {
+                    crosshairs: true,
+                    shared: true,
                     headerFormat: '<b>{series.name} on {point.x:%e. %b}</b><br>',
                     pointFormat: '${point.y:,.2f}'
                 },
@@ -104,24 +106,25 @@
                 orderSeparator: ''
             })
         }, {
-            name: "manufacturer",
-            label: "First Name",
+//            name: "manufacturer",
+            name: "order_number",
+            label: "Manufacturer",
             editable: false,
             // The cell type can be a reference of a Backgrid.Cell subclass, any Backgrid.Cell subclass instances like *id* above, or a string
-            cell: "string" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
+            cell: "uri-id" // This is converted to "StringCell" and a corresponding class in the Backgrid package namespace is looked up
         }, {
             name: "customer",
-            label: "Customer Name",
+            label: "Customer",
             editable: false,
-            cell: "string"
+            cell: "uri-id"
         }, {
             name: "dealer",
-            label: "Email Address",
+            label: "Dealer",
             editable: false,
-            cell: "email" // custom cell that wraps the content in an anchor tag that goes to the edit path
+            cell: "uri-id" // custom cell that wraps the content in an anchor tag that goes to the edit path
         }, {
             name: "amount",
-            label: "Total",
+            label: "Order Amount",
             editable: false,
             cell: "Number"
         }];

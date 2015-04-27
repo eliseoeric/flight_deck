@@ -35,5 +35,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     {{ HTML::style('css/app.css') }}
     {{ HTML::style('css/select2.min.css') }}
+    {{ HTML::style('css/backgrid-filter.min.css') }}
     {{ HTML::script('js/vendor/modernizr.js') }}
 </head>

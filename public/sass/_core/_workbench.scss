@@ -6,8 +6,12 @@
 */
 .workbench{
 	background-color: $neutral-subtle-grey;
-	height: 100%;
+	min-height: 100%;
 	display:block;
+
+	&.auto{
+		height: auto;
+	}
 
 	.workbench-core{
 		padding-top: 85px;

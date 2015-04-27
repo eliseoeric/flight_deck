@@ -1,0 +1,27 @@
+.performance-bar{
+	background-color: lighten($highlight, 20);
+	height: 5px;
+	width: 100%;
+	margin: auto;
+	position: relative;
+	// top: 
+
+	&_indicator{
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%, $secondary-highlight), color-stop(100%, lighten($secondary-highlight, 10)));
+		height: 5px;
+		// width: 75%; // this should be accessed inline
+	}
+
+	.animated {
+		-webkit-animation: progress .3s linear;
+	}
+
+	@-webkit-keyframes progress {
+		0% {
+			width: 0%;
+		}
+		100% {
+			width: 75%;
+		}
+	}
+}

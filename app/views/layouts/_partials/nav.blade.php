@@ -1,12 +1,12 @@
 
-<nav id="navigation" role="navigation" class="transparent nav">
+<nav id="navigation" role="navigation" class="{{($negative == true) ? 'transparent' : ''}} nav">
     <div class="row">
         <div class="two columns">
-            <div id="logo" class="logo negative" >
-                <h3>flight<strong>deck</strong></h3>
+            <div id="logo" class="logo {{($negative == true) ? 'negative' : ''}}" >
+                <a href="/" title="FrontPage"><h3>flight<strong>deck</strong></h3></a>
             </div>
         </div>
-        <ul class="ten columns">
+        <ul class="ten columns ">
             <li>{{link_to_route('home', 'Home')}}</li>
             <li><a href="">Features</a></li>
             <li><a href="">Pricing</a></li>

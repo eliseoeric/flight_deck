@@ -33,6 +33,7 @@ class PurchseOrdersRepository extends DbRepository{
 			->join('dealers', 'purchase_orders.dealer_id', '=', 'dealers.id')
 			->select(
 				'purchase_orders.id',
+				'purchase_orders.amount AS amount',
 				'customers.name AS customer',
 				'purchase_orders.customer_id',
 				'manufacturers.name AS manufacturer',

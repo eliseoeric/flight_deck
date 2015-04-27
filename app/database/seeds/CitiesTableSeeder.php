@@ -23,7 +23,7 @@ class CitiesTableSeeder extends Seeder {
 
 		$regions = $this->getRegionsList($data);
 
-		//build regions
+		//build regionse
 		foreach( $regions as $region )
 		{
 			Region::create([

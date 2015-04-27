@@ -1,14 +1,18 @@
 @extends('layouts.default')
 
 @section('projection')
-    <div class="row">
-        <div class="push_one ten columns hookline negative">
-            <h1>Analytical report widgets at the touch of a button.</h1>
-            <div class="large metro default rounded btn">
-                <a href="#">Get Started</a>
+    <div class="projector">
+        @include('layouts._partials.nav',  array('negative' => true))
+        <div class="row">
+            <div class="push_one ten columns hookline negative">
+                <h1>Analytical report widgets at the touch of a button.</h1>
+                <div class="large metro default rounded btn">
+                    <a href="#">Get Started</a>
+                </div>
             </div>
         </div>
     </div>
+
 @stop
 
 @section('content')
@@ -99,7 +103,7 @@
         <div class="row" id="credits">
             <div class="seven columns">
                 <p>
-                    <span class="nobr">Developed with pride</span>
+                    <span class="nobr">Hand-crafted with pride</span>
                     <span class="nobr">by your friends</span>
                     <span class="nobr">at <a href="http://www.thinkgeneric.com/" target="_blank" title="ThinkGeneric">ThinkGeneric</a></span>
                 </p>

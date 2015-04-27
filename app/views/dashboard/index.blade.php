@@ -20,10 +20,13 @@
     </div>
 @include('dashboard._widgets.counter')
 @include('dashboard/_widgets/newsfeed')
+@include('dashboard/_widgets/backgrid')
+@include('dashboard/_widgets/performanceFeed')
 @stop
 
 @section('backbone')
     <script>
+
         new App.Router;
         Backbone.history.start();
 
@@ -31,5 +34,7 @@
         App.widgets.fetch().then(function() {
             new App.Views.App({ collection: App.widgets });
         });
+
+
     </script>
 @stop

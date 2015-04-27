@@ -80,6 +80,18 @@ Route::get('portal', [
 	'uses' => 'PagesController@portal'
 ]);
 
+Route::group( array('before' => 'auth|admin'), function(){
+	Route::get('orders', [
+		'as' => 'orderForm',
+		'uses' => 'OrderFormController@index'
+	]);
+	Route::post('orders', [
+		'as' => 'orderForm',
+		'uses' => 'OrderFormController@store'
+	]);
+});
+
+
 /**
  * Dashboard
  */

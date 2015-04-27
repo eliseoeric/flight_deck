@@ -12,6 +12,7 @@ class PurchaseOrder extends \Eloquent {
 
 	];
 
+
 	// Don't forget to fill this array
 	protected $fillable = ['order_number', 'customer_id', 'amount', 'dealer_id','manufacturer_id'];
 
@@ -48,6 +49,7 @@ class PurchaseOrder extends \Eloquent {
 	public static function placeOrder($command)
 	{
 		$order = new static( get_object_vars( $command ) );
+//		dd($order);
 		$order->raise( new NewOrderPlaced( $order ) );
 		return $order;
 	}

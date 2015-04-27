@@ -60,6 +60,8 @@ class User extends SentryUserModel implements UserInterface, RemindableInterface
 		return $user;
 	}
 
+
+
 	public static function updateUserDetails($command)
 	{
 		$user = User::findOrFail($command->id);

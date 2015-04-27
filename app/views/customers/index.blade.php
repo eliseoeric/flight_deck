@@ -152,7 +152,24 @@
         });
 
         // Render the grid and attach the root to your HTML document
-        $("#table_wrap").append(grid.render().el);
+        var table_wrap = $('#table_wrap');
+        table_wrap.append(grid.render().el);
+        var paginator = new Backgrid.Extension.Paginator({
+            collection: App.customers
+        });
+        // Initialize a client-side filter to filter on the client
+        // mode pageable collection's cache.
+        var filter = new Backgrid.Extension.ClientSideFilter({
+            collection: App.customers,
+            fields: ['name']
+        });
+        // Render the filter
+        table_wrap.before(filter.render().el);
+        // Add some space to the filter and move it to the right
+        $(filter.el).css({float: "right", margin: "20px"});
+
+        // Render the paginator
+        table_wrap.after(paginator.render().el);
 
         App.customers.fetch({reset: true});
     </script>

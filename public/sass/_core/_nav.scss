@@ -13,15 +13,19 @@ nav[role="navigation"]{
 			text-transform: uppercase;
 			font-weight: bold;
 			padding-bottom: 5px;
+			color: $dark-font;
 			&:hover{
-				border-bottom: 3px solid $neutral-white;
+				border-bottom: 3px solid $dark-font;
 			}
-		}
+		}	
 	}
 }
 
 nav.transparent{
 	li a{
 		color: $neutral-white;
+		&:hover{
+			border-bottom: 3px solid $neutral-white;
+		}
 	}
 }

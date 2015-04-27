@@ -33,4 +33,9 @@ Handlebars.registerHelper('img', function(text, url) {
 
   return result;
 });
+
+Handlebars.registerHelper('calcPerc', function(sales, total) {
+  return Math.round( (sales/total)*100 );
+});
+
 })();

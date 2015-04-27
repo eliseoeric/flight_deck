@@ -46,6 +46,7 @@ Or concatenate and minify into a single file -->
 
 {{ HTML::script('js/vendor/backgrid/backgrid.js') }}
 {{ HTML::script('js/vendor/backgrid/backgrid-paginator.min.js') }}
+{{ HTML::script('js/vendor/backgrid/backgrid-filter.min.js') }}
 {{ HTML::script('js/vendor/highcharts/highcharts.js') }}
 
 {{ HTML::script('js/vendor/classie.js') }}

@@ -20,6 +20,7 @@ class CreatePurchaseOrdersTable extends Migration {
 			$table->integer('manufacturer_id')->unsigned()->index();
 			$table->integer('dealer_id')->unsigned()->index();
 			$table->float('amount', 10, 2);
+			$table->date('placed_on');
 			$table->timestamps();
 		});
 	}

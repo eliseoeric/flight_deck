@@ -30,9 +30,15 @@ App.Collections.Regions = Backbone.Collection.extend({
 	url: "/json/regions"
 });
 
-App.Collections.Customers = Backbone.Collection.extend({
+App.Collections.Customers = Backbone.PageableCollection.extend({
 	model: App.Models.Customer,
-	url: "/json/customers"
+	url: "/json/customers",
+	state: {
+	    pageSize: 15,
+	    // sortKey: "updated",
+	    // order: 1
+	  },
+	  mode: "client"
 });
 
 App.Collections.Orders = Backbone.PageableCollection.extend({
