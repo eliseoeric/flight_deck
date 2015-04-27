@@ -2,7 +2,7 @@
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li>{{ link_to_route('admin.index', 'Dashboard') }}</li>
-        <li><a href="#" class="active">Representatives</a>
+        <li><a href="#" class="active">Regions</a>
         </li>
     </ul>
 @stop
@@ -16,9 +16,9 @@
                         <h3 class="panel-title">Getting Started</h3>
                     </header>
                     <div class="panel-body">
-                        <h3>Create a New Region</h3>
+                        <h3>Region Details</h3>
                         <p>Here is some boiler plat copy about regions. We need to clean this up. Don't forget about it.</p>
-                        <div class="medium secondary btn">{{ link_to_route('admin.regions.create', 'New Region') }}</div>
+                        {{--<div class="medium secondary btn">{{ link_to_route('admin.regions.create', 'New Region') }}</div>--}}
                     </div>
                 </div>
             </div>

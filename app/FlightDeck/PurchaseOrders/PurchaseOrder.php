@@ -14,7 +14,7 @@ class PurchaseOrder extends \Eloquent {
 
 
 	// Don't forget to fill this array
-	protected $fillable = ['order_number', 'customer_id', 'amount', 'dealer_id','manufacturer_id'];
+	protected $fillable = ['order_number', 'customer_id', 'amount', 'dealer_id','manufacturer_id', 'created_at'];
 
 	/**
 	 * @return mixed

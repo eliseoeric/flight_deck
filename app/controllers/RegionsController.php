@@ -74,16 +74,29 @@ class RegionsController extends \BaseController {
 
 	public function jsonAll()
 	{
-		$regions = $this->regionsRepo->getRegionsWithReps();
+		$regions = $this->regionsRepo->getRegionsOrders();
+
+		$data = array();
+		foreach($regions as $region)
+		{
+			$customers = $region->customers;
+			$sales = 0;
+			foreach($customers as $customer)
+			{
+				$sales += $customer->purchase_orders->sum('amount');
+
+			}
+			$data[$region->id] = array( 'name' => $region->region, 'sales' => $sales );
+		}
+
 
 		$regionsArray = $regions->toArray();
 
 		foreach($regions as $region)
 		{
-			$totalSales = $region->representatives->sum('net_sales');
-			$regionsArray[$region->id - 1]['net_sales'] = $totalSales;
+			$regionsArray[$region->id - 1]['net_sales'] = $data[$region->id]['sales'];
 		}
-
+		
 		return Response::json($regionsArray);
 	}
 

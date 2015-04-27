@@ -66,7 +66,7 @@ class OrderFormController extends \BaseController {
 						'customer_id' => $customers[$entry['customer']],
 						'manufacturer_id' => $manufacturers[$entry['manufacturer']],
 						'dealer_id' => $dealers[$entry['dealer']],
-						'amount' => intval($entry['amount'])
+						'amount' => str_replace(',', '', $entry['amount'])
 					);
 					$order = $this->execute( NewOrderPlacedCommand::class, $input );
 				}

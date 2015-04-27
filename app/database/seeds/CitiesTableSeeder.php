@@ -38,7 +38,7 @@ class CitiesTableSeeder extends Seeder {
 			$region = Region::find($query->id);
 			$new = new County;
 			$new->county = $county['name'];
-			$new->representative_id = $faker->numberBetween(1,5);
+			$new->representative_id = $faker->numberBetween(1,4);
 			$new->region()->associate($region);
 
 			$new->save();

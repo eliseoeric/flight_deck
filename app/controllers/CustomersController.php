@@ -46,7 +46,7 @@ class CustomersController extends \BaseController {
 		$names = array();
 		foreach ($customers as $customer)
 		{
-			$data[] = $customer->purchase_orders->sum('amount');
+			$data[] = round($customer->purchase_orders->sum('amount'),2);
 			$names[] = $customer->name;
 		}
 
@@ -72,7 +72,7 @@ class CustomersController extends \BaseController {
 				'phone' => $customer->phone,
 				'representative' => $customer->representative,
 				'region' => $customer->region,
-				'purchases' => $customer->purchase_orders->sum('amount')
+				'purchases' => round($customer->purchase_orders->sum('amount'),2)
 			);
 		}
 

@@ -32,7 +32,7 @@
                                     <h3 class="panel-title">{{$customers[$i]->name}} <i class="fa fa-chevron-right"></i></h3>
                                 </header>
                                 <div class="panel-body">
-                                    <h3 class="value">{{$customers[$i]->purchase_orders->sum('amount')}}</h3>
+                                    <h3 class="value">{{round($customers[$i]->purchase_orders->sum('amount'), 2)}}</h3>
                                     <p class="hint"><span class="default label">$0000</span> until goal</p>
                                 </div>
                             </div>

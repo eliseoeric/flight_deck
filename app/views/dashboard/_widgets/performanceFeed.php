@@ -13,7 +13,7 @@
 				<h3>DMG Performance Feed</h3>
 				<div class="eight columns" id="feed_{{ id }}"></div>
 				<div class="four columns">
-					<p>Region Sales Breakdown {{content.performance.total}}</p>
+					<p>Region Sales Breakdown ${{content.performance.total}}</p>
 					{{#each content.performance.regions}}
 					<div>
 						<p>{{this.name}} -- {{calcPerc this.sales ../content.performance.total}}%</p>

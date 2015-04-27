@@ -10,7 +10,7 @@ class NewOrderPlacedCommand {
 	/**
 	 * @var null
 	 */
-	private $created_at;
+	public $created_at;
 
 	public function __construct($order_number, $customer_id, $manufacturer_id, $dealer_id, $amount, $created_at = null)
 	{

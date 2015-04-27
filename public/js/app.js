@@ -35,7 +35,7 @@ Handlebars.registerHelper('img', function(text, url) {
 });
 
 Handlebars.registerHelper('calcPerc', function(sales, total) {
-  return Math.round( (sales/total)*100 );
+  return Math.round((sales/total)*100);
 });
 
 })();

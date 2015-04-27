@@ -10,20 +10,38 @@ class RepresentativesTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 5) as $index)
-		{
-
-			$rep = new Representative([
-				'first_name'    =>  $faker->firstName,
-				'last_name'     =>  $faker->lastName,
-				'phone'         =>  $faker->phoneNumber,
-				'email'         =>  $faker->email,
-				'net_sales'     =>  0,
-				'sales_goal'    =>  $faker->numberBetween(1000, 50000)
-			]);
-			$rep->save();
-
-		}
+		Representative::create([
+			'first_name'    =>  'Frank',
+			'last_name'     =>  'Bailey',
+			'phone'         =>  $faker->phoneNumber,
+			'email'         =>  $faker->email,
+			'net_sales'     =>  0,
+			'sales_goal'    =>  $faker->numberBetween(1000, 50000)
+		]);
+		Representative::create([
+			'first_name'    =>  'Gene',
+			'last_name'     =>  'Downing',
+			'phone'         =>  $faker->phoneNumber,
+			'email'         =>  $faker->email,
+			'net_sales'     =>  0,
+			'sales_goal'    =>  $faker->numberBetween(1000, 50000)
+		]);
+		Representative::create([
+			'first_name'    =>  'Shana',
+			'last_name'     =>  'Downing',
+			'phone'         =>  $faker->phoneNumber,
+			'email'         =>  $faker->email,
+			'net_sales'     =>  0,
+			'sales_goal'    =>  $faker->numberBetween(1000, 50000)
+		]);
+		Representative::create([
+		'first_name'    =>  'Jennifer',
+		'last_name'     =>  'Gomez',
+		'phone'         =>  $faker->phoneNumber,
+		'email'         =>  $faker->email,
+		'net_sales'     =>  0,
+		'sales_goal'    =>  $faker->numberBetween(1000, 50000)
+	]);
 	}
 
 }

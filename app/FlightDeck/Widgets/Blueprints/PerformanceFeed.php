@@ -66,9 +66,9 @@ class PerformanceFeed extends WidgetBlueprint{
 			foreach($customers as $customer)
 			{
 				$sales += $customer->purchase_orders->sum('amount');
-				$total += $sales;
-			}
 
+			}
+			$total += $sales;
 			$data[$region->id] = array( 'name' => $region->region, 'sales' => $sales );
 		}
 		$c = new Collection($data);

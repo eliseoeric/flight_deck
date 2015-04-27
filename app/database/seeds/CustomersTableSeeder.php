@@ -18,29 +18,33 @@ class CustomersTableSeeder extends Seeder {
 		$customers = $this->getCustomerList( $data );
 //		dd($customers);
 //		dd($customers[0]['zip']);
+
 		foreach($customers as $customer)
 		{
-			$zip = Zipcode::with('city.county.representative', 'city.county.region')->where('zipcode', '=', $customer['zip'])->first();
-//			var_dump($customer);
-//			var_dump($zip->city->county->representative->id);
-//			var_dump($zip->zipcode);
-//			var_dump($zip->city->city);
-//			var_dump($zip->city->county->region->id);
-//			var_dump( $customer['name'] );
+
+			if(!empty($customer))
+			{
+//				var_dump($customer);
+				$zip = Zipcode::with('city.county.representative', 'city.county.region')->where('zipcode', '=', $customer['zip'])->first();
+//				var_dump('rep id: '.$zip->city->county->representative->id);
+//				var_dump('zipcode: '.$zip->zipcode);
+//				var_dump('city: '.$zip->city->city);
+//				var_dump('region id: '.$zip->city->county->region->id);
+//				var_dump('customer name: '. $customer['name'] );
 //			die();
-			$customer = new Customer([
-				'name'      =>  $customer['name'],
-				'address'   =>  $faker->streetAddress,
-				'state'     =>  'fl',
-				'phone'     =>  $faker->phoneNumber,
-				'representative_id'    => $zip->city->county->representative->id,
-				'zipcode'   => $zip->zipcode,
-				'city'      => $zip->city->city,
-				'region_id' => $zip->city->county->region->id
-			]);
+				$customer = new Customer([
+					'name'      =>  $customer['name'],
+					'address'   =>  $faker->streetAddress,
+					'state'     =>  'fl',
+					'phone'     =>  $faker->phoneNumber,
+					'representative_id'    => $zip->city->county->representative->id,
+					'zipcode'   => $zip->zipcode,
+					'city'      => $zip->city->city,
+					'region_id' => $zip->city->county->region->id
+				]);
 
-			$customer->save();
-
+				$customer->save();
+			}
 		}
 
 	}

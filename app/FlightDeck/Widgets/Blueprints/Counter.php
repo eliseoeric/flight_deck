@@ -10,13 +10,14 @@ class Counter extends WidgetBlueprint{
 	public function render()
 	{
 		$method = $this->meta['constraint'];
-		return $this->$method();
+		return round($this->$method(), 2);
 	}
 
 	public function today()
 	{
 		return DB::table($this->meta['table'])
-		         ->where( 'created_at', '>=', Carbon::today()->startOfDay() )
+		         ->where( 'created_at', '>', Carbon::today()->startOfDay() )
+			     ->where( 'created_at', '<', Carbon::today()->endOfDay() )
 		         ->sum($this->meta['row']);
 	}
 
@@ -31,7 +32,7 @@ class Counter extends WidgetBlueprint{
 	public function week()
 	{
 		return DB::table($this->meta['table'])
-		         ->where( 'created_at', '<', Carbon::today()->startOfDay() )
+		         ->where( 'created_at', '<', Carbon::today()->endOfDay() )
 		         ->where( 'created_at', '>=', Carbon::today()->subWeek() )
 		         ->sum($this->meta['row']);
 	}
